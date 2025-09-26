@@ -137,7 +137,7 @@ class StorageManager:
             'num_models': len(models),
             'fitness_scores': fitness_scores,
             'best_fitness': max(fitness_scores),
-            'average_fitness': sum(fitness_scores) / len(fitness_scores),
+            'average_fitness': sum(fitness_scores) / max(len(fitness_scores), 1),
             'save_time': datetime.now().isoformat()
         }
 

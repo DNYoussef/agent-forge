@@ -136,8 +136,8 @@ class EvoMerge:
             )
 
             # Update state
-            self.state.best_fitness = max(fitness_scores)
-            self.state.average_fitness = np.mean(fitness_scores)
+            self.state.best_fitness = max(fitness_scores) if fitness_scores else 0.0
+            self.state.average_fitness = np.mean(fitness_scores) if fitness_scores else 0.0
             self.state.fitness_history.append(self.state.best_fitness)
 
             # Calculate diversity
@@ -309,7 +309,7 @@ class EvoMerge:
                 'type': node_type,
                 'color': color,
                 'position': {
-                    'x': (i / len(population)) * 800 - 400,
+                    'x': (i / max(len(population), 1)) * 800 - 400,
                     'y': generation * 60,
                     'z': fitness * 100  # Use fitness for depth
                 }

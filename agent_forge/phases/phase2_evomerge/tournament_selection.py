@@ -161,7 +161,7 @@ class TournamentSelection:
                 'id': f"G{generation}_L{group_idx}",
                 'generation': generation,
                 'parents': f"Loser_Group_{group_idx}",
-                'parent_fitness': np.mean(loser_scores[group_idx*3:(group_idx+1)*3]),
+                'parent_fitness': np.mean(loser_scores[group_idx*3:(group_idx+1)*3]) if loser_scores[group_idx*3:(group_idx+1)*3] else 0.0,
                 'technique': technique,
                 'type': 'loser_merge',
                 'chaos_preservation': True

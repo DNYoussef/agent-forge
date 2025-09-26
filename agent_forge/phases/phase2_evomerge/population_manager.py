@@ -237,10 +237,10 @@ class PopulationManager:
         return {
             'generation': self.generation,
             'population_size': len(self.population),
-            'best_fitness': max(self.fitness_scores),
-            'average_fitness': np.mean(self.fitness_scores),
-            'worst_fitness': min(self.fitness_scores),
-            'fitness_std': np.std(self.fitness_scores),
+            'best_fitness': max(self.fitness_scores) if self.fitness_scores else 0.0,
+            'average_fitness': np.mean(self.fitness_scores) if self.fitness_scores else 0.0,
+            'worst_fitness': min(self.fitness_scores) if self.fitness_scores else 0.0,
+            'fitness_std': np.std(self.fitness_scores) if self.fitness_scores else 0.0,
             'diversity': self.calculate_diversity(),
             'diversity_history': self.diversity_history
         }

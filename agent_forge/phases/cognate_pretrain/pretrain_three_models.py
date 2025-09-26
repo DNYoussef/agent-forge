@@ -33,10 +33,7 @@ import asyncio
 from dataclasses import asdict
 import json
 import logging
-<<<<<<< HEAD
 import os
-=======
->>>>>>> origin/main
 from pathlib import Path
 import random
 import sys
@@ -54,7 +51,6 @@ logger = logging.getLogger(__name__)
 WS_BROADCAST_URL = "http://localhost:8085/broadcast"
 
 
-<<<<<<< HEAD
 async def broadcast_progress_update(phase_name: str, status: str, progress: float, message: str,
                                    model_id: str = None, loss: float = None):
     """Broadcast progress update via WebSocket API."""
@@ -75,21 +71,6 @@ async def broadcast_progress_update(phase_name: str, status: str, progress: floa
             await client.post(
                 f"{WS_BROADCAST_URL}/cognate",
                 json=data,
-=======
-async def broadcast_progress_update(phase_name: str, status: str, progress: float, message: str):
-    """Broadcast progress update via WebSocket API."""
-    try:
-        async with httpx.AsyncClient() as client:
-            await client.post(
-                f"{WS_BROADCAST_URL}/agent_forge_phases",
-                json={
-                    "type": "phase_update",
-                    "phase_name": phase_name,
-                    "status": status,
-                    "progress": progress,
-                    "message": message,
-                },
->>>>>>> origin/main
                 timeout=2.0,
             )
             logger.info(f"Broadcast: {phase_name} - {status} ({progress*100:.1f}%) - {message}")
@@ -117,7 +98,6 @@ print(f"DEBUG: Project root: {project_root}")
 sys.path.insert(0, str(script_dir))  # Current directory first for local imports
 sys.path.insert(0, str(packages_path))
 
-<<<<<<< HEAD
 # Import REAL components - NO MOCKS
 from full_cognate_25m import (
     ACTTitans25M,
@@ -183,123 +163,6 @@ class TrainingConfig:
 
 
 class SyntheticCognateDataset:
-=======
-# Import components
-try:
-    from full_cognate_25m import Enhanced25MCognate, create_three_25m_models
-    from refiner_core import CognateConfig
-
-    from agent_forge.models.cognate.training_pipeline import CognateDataset, CognateTrainingPipeline, TrainingConfig
-
-    IMPORTS_SUCCESS = True
-    logger.info("Successfully imported all Cognate components")
-except ImportError as e:
-    logger.error(f"Import error: {e}")
-    logger.error(f"Current sys.path includes: {sys.path[:5]}")  # Show first 5 paths for debugging
-    # NO MORE MOCKS - FAIL HARD TO FORCE REAL FIXES
-    logger.error("NO MORE MOCK IMPLEMENTATIONS - REAL TRAINING MUST WORK!")
-    raise Exception(f"Import failed: {e}. Fix the imports properly!")
-
-    from dataclasses import dataclass
-
-    class MockConfig:
-        def __init__(self, **kwargs):
-            for k, v in kwargs.items():
-                setattr(self, k, v)
-
-    @dataclass
-    class TrainingConfig:
-        # Model architecture
-        model_size: str = "25M"
-        vocab_size: int = 32000
-        hidden_dim: int = 216
-        num_layers: int = 11
-        num_heads: int = 4
-
-        # Training dynamics
-        t_max_train: int = 16
-        t_min_train: int = 8
-        t_max_infer: int = 6
-        t_min_infer: int = 2
-
-        # Dataset curriculum
-        short_ratio: float = 0.45
-        long_ratio: float = 0.55
-
-        # Hyperparameters
-        batch_size: int = 8
-        learning_rate: float = 2e-4
-        weight_decay: float = 0.1
-        warmup_steps: int = 2000
-        max_steps: int = 50000
-        beta1: float = 0.9
-        beta2: float = 0.95
-
-        # GrokFast settings
-        grokfast_alpha: float = 0.98
-        grokfast_lamb: float = 2.0
-        grokfast_warmup: int = 2000
-
-        # Optimization
-        mixed_precision: bool = True
-        gradient_accumulation_steps: int = 4
-        max_grad_norm: float = 1.0
-
-        # Memory settings
-        memory_bank_size: int = 100000
-        memory_dim: int = 216
-
-        # Directories
-        checkpoint_dir: str = "./checkpoints"
-
-    class CognateDataset:
-        def __init__(self, config, data_files=None, tokenizer=None, split="train"):
-            self.config = config
-            self.data_files = data_files or []
-            self.tokenizer = tokenizer
-            self.split = split
-
-        def __len__(self):
-            return 1000  # Mock dataset size
-
-        def __getitem__(self, idx):
-            return {"input_ids": [1, 2, 3], "labels": [2, 3, 4], "attention_mask": [1, 1, 1]}
-
-    class CognateTrainingPipeline:
-        def __init__(self, config, model, tokenizer):
-            self.config = config
-            self.model = model
-            self.tokenizer = tokenizer
-
-        def train(self, train_dataset, eval_dataset=None, resume_from_checkpoint=None):
-            logger.info("Mock training started")
-            return []
-            self.d_model = 216
-            self.n_layers = 11
-            self.n_heads = 4
-
-    class MockModel:
-        def __init__(self, config):
-            self.config = config
-            self.variant_name = getattr(config, "variant_name", "mock")
-
-        def count_parameters(self):
-            return {"total": 25000000, "accuracy": "100.0%"}
-
-        def state_dict(self):
-            return {"mock": torch.randn(100, 100)}
-
-    class MockDataset:
-        def __init__(self, *args, **kwargs):
-            pass
-
-    CognateConfig = MockConfig
-    Enhanced25MCognate = MockModel
-    CognateDataset = MockDataset
-
-
-class SyntheticCognateDataset(CognateDataset):
->>>>>>> origin/main
     """Synthetic dataset for Cognate pretraining with curriculum alignment."""
 
     def __init__(self, config: TrainingConfig, tokenizer=None, split: str = "train"):
@@ -437,7 +300,6 @@ def set_seed(seed: int):
 
 
 def create_training_config() -> TrainingConfig:
-<<<<<<< HEAD
     """Create training configuration for 25M ACT Titans models."""
     config = TrainingConfig(
             # Model size
@@ -474,60 +336,16 @@ def create_training_config() -> TrainingConfig:
             memory_bank_size=100000,  # Reduced for demonstration
             memory_dim=216,  # Match model dim
         )
-=======
-    """Create training configuration aligned with specifications."""
-    config = TrainingConfig(
-        # Model size
-        model_size="25M",
-        vocab_size=32000,  # Add vocab size
-        hidden_dim=216,  # Match refiner_core.py
-        num_layers=11,  # Match refiner_core.py
-        num_heads=4,  # Match refiner_core.py
-        # Training dynamics (aligned with specification)
-        t_max_train=16,  # Train-many
-        t_min_train=8,
-        t_max_infer=6,  # Infer-few
-        t_min_infer=2,
-        # Dataset curriculum (45% short, 55% long)
-        short_ratio=0.45,
-        long_ratio=0.55,
-        # Hyperparameters (exactly as specified)
-        batch_size=8,
-        learning_rate=2e-4,  # 2e-4 with cosine decay
-        weight_decay=0.1,
-        warmup_steps=2000,  # 2k steps warmup
-        max_steps=2000,  # Quick validation pretraining
-        beta1=0.9,  # AdamW β1
-        beta2=0.95,  # AdamW β2
-        # GrokFast settings
-        grokfast_alpha=0.98,
-        grokfast_lamb=2.0,
-        grokfast_warmup=2000,
-        # Precision and optimization
-        mixed_precision=True,  # bf16
-        gradient_accumulation_steps=4,
-        max_grad_norm=1.0,
-        # Memory settings
-        memory_bank_size=100000,  # Reduced for demonstration
-        memory_dim=216,  # Match model dim
-    )
->>>>>>> origin/main
 
     return config
 
 
-<<<<<<< HEAD
 def pretrain_single_model_with_hrm_titans(
     model: ACTTitans25M,
-=======
-def pretrain_single_model(
-    model: Enhanced25MCognate,
->>>>>>> origin/main
     train_config: TrainingConfig,
     output_dir: str,
     model_name: str,
     model_index: int = 0,
-<<<<<<< HEAD
     total_models: int = 3,
 ) -> dict[str, Any]:
     """
@@ -753,60 +571,11 @@ def pretrain_single_model(
         # Update stats
         training_stats["total_steps"] += 1
         training_stats["total_loss"] += loss.item()
-=======
-    total_models: int = 1,
-) -> dict[str, Any]:
-    """Pretrain a single Cognate model with the enhanced pipeline."""
-
-    logger.info(f"Starting pretraining for {model_name}")
-    start_time = time.time()
-
-    # Broadcast start
-    base_progress = model_index / total_models
-    progress_step = 1.0 / total_models
-    sync_broadcast_progress("Cognate", "running", base_progress, f"Starting {model_name} pretraining...")
-
-    # Create datasets
-    train_dataset = SyntheticCognateDataset(train_config, split="train")
-    eval_dataset = SyntheticCognateDataset(train_config, split="eval")
-
-    # Create training pipeline
-    pipeline = CognateTrainingPipeline(train_config, model.cognate_core, train_dataset.tokenizer)
-
-    # Prepare training
-    train_loader, eval_loader, optimizer, lr_scheduler = pipeline.prepare_training(train_dataset, eval_dataset)
-
-    # Training loop
-    training_stats = {"total_steps": 0, "total_loss": 0.0, "best_eval_loss": float("inf"), "training_time": 0.0}
-
-    model.cognate_core.train()
-
-    for step in range(train_config.max_steps):
-        # Get batch from train_loader
-        try:
-            batch = next(iter(train_loader))
-        except:
-            # Create mock batch if dataloader fails
-            batch = {
-                "input_ids": torch.randint(0, train_config.vocab_size, (train_config.batch_size, 256), dtype=torch.long),
-                "labels": torch.randint(0, train_config.vocab_size, (train_config.batch_size, 256), dtype=torch.long),
-                "attention_mask": torch.ones(train_config.batch_size, 256, dtype=torch.long),
-                "seq_type": ["short"] * train_config.batch_size,
-                "requires_memory": [False] * train_config.batch_size,
-            }
-
-        # Training step
-        step_stats = pipeline.train_step(batch, optimizer, lr_scheduler)
-
-        training_stats["total_steps"] += 1
-        training_stats["total_loss"] += step_stats.get("loss", 0.0)
->>>>>>> origin/main
 
         # Progress broadcasting
         model_progress = step / train_config.max_steps
         total_progress = base_progress + (progress_step * model_progress)
 
-<<<<<<< HEAD
         # Log progress with HRM + Titans metrics
         if step % 100 == 0:
             avg_loss = training_stats["total_loss"] / max(training_stats["total_steps"], 1)
@@ -831,12 +600,6 @@ def pretrain_single_model(
             except:
                 pass
 
-=======
-        # Log progress
-        if step % 100 == 0:
-            avg_loss = training_stats["total_loss"] / max(training_stats["total_steps"], 1)
-            logger.info(f"{model_name} Step {step}/{train_config.max_steps}: avg_loss={avg_loss:.4f}")
->>>>>>> origin/main
             sync_broadcast_progress(
                 "Cognate",
                 "running",
@@ -912,7 +675,6 @@ def create_mock_models():
 
 
 def main():
-<<<<<<< HEAD
     """
     Main pretraining function for 3x 25M ACT Titans models.
 
@@ -941,13 +703,6 @@ def main():
 
     # Create output directory
     output_dir = Path("./cognate_25m_hrm_titans_models")
-=======
-    """Main pretraining function."""
-    logger.info("Starting pretraining of 3 identical 25M Cognate models")
-
-    # Create output directory
-    output_dir = Path("./cognate_25m_models")
->>>>>>> origin/main
     output_dir.mkdir(exist_ok=True)
 
     # Create training configuration
@@ -960,7 +715,6 @@ def main():
     logger.info(f"Training config: {train_config.max_steps} steps, lr={train_config.learning_rate}")
     logger.info(f"GrokFast: alpha={train_config.grokfast_alpha}, lamb={train_config.grokfast_lamb}")
 
-<<<<<<< HEAD
     # Broadcast start to WebSocket
     sync_broadcast_progress("Cognate", "starting", 0.0,
                           "Initializing 3x 25M ACT Titans models with HRM + Titans...")
@@ -969,11 +723,6 @@ def main():
     if IMPORTS_SUCCESS:
         models = create_three_act_titans_models()
         logger.info(f"Created {len(models)} ACT Titans models (25M params each)")
-=======
-    # Create 3 identical models with different seeds
-    if IMPORTS_SUCCESS:
-        models = create_three_25m_models()
->>>>>>> origin/main
     else:
         logger.warning("Using mock models due to import failures")
         models = create_mock_models()
@@ -986,19 +735,14 @@ def main():
     # Broadcast overall start
     sync_broadcast_progress("Cognate", "running", 0.0, "Starting 3 Cognate model pretraining...")
 
-<<<<<<< HEAD
     # SEQUENTIAL PRETRAINING of each model
     logger.info("Starting SEQUENTIAL training (each model trains one after another)")
-=======
-    # Pretrain each model
->>>>>>> origin/main
     all_stats = {}
     total_models = len(models)
 
     for i, model in enumerate(models):
         model_name = f"cognate-25m-{model.variant_name}"
 
-<<<<<<< HEAD
         # Update WebSocket with current model being trained
         sync_broadcast_progress(
             "Cognate", "training", i / total_models,
@@ -1015,10 +759,6 @@ def main():
         try:
             # Use the HRM + Titans pretraining function
             stats = pretrain_single_model_with_hrm_titans(
-=======
-        try:
-            stats = pretrain_single_model(
->>>>>>> origin/main
                 model=model,
                 train_config=train_config,
                 output_dir=str(output_dir),
@@ -1028,7 +768,6 @@ def main():
             )
             all_stats[model_name] = stats
 
-<<<<<<< HEAD
             # Broadcast completion of this model
             sync_broadcast_progress(
                 "Cognate", "running", (i + 1) / total_models,
@@ -1040,18 +779,6 @@ def main():
                 logger.info(f"Model {i+1} complete. Starting model {i+2} in 2 seconds...")
                 time.sleep(2)
 
-=======
->>>>>>> origin/main
-        except Exception as e:
-            logger.error(f"Failed to train {model_name}: {e}")
-            # Broadcast error
-            sync_broadcast_progress(
-<<<<<<< HEAD
-                "Cognate", "error", i / total_models,
-                f"Failed to train {model_name}: {str(e)[:100]}..."
-=======
-                "Cognate", "error", i / total_models, f"Failed to train {model_name}: {str(e)[:100]}..."
->>>>>>> origin/main
             )
             # Create mock stats for failed training
             all_stats[model_name] = {

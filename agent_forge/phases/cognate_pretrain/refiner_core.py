@@ -82,7 +82,6 @@ except ImportError:
     except ImportError:
         logger.warning("LTM bank imports failed, using fallbacks")
 
-<<<<<<< HEAD
         class TitansNeuralMemory(nn.Module):
             """
             REAL Titans Neural Memory implementation based on the paper.
@@ -201,13 +200,6 @@ except ImportError:
             d_model = kwargs.get('d_model', d_mem)
             memory = TitansNeuralMemory(d_model, d_mem, capacity)
             return memory.to(device)
-=======
-        def create_ltm_controllers(*args, **kwargs):
-            return None, None, None
-
-        def create_memory_bank(*args, **kwargs):
-            return None
->>>>>>> origin/main
 
 
 @dataclass
@@ -530,7 +522,6 @@ class CognateRefiner(nn.Module):
         self.halting_head = ACTHaltingHead(config)
         self.edit_head = EditHead(config)
 
-<<<<<<< HEAD
         # Long-term memory system (Titans Neural Memory)
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.memory_bank = create_memory_bank(
@@ -538,13 +529,6 @@ class CognateRefiner(nn.Module):
             d_mem=config.d_mem,
             device=device,
             d_model=config.d_model  # Pass d_model for the gate network
-=======
-        # Long-term memory system
-        self.memory_bank = create_memory_bank(
-            capacity=config.mem_capacity,
-            d_mem=config.d_mem,
-            device=next(self.parameters()).device if list(self.parameters()) else torch.device("cpu"),
->>>>>>> origin/main
         )
 
         self.read_controller, self.write_controller = create_ltm_controllers(d_model=config.d_model, d_mem=config.d_mem)
