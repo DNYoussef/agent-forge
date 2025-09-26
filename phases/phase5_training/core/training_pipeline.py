@@ -1,7 +1,6 @@
 """
 Agent Forge Phase 5: End-to-End Training Pipeline
-=================================================
-
+===========================================
 Complete training pipeline orchestrating all Phase 5 components with
 comprehensive integration, monitoring, and Phase 4-6 coordination.
 

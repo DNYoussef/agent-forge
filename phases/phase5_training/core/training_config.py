@@ -1,7 +1,6 @@
 """
 Agent Forge Phase 5: Training Configuration Management
-======================================================
-
+================================================
 Comprehensive configuration management system for BitNet training with
 validation, environment-specific settings, and NASA POT10 compliance.
 

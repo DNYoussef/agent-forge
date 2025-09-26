@@ -9,6 +9,7 @@ Downloads and prepares the exact datasets specified:
 
 import json
 import logging
+import os
 from pathlib import Path
 
 from datasets import load_dataset
@@ -20,9 +21,16 @@ logger = logging.getLogger(__name__)
 class CognateDatasetDownloader:
     """Downloads and prepares datasets for Cognate pretraining curriculum."""
 
-    def __init__(self, output_dir: str = "./cognate_datasets"):
+    def __init__(self, output_dir: str = None):
+        # Use environment variable or default to D: drive for this device
+        if output_dir is None:
+            output_dir = os.environ.get('COGNATE_DATASET_DIR', 'D:/cognate_datasets')
+
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
+
+        logger.info(f"Dataset directory: {self.output_dir}")
+        logger.info("To change dataset location, set COGNATE_DATASET_DIR environment variable")
 
         # Dataset configurations
         self.short_datasets = {
@@ -40,6 +48,25 @@ class CognateDatasetDownloader:
             "QuALITY": "quality",
             "Qasper": "qasper",
             "NarrativeQA": "narrativeqa",
+        }
+
+        # HRM paper datasets (reasoning tasks)
+        self.hrm_datasets = {
+            "ARC-Easy": "ai2_arc/ARC-Easy",
+            "ARC-Challenge": "ai2_arc/ARC-Challenge",
+            "Sudoku": "potsawee/sudoku",  # Closest available to Sudoku-Extreme
+            # Note: ARC-AGI and Maze-Hard not directly available on HuggingFace
+        }
+
+        # Titans paper datasets (language modeling & reasoning)
+        self.titans_datasets = {
+            "WikiText": "wikitext/wikitext-103-raw-v1",
+            "PIQA": "piqa",
+            "HellaSwag": "hellaswag",
+            "WinoGrande": "winogrande/winogrande_xl",
+            "SIQA": "social_i_qa",
+            "BoolQ": "boolq",
+            "FineWeb-Edu-sample": "HuggingFaceFW/fineweb-edu",  # Sample of FineWeb-Edu
         }
 
     def download_dataset(self, dataset_name: str, hf_name: str, split_type: str = "short") -> bool:
@@ -277,6 +304,14 @@ class CognateDatasetDownloader:
         for name, hf_name in self.long_datasets.items():
             results[name] = self.download_dataset(name, hf_name, "long")
 
+        logger.info("=== DOWNLOADING HRM PAPER DATASETS (REASONING) ===")
+        for name, hf_name in self.hrm_datasets.items():
+            results[name] = self.download_dataset(name, hf_name, "short")  # HRM uses small datasets
+
+        logger.info("=== DOWNLOADING TITANS PAPER DATASETS (LANGUAGE MODELING) ===")
+        for name, hf_name in self.titans_datasets.items():
+            results[name] = self.download_dataset(name, hf_name, "long")  # Titans uses longer sequences
+
         # Create summary
         successful = sum(1 for success in results.values() if success)
         total = len(results)
@@ -354,16 +389,27 @@ class CognateDatasetDownloader:
 
 def main():
     """Main dataset download function."""
-    logger.info("Starting download of real datasets for Cognate pretraining")
+    logger.info("="*80)
+    logger.info("DOWNLOADING REAL DATASETS FOR HRM + TITANS PRETRAINING")
+    logger.info("="*80)
+    logger.info("Datasets include:")
+    logger.info("- Original Cognate datasets (GSM8K, HotpotQA, etc.)")
+    logger.info("- HRM paper datasets (ARC, Sudoku)")
+    logger.info("- Titans paper datasets (WikiText, PIQA, HellaSwag, FineWeb-Edu)")
+    logger.info("="*80)
 
-    downloader = CognateDatasetDownloader()
+    # Use configurable dataset directory
+    dataset_dir = os.environ.get('COGNATE_DATASET_DIR', 'D:/cognate_datasets')
+    downloader = CognateDatasetDownloader(output_dir=dataset_dir)
     results = downloader.download_all_datasets()
 
     # Create mixed training data
     mixed_file = downloader.create_mixed_training_data()
 
+    logger.info("="*80)
     logger.info("✅ Dataset preparation complete!")
     logger.info(f"Mixed training data saved to: {mixed_file}")
+    logger.info("="*80)
 
     return results
 

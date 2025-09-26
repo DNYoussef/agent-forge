@@ -24,13 +24,11 @@ class QueenSecurityDebugger {
     constructor() {
         console.log(`
  QUEEN SECURITY DEBUG SYSTEM ACTIVATED
-================================================================================
-Mission: Fix Security Quality Gate Failures
+==========================================================================Mission: Fix Security Quality Gate Failures
 - 11 HIGH Bandit issues
 - 160 CRITICAL Semgrep findings
 - 3 Dependency vulnerabilities
-================================================================================
-        `);
+==========================================================================        `);
     }
 
     async execute() {
@@ -237,10 +235,8 @@ paths:
 
     private generateReport() {
         console.log(`
-================================================================================
- QUEEN SECURITY DEBUG REPORT
-================================================================================
-
+========================================================================== QUEEN SECURITY DEBUG REPORT
+==========================================================================
 Security Issues Fixed:
    Pickle Usage: Replaced with JSON (4 instances)
    Weak Hashes: Added usedforsecurity=False (5 instances)
@@ -261,10 +257,8 @@ Next Steps:
   2. Push: git push origin main
   3. Monitor: GitHub Actions should pass Security Quality Gate
 
-================================================================================
- QUEEN SECURITY DEBUG COMPLETE
-================================================================================
-        `);
+========================================================================== QUEEN SECURITY DEBUG COMPLETE
+==========================================================================        `);
     }
 }
 

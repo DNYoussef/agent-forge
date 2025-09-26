@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Agent Forge Integration Layer
-============================
-
+======================
 Integration layer for WebSocket progress streaming with agent forge systems.
 Provides hooks and callbacks for real-time progress updates.
 Compatible with existing HTTP polling systems.

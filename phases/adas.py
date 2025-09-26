@@ -73,10 +73,8 @@ except (ImportError, ValueError):
 
 logger = logging.getLogger(__name__)
 
-# ============================================================================
-# Vector Composition Operations (Transformers Squared Paper)
-# ============================================================================
-
+# ======================================================================# Vector Composition Operations (Transformers Squared Paper)
+# ======================================================================
 
 class VectorCompositionOperator:
     """
@@ -200,10 +198,8 @@ class VectorCompositionOperator:
             raise ValueError(f"Unknown distribution: {distribution}")
 
 
-# ============================================================================
-# Architecture Configuration System
-# ============================================================================
-
+# ======================================================================# Architecture Configuration System
+# ======================================================================
 
 @dataclass
 class ArchitectureConfig:
@@ -268,10 +264,8 @@ class ArchitectureConfig:
         return cls(**data)
 
 
-# ============================================================================
-# Secure Architecture Evaluator
-# ============================================================================
-
+# ======================================================================# Secure Architecture Evaluator
+# ======================================================================
 
 class SecureArchitectureEvaluator:
     """Secure evaluation of generated architectures using sandboxed execution."""
@@ -490,10 +484,8 @@ class SecureArchitectureEvaluator:
         return base_speed
 
 
-# ============================================================================
-# NSGA-II Multi-Objective Optimization
-# ============================================================================
-
+# ======================================================================# NSGA-II Multi-Objective Optimization
+# ======================================================================
 
 class NSGAIIOptimizer:
     """NSGA-II algorithm for multi-objective architecture optimization."""
@@ -759,10 +751,8 @@ class NSGAIIOptimizer:
         return fronts[0] if fronts else []
 
 
-# ============================================================================
-# Grokfast-Accelerated ADAS Training
-# ============================================================================
-
+# ======================================================================# Grokfast-Accelerated ADAS Training
+# ======================================================================
 
 class GrokfastADASTrainer:
     """Grokfast-accelerated training for architecture candidates."""
@@ -869,10 +859,8 @@ class GrokfastADASTrainer:
         return filtered_grad
 
 
-# ============================================================================
-# ADAS Phase Configuration
-# ============================================================================
-
+# ======================================================================# ADAS Phase Configuration
+# ======================================================================
 
 class ADASConfig(BaseModel):
     """Configuration for ADAS phase."""
@@ -907,10 +895,8 @@ class ADASConfig(BaseModel):
     save_training_metrics: bool = True
 
 
-# ============================================================================
-# Main ADAS Phase Controller
-# ============================================================================
-
+# ======================================================================# Main ADAS Phase Controller
+# ======================================================================
 
 class ADASPhase(PhaseController):
     """
@@ -1035,6 +1021,47 @@ class ADASPhase(PhaseController):
                 duration_seconds=duration,
             )
 
+    async def execute(self, model_path: str, **kwargs) -> PhaseResult:
+        """
+        Execute ADAS phase with model path input.
+
+        This method provides compatibility with orchestration systems that expect
+        an execute method taking a model path instead of a model object.
+
+        Args:
+            model_path: Path to the model to optimize
+            **kwargs: Additional execution parameters
+
+        Returns:
+            PhaseResult: Result of ADAS phase execution
+        """
+        import torch
+        from transformers import AutoModelForCausalLM
+
+        try:
+            # Load model from path
+            if isinstance(model_path, str):
+                model = AutoModelForCausalLM.from_pretrained(model_path)
+            else:
+                # If model_path is actually a model object, use it directly
+                model = model_path
+
+            # Execute using the existing run method
+            return await self.run(model)
+
+        except Exception as e:
+            error_msg = f"ADAS execute failed: {str(e)}"
+            self.logger.error(error_msg)
+
+            return PhaseResult(
+                success=False,
+                model=None,
+                error=error_msg,
+                metrics={"duration_seconds": 0.0},
+                config=self.config.dict(),
+                duration_seconds=0.0,
+            )
+
     def _generate_initial_population(self, model: nn.Module) -> list[ArchitectureConfig]:
         """Generate initial population of architecture configurations."""
         initial_configs = []
@@ -1138,10 +1165,8 @@ class ADASPhase(PhaseController):
         return best_config
 
 
-# ============================================================================
-# CLI and Testing Interface
-# ============================================================================
-
+# ======================================================================# CLI and Testing Interface
+# ======================================================================
 
 async def run_adas_demo():
     """Demo function to test ADAS phase."""

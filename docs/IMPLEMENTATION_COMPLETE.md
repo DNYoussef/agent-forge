@@ -28,8 +28,7 @@ All three tasks have been **successfully implemented** and **thoroughly validate
 ### Live Demonstration Output:
 ```
 Agent Forge Grokfast Training Demonstration
-==================================================
-Model created with 626,804 parameters
+============================================Model created with 626,804 parameters
 Device: cuda
 Grokfast enabled: True
 

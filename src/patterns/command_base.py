@@ -1,8 +1,7 @@
 # SPDX-License-Identifier: MIT
 """
 Base Command Pattern Implementation
-==================================
-
+============================
 Core command pattern classes providing a foundation for all command-based
 operations throughout the system. Supports undo, queuing, and logging.
 

@@ -17,7 +17,7 @@ export default defineConfig({
   ],
 
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:8000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -77,13 +77,13 @@ export default defineConfig({
     },
   ],
 
-  // Development server configuration
-  webServer: {
-    command: 'npm run start:dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120000,
-  },
+  // Development server configuration - disabled for static testing
+  // webServer: {
+  //   command: 'python run_api_server.py',
+  //   url: 'http://localhost:8000',
+  //   reuseExistingServer: !process.env.CI,
+  //   timeout: 120000,
+  // },
 
   // Global test settings
   timeout: 60000,

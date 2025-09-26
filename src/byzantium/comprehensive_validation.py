@@ -1,7 +1,6 @@
 """
 Comprehensive Byzantine Fault Tolerance Validation
-==================================================
-
+============================================
 Complete validation script demonstrating Byzantine consensus coordinator
 integrated with race condition detection for detector pool thread safety.
 Production-ready validation with comprehensive reporting.

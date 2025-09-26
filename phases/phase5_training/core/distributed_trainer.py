@@ -1,7 +1,6 @@
 """
 Agent Forge Phase 5: Distributed Training System
-================================================
-
+==========================================
 Multi-GPU distributed training coordination with fault tolerance,
 load balancing, and optimal resource utilization.
 

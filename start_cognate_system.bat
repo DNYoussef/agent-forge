@@ -1,7 +1,6 @@
 @echo off
 echo Starting Agent Forge Cognate System with ACT Titans Architecture
-echo ==================================================================
-echo.
+echo ============================================================echo.
 
 echo Starting WebSocket Server (Port 8085)...
 start "WebSocket Server" cmd /k "cd /d %~dp0 && python agent_forge\api\websocket_server.py"
@@ -19,8 +18,7 @@ start "Dashboard" cmd /k "cd /d %~dp0\src\web\dashboard && npm run dev"
 timeout /t 5
 
 echo.
-echo ==================================================================
-echo All servers started!
+echo ============================================================echo All servers started!
 echo.
 echo - WebSocket Server: http://localhost:8085
 echo - Python Bridge API: http://localhost:8001

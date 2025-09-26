@@ -1,0 +1,452 @@
+=== Enhanced Merge Conflict Resolver ===
+Scanning directory: C:\Users\17175\Desktop\agent-forge
+
+1. Scanning for files with merge conflicts...
+Found 431 files with potential conflicts
+
+2. Resolving merge conflicts...
+  [-] verify-ui.js: No conflicts to resolve
+  [-] tests\github-workflow-validation.js: No conflicts to resolve
+  [-] node_modules\playwright\lib\runner\rebase.js: No conflicts to resolve
+  [OK] node_modules\playwright\lib\transform\babelBundleImpl.js: 1 conflicts resolved
+  [-] node_modules\playwright-core\lib\utilsBundleImpl\index.js: No conflicts to resolve
+  [-] node_modules\playwright-core\lib\server\bidi\bidiChromium.js: No conflicts to resolve
+  [-] node_modules\playwright-core\lib\server\chromium\chromium.js: No conflicts to resolve
+  [-] node_modules\playwright-core\lib\server\electron\electron.js: No conflicts to resolve
+  [-] node_modules\typescript\lib\typescript.js: No conflicts to resolve
+  [-] node_modules\typescript\lib\_tsc.js: No conflicts to resolve
+  [-] src\theater-elimination\evidence-generator.js: No conflicts to resolve
+  [-] src\theater-elimination\production-validation-runner.js: No conflicts to resolve
+  [-] src\theater-elimination\run-theater-elimination.js: No conflicts to resolve
+  [-] src\theater-elimination\theater-elimination-demo.js: No conflicts to resolve
+  [-] src\flow\tests\agent-model-assignment-test.js: No conflicts to resolve
+  [OK] src\risk-dashboard\node_modules\argparse\argparse.js: 42 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\didyoumean\didYouMean-1.2.1.js: 1 conflicts resolved
+  [-] src\risk-dashboard\node_modules\@babel\template\lib\builder.js: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\@typescript-eslint\typescript-estree\dist\parseSettings\warnAboutTSVersion.js: No conflicts to resolve
+  [OK] src\risk-dashboard\node_modules\exit\test\exit_test.js: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\iconv-lite\encodings\dbcs-codec.js: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\iconv-lite\encodings\dbcs-data.js: 4 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\iconv-lite\encodings\utf16.js: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\iconv-lite\lib\extend-node.js: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\iconv-lite\lib\streams.js: 3 conflicts resolved
+  [-] src\risk-dashboard\node_modules\istanbul-reports\lib\text-summary\index.js: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\jiti\dist\babel.js: No conflicts to resolve
+  [OK] src\risk-dashboard\node_modules\sucrase\dist\esm\parser\plugins\flow.js: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\sucrase\dist\esm\parser\plugins\typescript.js: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\sucrase\dist\esm\parser\plugins\jsx\index.js: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\sucrase\dist\parser\plugins\flow.js: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\sucrase\dist\parser\plugins\typescript.js: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\sucrase\dist\parser\plugins\jsx\index.js: 2 conflicts resolved
+  [-] src\risk-dashboard\node_modules\typescript\lib\typescript.js: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\_tsc.js: No conflicts to resolve
+  [OK] src\web\dashboard\node_modules\buffer\index.js: 3 conflicts resolved
+  [OK] src\web\dashboard\node_modules\@monogrid\gainmap-js\dist\libultrahdr.js: 2 conflicts resolved
+  [OK] src\web\dashboard\node_modules\@monogrid\gainmap-js\libultrahdr-wasm\build\libultrahdr-debug.js: 2 conflicts resolved
+  [OK] src\web\dashboard\node_modules\@monogrid\gainmap-js\libultrahdr-wasm\build\libultrahdr-esm.js: 2 conflicts resolved
+  [OK] src\web\dashboard\node_modules\@monogrid\gainmap-js\libultrahdr-wasm\build\libultrahdr.js: 2 conflicts resolved
+  [OK] src\web\dashboard\node_modules\framer-motion\dist\framer-motion.dev.js: 1 conflicts resolved
+  [OK] src\web\dashboard\node_modules\framer-motion\dist\cjs\feature-bundle-DzuUB-G1.js: 1 conflicts resolved
+  [OK] src\web\dashboard\node_modules\next\dist\build\webpack\plugins\next-types-plugin\index.js: 1 conflicts resolved
+  [-] src\web\dashboard\node_modules\next\dist\compiled\babel\bundle.js: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\next\dist\compiled\babel-packages\packages-bundle.js: No conflicts to resolve
+  [OK] src\web\dashboard\node_modules\next\dist\esm\build\webpack\plugins\next-types-plugin\index.js: 1 conflicts resolved
+  [-] src\web\dashboard\node_modules\playwright\lib\runner\rebase.js: No conflicts to resolve
+  [OK] src\web\dashboard\node_modules\playwright\lib\transform\babelBundleImpl.js: 1 conflicts resolved
+  [-] src\web\dashboard\node_modules\playwright-core\lib\utilsBundleImpl\index.js: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\playwright-core\lib\server\bidi\bidiChromium.js: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\playwright-core\lib\server\chromium\chromium.js: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\playwright-core\lib\server\electron\electron.js: No conflicts to resolve
+  [OK] src\web\dashboard\node_modules\stats-gl\node_modules\three\examples\jsm\libs\opentype.module.js: 2 conflicts resolved
+  [OK] src\web\dashboard\node_modules\three\examples\jsm\libs\opentype.module.js: 2 conflicts resolved
+  [OK] src\web\dashboard\node_modules\three-stdlib\shaders\FXAAShader.js: 8 conflicts resolved
+  [-] src\web\dashboard\node_modules\typescript\lib\typescript.js: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\_tsc.js: No conflicts to resolve
+  [-] tests\e2e\verify-ui.js: No conflicts to resolve
+  [-] tests\integration\enterprise\phase2-integration-test.js: No conflicts to resolve
+  [OK] IMPLEMENTATION_COMPLETE.md: 1 conflicts resolved
+  [OK] QUICKSTART_API.md: 2 conflicts resolved
+  [OK] docs\AGENT_FORGE_INTEGRATION_SUMMARY.md: 1 conflicts resolved
+  [OK] docs\IMPLEMENTATION_COMPLETE.md: 1 conflicts resolved
+  [OK] docs\QUICKSTART_API.md: 2 conflicts resolved
+  [OK] tests\PHASE7_COMPREHENSIVE_AUDIT_REPORT.md: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\validation\working_report.md: 1 conflicts resolved
+  [OK] models\cognate\README.md: 2 conflicts resolved
+  [OK] phases\phase6_baking\validation\working_report.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\accepts\HISTORY.md: 36 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\anymatch\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\argparse\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\body-parser\HISTORY.md: 70 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\bytes\History.md: 17 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\co\History.md: 30 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\content-disposition\HISTORY.md: 12 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\content-type\HISTORY.md: 6 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\cookie-signature\History.md: 7 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\depd\History.md: 17 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\didyoumean\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\etag\HISTORY.md: 14 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\express\History.md: 285 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\finalhandler\HISTORY.md: 31 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\forwarded\HISTORY.md: 4 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\fresh\HISTORY.md: 12 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\http-errors\HISTORY.md: 28 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\imurmurhash\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\js-tokens\README.md: 6 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\js-yaml\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\makeerror\readme.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\media-typer\HISTORY.md: 4 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\merge-descriptors\HISTORY.md: 4 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\methods\HISTORY.md: 6 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\mime-db\HISTORY.md: 61 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\mime-types\HISTORY.md: 55 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\mz\HISTORY.md: 13 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\natural-compare\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\negotiator\HISTORY.md: 18 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\on-finished\HISTORY.md: 18 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\parseurl\HISTORY.md: 11 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\proxy-addr\HISTORY.md: 27 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\range-parser\HISTORY.md: 11 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\raw-body\HISTORY.md: 48 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\semver\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\send\HISTORY.md: 60 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\serve-static\HISTORY.md: 62 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\statuses\HISTORY.md: 14 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\thenify\History.md: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\thenify-all\History.md: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\toidentifier\HISTORY.md: 2 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\type-is\HISTORY.md: 36 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\unpipe\HISTORY.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\util-deprecate\History.md: 3 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\util-deprecate\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\vary\HISTORY.md: 7 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\walker\readme.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\@babel\core\node_modules\semver\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\@babel\helper-compilation-targets\node_modules\semver\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\@istanbuljs\load-nyc-config\node_modules\argparse\README.md: 8 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\@istanbuljs\load-nyc-config\node_modules\js-yaml\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\babel-plugin-istanbul\node_modules\semver\README.md: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\body-parser\node_modules\debug\CHANGELOG.md: 47 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\express\node_modules\debug\CHANGELOG.md: 47 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\finalhandler\node_modules\debug\CHANGELOG.md: 47 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\send\node_modules\debug\CHANGELOG.md: 47 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\send\node_modules\encodeurl\HISTORY.md: 3 conflicts resolved
+  [OK] src\web\dashboard\node_modules\base64-js\README.md: 1 conflicts resolved
+  [OK] src\web\dashboard\node_modules\draco3d\README.md: 4 conflicts resolved
+  [OK] src\web\dashboard\node_modules\semver\README.md: 1 conflicts resolved
+  [OK] src\debug\execute-queen-security-fix.ts: 6 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\@types\express\index.d.ts: 1 conflicts resolved
+  [OK] src\risk-dashboard\node_modules\@types\json-schema\index.d.ts: 6 conflicts resolved
+  [-] src\swarm\hierarchy\PrincessAuditGate.ts: No conflicts to resolve
+  [-] src\swarm\orchestration\SwarmInitializer.ts: No conflicts to resolve
+  [OK] src\swarm\reasoning\ConsultationClaritySystem.ts: 1 conflicts resolved
+  [-] src\swarm\remediation\execute_remediation.ts: No conflicts to resolve
+  [-] src\swarm\remediation\execute_remediation_simple.ts: No conflicts to resolve
+  [-] src\swarm\remediation\QueenRemediationOrchestrator.ts: No conflicts to resolve
+  [-] tests\integration\pipeline-test.ts: No conflicts to resolve
+  [-] tests\sandbox\RefactoringValidationSuite.ts: No conflicts to resolve
+  [-] tests\sandbox\TestRunner.ts: No conflicts to resolve
+  [-] docs\reports\import_update_report.txt: No conflicts to resolve
+  [OK] node_modules\playwright\ThirdPartyNotices.txt: 449 conflicts resolved
+  [OK] node_modules\playwright-core\ThirdPartyNotices.txt: 93 conflicts resolved
+  [-] node_modules\typescript\ThirdPartyNoticeText.txt: No conflicts to resolve
+  [OK] src\security\dfars_policy.txt: 1 conflicts resolved
+  [-] src\risk-dashboard\node_modules\typescript\ThirdPartyNoticeText.txt: No conflicts to resolve
+  [OK] src\web\dashboard\node_modules\playwright\ThirdPartyNotices.txt: 449 conflicts resolved
+  [OK] src\web\dashboard\node_modules\playwright-core\ThirdPartyNotices.txt: 93 conflicts resolved
+  [-] src\web\dashboard\node_modules\typescript\ThirdPartyNoticeText.txt: No conflicts to resolve
+  [OK] tests\self-dogfooding\test_output.txt: 2 conflicts resolved
+  [-] run_tests.sh: No conflicts to resolve
+  [-] setup-api-integration.sh: No conflicts to resolve
+  [-] scripts\deploy-emergency-stabilization.sh: No conflicts to resolve
+  [-] scripts\run_tests.sh: No conflicts to resolve
+  [-] scripts\setup-api-integration.sh: No conflicts to resolve
+  [-] tests\run-tests.sh: No conflicts to resolve
+  [-] tests\integration\run_tests.sh: No conflicts to resolve
+  [OK] agent_forge_integration.py: 1 conflicts resolved
+  [-] fastapi_websocket_server.py: No conflicts to resolve
+  [OK] final_compression.py: 14 conflicts resolved
+  [-] resolve_conflicts.py: No conflicts to resolve
+  [OK] websocket_progress.py: 1 conflicts resolved
+  [OK] agent_forge\final_compression.py: 14 conflicts resolved
+  [-] examples\websocket_integration_example.py: No conflicts to resolve
+  [OK] phases\adas.py: 16 conflicts resolved
+  [OK] phases\bitnet_compression.py: 14 conflicts resolved
+  [OK] phases\final_compression.py: 14 conflicts resolved
+  [OK] phases\forge_training.py: 22 conflicts resolved
+  [OK] phases\quietstar.py: 18 conflicts resolved
+  [OK] scripts\agent_forge_integration.py: 1 conflicts resolved
+  [OK] scripts\final_compression.py: 14 conflicts resolved
+  [OK] src\agent_forge_integration.py: 1 conflicts resolved
+  [OK] src\api_server.py: 1 conflicts resolved
+  [-] src\fastapi_websocket_server.py: No conflicts to resolve
+  [OK] src\websocket_progress.py: 1 conflicts resolved
+  [OK] tests\audit_phase7_god_object_decomposition.py: 1 conflicts resolved
+  [OK] tests\isolated_phase7_audit.py: 1 conflicts resolved
+  [OK] tests\naming_convention_validator.py: 1 conflicts resolved
+  [OK] tests\regression_test_runner.py: 1 conflicts resolved
+  [OK] tests\standalone_facade_test.py: 1 conflicts resolved
+  [OK] agent_forge\phases\adas.py: 16 conflicts resolved
+  [OK] agent_forge\phases\bitnet_compression.py: 14 conflicts resolved
+  [OK] agent_forge\phases\final_compression.py: 14 conflicts resolved
+  [OK] agent_forge\phases\forge_training.py: 22 conflicts resolved
+  [OK] agent_forge\phases\quietstar.py: 18 conflicts resolved
+  [OK] agent_forge\phases\phase3_quietstar\architecture.py: 23 conflicts resolved
+  [OK] agent_forge\phases\phase3_quietstar\test_quietstar.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\bitnet_architecture.py: 6 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\bitnet_config.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\performance_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\validate_performance_targets.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\__init__.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\bitnet_training.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\checkpoint_manager.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\distributed_trainer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\grokfast_integration.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\integration_test.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\performance_monitor.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\training_architecture.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\training_config.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\training_pipeline.py: 1 conflicts resolved
+  [-] agent_forge\phases\phase7_adas\real_performance_benchmarker.py: No conflicts to resolve
+  [OK] agent_forge\phases\phase4_bitnet\benchmarks\baseline_comparison.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\benchmarks\performance_suite.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\config\bitnet_config.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\config\__init__.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\core\bitnet_architecture.py: 6 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\core\bitnet_config.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\core\bitnet_layers.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\core\performance_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\core\quantization.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\core\validate_performance_targets.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\optimization\hardware_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\optimization\inference_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\optimization\memory_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\optimization\training_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\pipeline\compression.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\pipeline\integration.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\pipeline\__init__.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\profiling\memory_profiler.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\profiling\speed_profiler.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\tests\test_bitnet_core.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\tests\__init__.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\utils\optimization.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase4_bitnet\utils\__init__.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\bitnet_training.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\checkpoint_manager.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\distributed_trainer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\grokfast_integration.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\integration_test.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\performance_monitor.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\training_architecture.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\training_config.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\core\training_pipeline.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase5_training\integration\phase5_pipeline.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\baking_architecture.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\baking_config.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\graph_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\hardware_adapter.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\inference_accelerator.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\model_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\performance_profiler.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\quality_validator.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\core\__init__.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\emergency\agent_adapters.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\emergency\compliance_remediation.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\emergency\core_infrastructure.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\emergency\emergency_remediation_report.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\emergency\integration_fixes.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\emergency\performance_fixes.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\emergency\quality_gates.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\emergency\system_validation.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\integration\integration_manager.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\baking_validation.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\comprehensive_phase6_validation.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\phase6_performance_validation.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\test_phase6_baking_architecture.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\test_phase6_inference.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\test_phase6_integration.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\test_phase6_performance.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\test_phase6_quality.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\tests\test_runner.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\validation\compliance_validator.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\validation\integration_validator.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\validation\performance_validator.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\validation\production_validator.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\validation\quality_validator.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase6_baking\validation\system_validator.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase7_adas\performance\benchmark_suite.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase7_adas\performance\edge_profiler.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase7_adas\performance\integration.py: 2 conflicts resolved
+  [OK] agent_forge\phases\phase7_adas\performance\latency_optimizer.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase7_adas\performance\resource_manager.py: 1 conflicts resolved
+  [OK] agent_forge\phases\phase7_adas\performance\__init__.py: 1 conflicts resolved
+  [-] agent_forge\phases\phase8_compression\core\architecture_optimization.py: No conflicts to resolve
+  [OK] phases\phase3_quietstar\architecture.py: 23 conflicts resolved
+  [OK] phases\phase3_quietstar\test_quietstar.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\bitnet_architecture.py: 6 conflicts resolved
+  [OK] phases\phase4_bitnet\bitnet_config.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\performance_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\validate_performance_targets.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\__init__.py: 1 conflicts resolved
+  [OK] phases\phase5_training\bitnet_training.py: 1 conflicts resolved
+  [OK] phases\phase5_training\checkpoint_manager.py: 1 conflicts resolved
+  [OK] phases\phase5_training\distributed_trainer.py: 1 conflicts resolved
+  [OK] phases\phase5_training\grokfast_integration.py: 1 conflicts resolved
+  [OK] phases\phase5_training\integration_test.py: 1 conflicts resolved
+  [OK] phases\phase5_training\performance_monitor.py: 1 conflicts resolved
+  [OK] phases\phase5_training\training_architecture.py: 1 conflicts resolved
+  [OK] phases\phase5_training\training_config.py: 1 conflicts resolved
+  [OK] phases\phase5_training\training_pipeline.py: 1 conflicts resolved
+  [-] phases\phase7_adas\real_performance_benchmarker.py: No conflicts to resolve
+  [OK] phases\phase4_bitnet\benchmarks\baseline_comparison.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\benchmarks\performance_suite.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\config\bitnet_config.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\config\__init__.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\core\bitnet_architecture.py: 6 conflicts resolved
+  [OK] phases\phase4_bitnet\core\bitnet_config.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\core\bitnet_layers.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\core\performance_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\core\quantization.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\core\validate_performance_targets.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\optimization\hardware_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\optimization\inference_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\optimization\memory_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\optimization\training_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\pipeline\compression.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\pipeline\integration.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\pipeline\__init__.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\profiling\memory_profiler.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\profiling\speed_profiler.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\tests\test_bitnet_core.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\tests\__init__.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\utils\optimization.py: 1 conflicts resolved
+  [OK] phases\phase4_bitnet\utils\__init__.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\bitnet_training.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\checkpoint_manager.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\distributed_trainer.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\grokfast_integration.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\integration_test.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\performance_monitor.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\training_architecture.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\training_config.py: 1 conflicts resolved
+  [OK] phases\phase5_training\core\training_pipeline.py: 1 conflicts resolved
+  [OK] phases\phase5_training\integration\phase5_pipeline.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\baking_architecture.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\baking_config.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\graph_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\hardware_adapter.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\inference_accelerator.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\model_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\performance_profiler.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\quality_validator.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\core\__init__.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\emergency\agent_adapters.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\emergency\compliance_remediation.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\emergency\core_infrastructure.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\emergency\emergency_remediation_report.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\emergency\integration_fixes.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\emergency\performance_fixes.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\emergency\quality_gates.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\emergency\system_validation.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\integration\integration_manager.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\baking_validation.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\comprehensive_phase6_validation.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\phase6_performance_validation.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\test_phase6_baking_architecture.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\test_phase6_inference.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\test_phase6_integration.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\test_phase6_performance.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\test_phase6_quality.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\tests\test_runner.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\validation\compliance_validator.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\validation\integration_validator.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\validation\performance_validator.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\validation\production_validator.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\validation\quality_validator.py: 1 conflicts resolved
+  [OK] phases\phase6_baking\validation\system_validator.py: 1 conflicts resolved
+  [OK] phases\phase7_adas\performance\benchmark_suite.py: 1 conflicts resolved
+  [OK] phases\phase7_adas\performance\edge_profiler.py: 1 conflicts resolved
+  [OK] phases\phase7_adas\performance\integration.py: 2 conflicts resolved
+  [OK] phases\phase7_adas\performance\latency_optimizer.py: 1 conflicts resolved
+  [OK] phases\phase7_adas\performance\resource_manager.py: 1 conflicts resolved
+  [OK] phases\phase7_adas\performance\__init__.py: 1 conflicts resolved
+  [-] phases\phase8_compression\core\architecture_optimization.py: No conflicts to resolve
+  [-] scripts\api\fastapi_websocket_server.py: No conflicts to resolve
+  [OK] scripts\api\websocket_progress.py: 1 conflicts resolved
+  [OK] src\byzantium\comprehensive_validation.py: 1 conflicts resolved
+  [OK] src\constants\base.py: 23 conflicts resolved
+  [-] src\coordination\git_safety_manager.py: No conflicts to resolve
+  [-] src\cycles\weekly_siphon_automator.py: No conflicts to resolve
+  [OK] src\patterns\command_base.py: 1 conflicts resolved
+  [OK] src\patterns\factory_base.py: 1 conflicts resolved
+  [OK] src\quiet_star\algorithms.py: 13 conflicts resolved
+  [OK] src\security\dfars_config.py: 1 conflicts resolved
+  [OK] src\validation\realistic_quality_assessor.py: 1 conflicts resolved
+  [OK] src\analyzers\nasa\nasa_compliance_auditor.py: 1 conflicts resolved
+  [OK] src\cli\commands\cli_commands.py: 1 conflicts resolved
+  [OK] src\safety\core\safety_manager.py: 1 conflicts resolved
+  [OK] src\safety\monitoring\availability_monitor.py: 1 conflicts resolved
+  [OK] src\safety\monitoring\redundancy_validator.py: 1 conflicts resolved
+  [OK] src\safety\recovery\recovery_system.py: 1 conflicts resolved
+  [OK] tests\batch3_validation\run_validation.py: 1 conflicts resolved
+  [-] tests\cache_analyzer\comprehensive_cache_test.py: No conflicts to resolve
+  [-] tests\cache_analyzer\test_cache_functionality.py: No conflicts to resolve
+  [-] tests\cycles\test_integration.py: No conflicts to resolve
+  [-] tests\integration\test_websocket_fallback.py: No conflicts to resolve
+  [OK] tests\safety\test_import_validation.py: 1 conflicts resolved
+  [-] node_modules\typescript\lib\cs\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\de\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\es\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\fr\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\it\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\ja\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\ko\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\pl\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\pt-br\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\ru\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\tr\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\zh-cn\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] node_modules\typescript\lib\zh-tw\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\cs\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\de\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\es\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\fr\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\it\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\ja\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\ko\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\pl\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\pt-br\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\ru\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\tr\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\zh-cn\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\risk-dashboard\node_modules\typescript\lib\zh-tw\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\@webgpu\types\package.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\cs\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\de\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\es\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\fr\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\it\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\ja\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\ko\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\pl\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\pt-br\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\ru\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\tr\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\zh-cn\diagnosticMessages.generated.json: No conflicts to resolve
+  [-] src\web\dashboard\node_modules\typescript\lib\zh-tw\diagnosticMessages.generated.json: No conflicts to resolve
+  [OK] start_cognate_system.bat: 2 conflicts resolved
+  [OK] tests\wrapper-integration\connascence-wrapper-enhanced.bat: 4 conflicts resolved
+  [OK] tests\wrapper-integration\wrapper-test-suite.bat: 18 conflicts resolved
+
+3. Cleaning up backup files...
+Error removing src\constants.backup: [WinError 5] Access is denied: 'src\\constants.backup'
+Removed 7 backup files
+
+4. Generating resolution report...
+
+=== RESOLUTION SUMMARY ===
+Files scanned: 431
+Files with conflicts: 326
+Total conflicts resolved: 3006
+Backup files removed: 7
+Errors encountered: 0
+Report saved to: merge_conflict_resolution_report.json

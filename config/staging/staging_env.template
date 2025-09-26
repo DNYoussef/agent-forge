@@ -1,0 +1,171 @@
+# Agent Forge Staging Environment Variables Template
+# Copy this file to .env and update the values
+# Environment: staging
+
+# Application Configuration
+ENV=staging
+DEBUG=false
+LOG_LEVEL=INFO
+SECRET_KEY=your-secret-key-here-replace-in-production
+API_BASE_URL=https://staging.agent-forge.local
+FRONTEND_URL=https://staging-ui.agent-forge.local
+
+# Database Configuration
+DATABASE_URL=postgresql://postgres:password@postgres:5432/agent_forge_staging
+POSTGRES_DB=agent_forge_staging
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=staging_password_change_me
+DB_POOL_SIZE=10
+DB_MAX_OVERFLOW=20
+DB_POOL_TIMEOUT=30
+
+# Redis Configuration
+REDIS_URL=redis://redis:6379/0
+REDIS_PASSWORD=
+REDIS_DB=0
+REDIS_MAX_CONNECTIONS=20
+
+# Security Configuration
+JWT_SECRET_KEY=jwt-secret-key-change-me
+JWT_ALGORITHM=HS256
+JWT_EXPIRATION_DELTA=3600
+AUTH_TOKEN_EXPIRE_MINUTES=60
+API_KEY_HEADER=X-API-Key
+CORS_ORIGINS=https://staging-ui.agent-forge.local,http://localhost:3000
+
+# Rate Limiting
+API_RATE_LIMIT=1000
+RATE_LIMIT_WINDOW=3600
+RATE_LIMIT_PER_IP=100
+
+# AI Model Configuration
+OPENAI_API_KEY=your-openai-api-key
+ANTHROPIC_API_KEY=your-anthropic-api-key
+GOOGLE_API_KEY=your-google-api-key
+MODEL_CACHE_TTL=3600
+MAX_CONCURRENT_REQUESTS=10
+MODEL_TIMEOUT=300
+
+# Swarm Configuration
+SWARM_MAX_AGENTS=10
+SWARM_DEFAULT_TIMEOUT=300
+SWARM_COORDINATION_INTERVAL=30
+SWARM_HEALTH_CHECK_INTERVAL=60
+SWARM_AUTO_SCALING=true
+SWARM_MIN_AGENTS=2
+SWARM_MAX_QUEUE_SIZE=1000
+
+# Performance Configuration
+WORKER_PROCESSES=2
+WORKER_CONNECTIONS=1000
+MAX_REQUEST_SIZE=10485760
+REQUEST_TIMEOUT=300
+KEEP_ALIVE_TIMEOUT=5
+GRACEFUL_SHUTDOWN_TIMEOUT=30
+
+# File Storage
+UPLOAD_FOLDER=/app/uploads
+MAX_UPLOAD_SIZE=52428800
+ALLOWED_EXTENSIONS=txt,json,yaml,yml,py,js,md
+STORAGE_BACKEND=local
+S3_BUCKET_NAME=agent-forge-staging
+S3_REGION=us-east-1
+
+# Monitoring and Observability
+METRICS_ENABLED=true
+METRICS_PORT=9000
+HEALTH_CHECK_ENABLED=true
+HEALTH_CHECK_ENDPOINT=/health
+APM_ENABLED=true
+TRACE_SAMPLE_RATE=0.1
+
+# Logging Configuration
+LOG_FORMAT=json
+LOG_FILE=/app/logs/agent_forge.log
+LOG_MAX_SIZE=100MB
+LOG_BACKUP_COUNT=5
+LOG_ROTATION=daily
+SYSLOG_ENABLED=false
+SYSLOG_HOST=localhost
+SYSLOG_PORT=514
+
+# External Services
+EMAIL_BACKEND=smtp
+SMTP_HOST=localhost
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASSWORD=
+SMTP_USE_TLS=true
+FROM_EMAIL=no-reply@agent-forge.com
+
+# Webhook Configuration
+WEBHOOK_SECRET=webhook-secret-change-me
+WEBHOOK_TIMEOUT=30
+WEBHOOK_RETRIES=3
+WEBHOOK_RETRY_DELAY=5
+
+# Cache Configuration
+CACHE_DEFAULT_TIMEOUT=300
+CACHE_KEY_PREFIX=agent_forge_staging:
+CACHE_SERIALIZATION=json
+
+# Background Tasks
+CELERY_BROKER_URL=redis://redis:6379/1
+CELERY_RESULT_BACKEND=redis://redis:6379/1
+CELERY_TASK_SERIALIZER=json
+CELERY_RESULT_SERIALIZER=json
+CELERY_TIMEZONE=UTC
+CELERY_ENABLE_UTC=true
+
+# Development/Testing
+TEST_DATABASE_URL=postgresql://postgres:password@postgres:5432/agent_forge_test
+TEST_REDIS_URL=redis://redis:6379/15
+PYTEST_TIMEOUT=300
+COVERAGE_MIN_PERCENTAGE=80
+
+# Docker Configuration
+DOCKER_REGISTRY=localhost:5000
+IMAGE_TAG=staging
+CONTAINER_MEMORY_LIMIT=1g
+CONTAINER_CPU_LIMIT=1.0
+
+# Kubernetes Configuration
+KUBE_NAMESPACE=agent-forge-staging
+KUBE_CONTEXT=staging-cluster
+KUBE_CONFIG_PATH=/home/user/.kube/config
+
+# SSL/TLS Configuration
+SSL_ENABLED=true
+SSL_CERT_PATH=/etc/ssl/certs/agent-forge.crt
+SSL_KEY_PATH=/etc/ssl/private/agent-forge.key
+SSL_CA_PATH=/etc/ssl/certs/ca-bundle.crt
+
+# Backup Configuration
+BACKUP_ENABLED=true
+BACKUP_SCHEDULE=0 2 * * *
+BACKUP_RETENTION_DAYS=30
+BACKUP_S3_BUCKET=agent-forge-backups-staging
+BACKUP_ENCRYPTION_KEY=backup-encryption-key-change-me
+
+# Feature Flags
+FEATURE_ADVANCED_ANALYTICS=true
+FEATURE_SWARM_COORDINATION=true
+FEATURE_MODEL_TRAINING=false
+FEATURE_EXPERIMENTAL_AGENTS=true
+FEATURE_API_VERSIONING=true
+
+# Grafana Configuration
+GRAFANA_PASSWORD=admin_password_change_me
+GRAFANA_DATABASE_URL=postgresql://postgres:password@postgres:5432/grafana_staging
+
+# Alert Configuration
+ALERT_EMAIL_ENABLED=true
+ALERT_EMAIL_RECIPIENTS=staging-alerts@agent-forge.com
+ALERT_SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+ALERT_PAGERDUTY_KEY=your-pagerduty-integration-key
+
+# Compliance and Audit
+AUDIT_LOGGING_ENABLED=true
+AUDIT_LOG_RETENTION_DAYS=90
+COMPLIANCE_MODE=staging
+DATA_RETENTION_DAYS=365

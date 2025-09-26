@@ -1,7 +1,6 @@
 """
 Agent Forge Phase 5: Performance Monitor
-========================================
-
+==================================
 Comprehensive performance monitoring system for distributed BitNet training
 with real-time metrics, bottleneck detection, and optimization recommendations.
 

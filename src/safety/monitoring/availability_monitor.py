@@ -1,7 +1,6 @@
 """
 AvailabilityMonitor - 99.9% SLA Monitoring and Validation
-=========================================================
-
+===================================================
 Monitors system availability in real-time with 99.9% SLA validation.
 Provides comprehensive uptime tracking, SLA breach detection, and reporting.
 """

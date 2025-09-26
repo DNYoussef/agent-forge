@@ -1,0 +1,210 @@
+{
+  "timestamp": "2025-09-26T16:14:53.940277",
+  "optimized_results": {
+    "benchmark_info": {
+      "timestamp": "2025-09-26T16:14:43.724272",
+      "config": {
+        "iterations": 3,
+        "enable_detailed_logging": true,
+        "output_dir": "./performance_benchmarks/optimized",
+        "simulate_workload": true,
+        "workload_complexity": "medium",
+        "enable_gpu_tests": false
+      },
+      "system_info": {
+        "timestamp": "2025-09-26T16:14:34.370954",
+        "platform": "win32",
+        "python_version": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+        "cpu_count_logical": 12,
+        "cpu_count_physical": 6,
+        "memory_total_gb": 15.89,
+        "memory_available_gb": 3.01,
+        "torch_available": true,
+        "gpu_available": true,
+        "gpu_count": 1,
+        "gpu_name": "NVIDIA GeForce RTX 2060 SUPER",
+        "gpu_memory_gb": 8.0
+      },
+      "overall_grade": "B"
+    },
+    "results": {
+      "load_time": {
+        "test_name": "load_time",
+        "duration_seconds": 1.4321044000001468,
+        "memory_peak_mb": 3.10546875,
+        "memory_avg_mb": -38.381510416666664,
+        "cpu_peak_percent": 17.7,
+        "cpu_avg_percent": 10.8,
+        "load_time_seconds": 1.4321044000001468,
+        "success": true,
+        "error_message": null,
+        "optimization_score": 52.263186666661774,
+        "grade": "A"
+      },
+      "memory": {
+        "test_name": "memory_usage",
+        "duration_seconds": 0.354928500000824,
+        "memory_peak_mb": 13133.87890625,
+        "memory_avg_mb": 13117.376302083334,
+        "cpu_peak_percent": 0.0,
+        "cpu_avg_percent": 0.0,
+        "load_time_seconds": 0.0,
+        "success": true,
+        "error_message": null,
+        "optimization_score": 99.30546875,
+        "grade": "A"
+      },
+      "cpu": {
+        "test_name": "cpu_utilization",
+        "duration_seconds": 0.31426720000308705,
+        "memory_peak_mb": 13101.6875,
+        "memory_avg_mb": 13101.6875,
+        "cpu_peak_percent": 1.3,
+        "cpu_avg_percent": 0.43333333333333335,
+        "load_time_seconds": 0.0,
+        "success": true,
+        "error_message": null,
+        "optimization_score": 0.7222222222222223,
+        "grade": "F"
+      },
+      "pipeline": {
+        "test_name": "pipeline_simulation",
+        "duration_seconds": 4.019167599999491,
+        "memory_peak_mb": 13120.43359375,
+        "memory_avg_mb": 13110.888671875,
+        "cpu_peak_percent": 0.0,
+        "cpu_avg_percent": 0.0,
+        "load_time_seconds": 0.5134126000011747,
+        "success": true,
+        "error_message": null,
+        "optimization_score": 97.7671291111114,
+        "grade": "A"
+      }
+    },
+    "summary": {
+      "total_benchmarks": 4,
+      "passed_benchmarks": 4,
+      "average_optimization_score": 62.51450168749885,
+      "recommendations": [
+        "Optimize memory usage: Implement memory pooling and garbage collection"
+      ]
+    }
+  },
+  "baseline_results": {
+    "benchmark_info": {
+      "timestamp": "2025-09-26T16:14:53.939308",
+      "config": {
+        "iterations": 3,
+        "enable_detailed_logging": true,
+        "output_dir": "./performance_benchmarks/baseline",
+        "simulate_workload": true,
+        "workload_complexity": "heavy",
+        "enable_gpu_tests": false
+      },
+      "system_info": {
+        "timestamp": "2025-09-26T16:14:43.727264",
+        "platform": "win32",
+        "python_version": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+        "cpu_count_logical": 12,
+        "cpu_count_physical": 6,
+        "memory_total_gb": 15.89,
+        "memory_available_gb": 3.08,
+        "torch_available": true,
+        "gpu_available": true,
+        "gpu_count": 1,
+        "gpu_name": "NVIDIA GeForce RTX 2060 SUPER",
+        "gpu_memory_gb": 8.0
+      },
+      "overall_grade": "B"
+    },
+    "results": {
+      "load_time": {
+        "test_name": "load_time",
+        "duration_seconds": 1.7280591000017012,
+        "memory_peak_mb": 4.51171875,
+        "memory_avg_mb": -19.85546875,
+        "cpu_peak_percent": 18.8,
+        "cpu_avg_percent": 13.033333333333333,
+        "load_time_seconds": 1.7280591000017012,
+        "success": true,
+        "error_message": null,
+        "optimization_score": 42.39802999994329,
+        "grade": "A"
+      },
+      "memory": {
+        "test_name": "memory_usage",
+        "duration_seconds": 0.3704156999992847,
+        "memory_peak_mb": 13092.73046875,
+        "memory_avg_mb": 13089.5859375,
+        "cpu_peak_percent": 0.0,
+        "cpu_avg_percent": 0.0,
+        "load_time_seconds": 0.0,
+        "success": true,
+        "error_message": null,
+        "optimization_score": 100,
+        "grade": "A"
+      },
+      "cpu": {
+        "test_name": "cpu_utilization",
+        "duration_seconds": 0.3299187999982678,
+        "memory_peak_mb": 13076.6953125,
+        "memory_avg_mb": 13076.6953125,
+        "cpu_peak_percent": 14.7,
+        "cpu_avg_percent": 8.433333333333334,
+        "load_time_seconds": 0.0,
+        "success": true,
+        "error_message": null,
+        "optimization_score": 14.055555555555557,
+        "grade": "F"
+      },
+      "pipeline": {
+        "test_name": "pipeline_simulation",
+        "duration_seconds": 3.99164010000095,
+        "memory_peak_mb": 13076.6953125,
+        "memory_avg_mb": 13060.62890625,
+        "cpu_peak_percent": 0.0,
+        "cpu_avg_percent": 0.0,
+        "load_time_seconds": 0.5037058000016259,
+        "success": true,
+        "error_message": null,
+        "optimization_score": 97.78242216666614,
+        "grade": "A"
+      }
+    },
+    "summary": {
+      "total_benchmarks": 4,
+      "passed_benchmarks": 4,
+      "average_optimization_score": 63.55900193054124,
+      "recommendations": [
+        "Optimize memory usage: Implement memory pooling and garbage collection"
+      ]
+    }
+  },
+  "improvements": {
+    "load_time": {
+      "duration_improvement_percent": 17.12642235449372,
+      "memory_improvement_percent": 31.16883116883117,
+      "grade_improvement": "A -> A"
+    },
+    "memory": {
+      "duration_improvement_percent": 4.181032283051344,
+      "memory_improvement_percent": -0.31428461464332397,
+      "grade_improvement": "A -> A"
+    },
+    "cpu": {
+      "duration_improvement_percent": 4.744076419792661,
+      "memory_improvement_percent": -0.19112005673260576,
+      "grade_improvement": "F -> F"
+    },
+    "pipeline": {
+      "duration_improvement_percent": -0.6896288069291309,
+      "memory_improvement_percent": -0.33447503520396793,
+      "grade_improvement": "A -> A"
+    }
+  },
+  "summary": {
+    "avg_duration_improvement_percent": 6.3404755626021485,
+    "avg_memory_improvement_percent": 7.582237865562818,
+    "overall_grade_improvement": "B -> B"
+  }
+}

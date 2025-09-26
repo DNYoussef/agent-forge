@@ -1,8 +1,7 @@
 # SPDX-License-Identifier: MIT
 """
 Base Factory Pattern Implementation
-===================================
-
+=============================
 Core factory pattern classes providing standardized object creation
 across the system. Supports different factory types for various use cases.
 

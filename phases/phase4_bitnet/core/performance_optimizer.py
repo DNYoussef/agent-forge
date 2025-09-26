@@ -2,8 +2,7 @@
 BitNet Performance Optimizer for Agent Forge Phase 4
 
 GPU/CPU Hybrid Optimization Engine
-==================================
-
+============================
 This module implements advanced performance optimizations for BitNet models,
 targeting 8x memory reduction and real-time inference capabilities while
 maintaining <10% accuracy degradation.

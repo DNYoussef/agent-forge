@@ -1,0 +1,31 @@
+{
+  "pipeline_info": {
+    "version": "optimized_v2.0",
+    "start_time": "2025-09-26T16:29:12.699153",
+    "end_time": "2025-09-26T16:29:12.707132",
+    "duration_seconds": 0.007979,
+    "final_state": "FAILED",
+    "success": false,
+    "performance_grade": "Unknown"
+  },
+  "performance_summary": {
+    "grade": "Unknown",
+    "bottlenecks": 0,
+    "optimization_opportunities": 0,
+    "resource_efficiency": "unknown"
+  },
+  "phase_results": {},
+  "optimization_analysis": {},
+  "resource_usage_summary": {
+    "status": "no_data"
+  },
+  "errors": [
+    {
+      "timestamp": "2025-09-26T16:29:12.708130",
+      "error": "Optimized pipeline execution failed: Insufficient disk space: 17.7GB < 50.0GB",
+      "phase": null,
+      "optimization_context": "pipeline_controller"
+    }
+  ],
+  "warnings": []
+}

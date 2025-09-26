@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 WebSocket Progress Server for Agent Forge
-========================================
-
+==================================
 Real-time progress streaming with Socket.IO for browser compatibility.
 Integrates with existing training loops via callback hooks.
 Provides fallback support for HTTP polling.

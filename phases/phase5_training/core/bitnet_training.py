@@ -1,7 +1,6 @@
 """
 Agent Forge Phase 5: BitNet Training Optimization
-=================================================
-
+===========================================
 Specialized training optimization for BitNet models with quantization-aware training,
 gradient processing, and memory efficiency optimizations.
 

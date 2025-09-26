@@ -1,7 +1,6 @@
 """
 RecoverySystem - Automated Recovery with <60s Guarantee
-=======================================================
-
+=================================================
 Implements automated recovery mechanisms with guaranteed <60 second recovery times.
 Provides comprehensive recovery strategies, validation, and performance monitoring.
 """

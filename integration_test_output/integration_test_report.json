@@ -1,0 +1,77 @@
+{
+  "test_info": {
+    "start_time": 1758915207.7059913,
+    "total_duration": 6.773708343505859,
+    "success": true
+  },
+  "test_1_orchestrator_basic": {
+    "success": true,
+    "execution_time": 0.36138153076171875,
+    "phases_executed": 3,
+    "all_phases_completed": false,
+    "checkpoints_created": 3,
+    "error": null
+  },
+  "test_2_pipeline_controller": {
+    "success": false,
+    "execution_time": 0.011968135833740234,
+    "resource_usage_collected": false,
+    "progress_events_received": false,
+    "performance_metrics_available": false,
+    "pipeline_state": "FAILED",
+    "error": "Pipeline execution failed: Insufficient disk space: 17.7GB < 100.0GB"
+  },
+  "test_3_validation_suite": {
+    "success": true,
+    "validation_time": 0.020197153091430664,
+    "phases_validated": 3,
+    "total_validations": 15,
+    "passed_validations": 12,
+    "validation_success_rate": 0.8,
+    "pipeline_validation_available": true
+  },
+  "test_4_error_handling": {
+    "success": true,
+    "execution_time": 0.004495382308959961,
+    "pipeline_failed_correctly": true,
+    "error_recorded": true,
+    "partial_execution": false,
+    "controller_error_count": 1,
+    "failure_state": true
+  },
+  "test_5_performance_benchmarking": {
+    "success": false,
+    "total_execution_time": 0.00498509407043457,
+    "phase_execution_times": {},
+    "resource_samples_collected": 0,
+    "performance_analysis_available": false,
+    "slowest_phase": null,
+    "fastest_phase": null,
+    "average_phase_time": 0
+  },
+  "test_6_real_phases_subset": {
+    "success": false,
+    "execution_time": 0.005983114242553711,
+    "operational_phases_tested": 2,
+    "phase_names": [
+      "QuietSTaRPhase",
+      "BitNetCompressionPhase"
+    ],
+    "all_phases_completed": false,
+    "validation_report_integration": true,
+    "error": "Pipeline execution failed: Insufficient disk space: 17.7GB < 100.0GB"
+  },
+  "progress_events": 0,
+  "performance_summary": {
+    "controller_test": {
+      "execution_time": 0.011968135833740234,
+      "resource_usage_samples": 0,
+      "performance_metrics": {}
+    },
+    "benchmark_test": {
+      "total_time": 0.00498509407043457,
+      "phase_breakdown": {},
+      "resource_usage": {}
+    }
+  }
+}

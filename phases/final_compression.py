@@ -69,10 +69,8 @@ except (ImportError, ValueError):
 
 logger = logging.getLogger(__name__)
 
-# ============================================================================
-# SeedLM Implementation
-# ============================================================================
-
+# ======================================================================# SeedLM Implementation
+# ======================================================================
 
 class LinearFeedbackShiftRegister:
     """Linear Feedback Shift Register for reproducible pseudo-random matrices."""
@@ -205,10 +203,8 @@ class SEEDLMCompressor:
         return torch.tensor(flat, dtype=torch.float32).reshape(compressed["original_shape"])
 
 
-# ============================================================================
-# VPTQ Implementation
-# ============================================================================
-
+# ======================================================================# VPTQ Implementation
+# ======================================================================
 
 class VPTQCompressor:
     """
@@ -332,10 +328,8 @@ class VPTQCompressor:
         return flat.view(compressed["original_shape"])
 
 
-# ============================================================================
-# Hypercompression Implementation
-# ============================================================================
-
+# ======================================================================# Hypercompression Implementation
+# ======================================================================
 
 class HyperCompressionEncoder:
     """
@@ -548,10 +542,8 @@ class HyperCompressionEncoder:
         return out.reshape(shape)
 
 
-# ============================================================================
-# Grokfast Integration for Compression Training
-# ============================================================================
-
+# ======================================================================# Grokfast Integration for Compression Training
+# ======================================================================
 
 class GrokfastCompressionOptimizer:
     """Grokfast-accelerated optimization for compression parameter learning."""
@@ -633,10 +625,8 @@ class GrokfastCompressionOptimizer:
         return {"optimized_clusters": best_clusters, "optimization_score": best_score}
 
 
-# ============================================================================
-# Final Compression Configuration
-# ============================================================================
-
+# ======================================================================# Final Compression Configuration
+# ======================================================================
 
 class FinalCompressionConfig(BaseModel):
     """Configuration for final compression phase."""
@@ -681,10 +671,8 @@ class FinalCompressionConfig(BaseModel):
     save_compression_metrics: bool = True
 
 
-# ============================================================================
-# Main Final Compression Phase Controller
-# ============================================================================
-
+# ======================================================================# Main Final Compression Phase Controller
+# ======================================================================
 
 class FinalCompressionPhase(PhaseController):
     """
@@ -858,6 +846,46 @@ class FinalCompressionPhase(PhaseController):
                 metrics={"duration_seconds": duration},
                 config=self.config.dict(),
                 duration_seconds=duration,
+            )
+
+    async def execute(self, model_path: str, **kwargs) -> PhaseResult:
+        """
+        Execute final compression phase with model path input.
+
+        This method provides compatibility with orchestration systems that expect
+        an execute method taking a model path instead of a model object.
+
+        Args:
+            model_path: Path to the model to compress
+            **kwargs: Additional execution parameters
+
+        Returns:
+            PhaseResult: Result of final compression phase execution
+        """
+        from transformers import AutoModelForCausalLM
+
+        try:
+            # Load model from path
+            if isinstance(model_path, str):
+                model = AutoModelForCausalLM.from_pretrained(model_path)
+            else:
+                # If model_path is actually a model object, use it directly
+                model = model_path
+
+            # Execute using the existing run method
+            return await self.run(model)
+
+        except Exception as e:
+            error_msg = f"Final Compression execute failed: {str(e)}"
+            self.logger.error(error_msg)
+
+            return PhaseResult(
+                success=False,
+                model=None,
+                error=error_msg,
+                metrics={"duration_seconds": 0.0},
+                config=self.config.dict(),
+                duration_seconds=0.0,
             )
 
     def _extract_model_weights(self, model: nn.Module) -> dict[str, torch.Tensor]:
@@ -1043,10 +1071,8 @@ class FinalCompressionPhase(PhaseController):
         return validation_results
 
 
-# ============================================================================
-# CLI and Testing Interface
-# ============================================================================
-
+# ======================================================================# CLI and Testing Interface
+# ======================================================================
 
 async def run_final_compression_demo():
     """Demo function to test final compression phase."""

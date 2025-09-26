@@ -66,9 +66,23 @@ class EvoMergeConfig:
     log_interval: int = 1
     wandb_project: Optional[str] = "agent-forge-evomerge"
 
-    # Model preferences
+    # Model selection (NEW)
+    model_source: str = "cognate"  # 'cognate', 'custom', 'huggingface', 'mixed'
+    model_paths: Optional[List[str]] = None  # Explicit paths to 3 models
+    cognate_dir: str = "../phases/cognate_pretrain/cognate_25m_hrm_titans_models"  # Directory for Cognate models
+    custom_dir: Optional[str] = None  # Directory for custom models
+    auto_select_best: bool = True  # Auto-select best Cognate models if no paths provided
+
+    # Storage management (NEW)
+    storage_dir: str = "./models/evomerge"  # Base directory for EvoMerge storage
+    keep_generations: int = 2  # Number of generations to keep (n-2 policy)
+    cleanup_final: bool = True  # Keep only best model at the end
+    track_lineage: bool = True  # Track model lineage through generations
+
+    # Model preferences (UPDATED)
     prefer_seeds: bool = False  # Whether to prefer seed models over base models
     seed_models: Optional[List[str]] = None  # List of seed model paths
+    validate_compatibility: bool = True  # Validate model compatibility before merging
 
     def __post_init__(self):
         """Validate and adjust configuration."""

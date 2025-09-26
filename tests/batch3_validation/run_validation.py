@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Batch 3 Validation Runner
-========================
-
+==================
 Executes comprehensive validation tests for Strategy Pattern + Rule Engine refactoring
 and generates detailed validation report.
 """

@@ -370,8 +370,7 @@ def format_quality_report(metrics: QualityMetrics) -> str:
     """Format quality metrics into a human-readable report"""
     report = f"""
 Quality Assessment Report
-========================
-
+==================
 Overall Quality: {metrics.quality_level.value.replace('_', ' ').title()}
 Score: {metrics.overall_score:.1f}% (95% CI: {metrics.confidence_interval[0]:.1f}%-{metrics.confidence_interval[1]:.1f}%)
 Sample Size: {metrics.sample_size} files

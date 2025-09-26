@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Standalone Facade Test for Enhanced Incident Response System
-===========================================================
-
+=====================================================
 This test validates the facade functionality without importing
 problematic analyzer modules.
 """

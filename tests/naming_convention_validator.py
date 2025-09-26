@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Naming Convention Validation Suite
-==================================
-
+============================
 Comprehensive test suite for validating Python PEP 8 and JavaScript naming conventions
 across the entire codebase. Tests for compliance, consistency, and preservation of semantics.
 """

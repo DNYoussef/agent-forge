@@ -1,7 +1,6 @@
 """
 SafetyManager - Central Safety System Orchestration
-===================================================
-
+=============================================
 Coordinates all safety subsystems to ensure 99.9% availability with <60s recovery.
 Implements comprehensive monitoring, failover orchestration, and recovery validation.
 """

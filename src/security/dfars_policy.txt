@@ -1,6 +1,5 @@
 DFARS 252.204-7012 COMPLIANCE POLICY
-==================================
-
+============================
 Organization: Defense Contractor Inc.
 CAGE Code: XXXXX
 Compliance Level: CRITICAL

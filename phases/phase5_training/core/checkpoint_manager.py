@@ -1,7 +1,6 @@
 """
 Agent Forge Phase 5: Checkpoint Management System
-=================================================
-
+===========================================
 Comprehensive checkpoint management for distributed BitNet training with
 automatic saving, loading, and recovery capabilities for production deployments.
 

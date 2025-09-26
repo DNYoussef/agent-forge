@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Isolated Phase 7 God Object Decomposition Audit
-=============================================
-
+=======================================
 This audit tests the refactored components in isolation to avoid
 syntax errors in unrelated parts of the codebase.
 """

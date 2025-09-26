@@ -342,8 +342,7 @@ def export_policy_document(self) -> str:
         """Export configuration as policy document"""
         policy = f"""
 DFARS 252.204-7012 COMPLIANCE POLICY
-==================================
-
+============================
 Organization: {self.config.organization_info.get('company_name', 'Unknown')}
 CAGE Code: {self.config.organization_info.get('cage_code', 'Unknown')}
 Compliance Level: {self.config.compliance_level.value}

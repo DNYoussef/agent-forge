@@ -1,7 +1,6 @@
 """
 Safety System Import Validation Tests
-=====================================
-
+===============================
 Validates that all safety system components can be imported and initialized
 without errors. This addresses the critical theater detection findings.
 """

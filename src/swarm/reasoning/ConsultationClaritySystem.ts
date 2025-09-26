@@ -1027,8 +1027,7 @@ export class ConsultationClaritySystem extends EventEmitter {
 
     return `
 Consultation Session Summary
-============================
-
+======================
 Session ID: ${session.id}
 Swarm Type: ${session.type}
 Duration: ${duration} minutes

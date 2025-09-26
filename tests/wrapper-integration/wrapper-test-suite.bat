@@ -11,10 +11,8 @@ set FAIL_COUNT=0
 set TOTAL_COUNT=0
 
 echo.
-echo ============================================================================
-echo VSCode Extension Wrapper Comprehensive Test Suite
-echo ============================================================================
-echo.
+echo ======================================================================echo VSCode Extension Wrapper Comprehensive Test Suite
+echo ======================================================================echo.
 
 REM Test execution helper
 goto :skip_functions
@@ -53,10 +51,8 @@ goto :skip_functions
 
 :skip_functions
 
-REM ============================================================================
-REM Category 1: Argument Translation Tests
-REM ============================================================================
-echo.
+REM ======================================================================REM Category 1: Argument Translation Tests
+REM ======================================================================echo.
 echo === Category 1: Argument Translation Tests ===
 echo.
 
@@ -84,10 +80,8 @@ call :run_test "List available policies" ^
     ""%WRAPPER%" --policy nasa-compliance --path "%TEST_DIR%\simple.py"" ^
     "no"
 
-REM ============================================================================
-REM Category 2: Edge Cases - Special Characters
-REM ============================================================================
-echo.
+REM ======================================================================REM Category 2: Edge Cases - Special Characters
+REM ======================================================================echo.
 echo === Category 2: Edge Cases - Special Characters in Filenames ===
 echo.
 
@@ -109,10 +103,8 @@ call :run_test "Forward slashes in path" ^
     ""%WRAPPER%" analyze "%FORWARD_PATH%/simple.py" --profile standard --format json" ^
     "no"
 
-REM ============================================================================
-REM Category 3: Error Handling Tests
-REM ============================================================================
-echo.
+REM ======================================================================REM Category 3: Error Handling Tests
+REM ======================================================================echo.
 echo === Category 3: Error Handling Tests ===
 echo.
 
@@ -132,10 +124,8 @@ call :run_test "No path argument in extension format" ^
     ""%WRAPPER%" analyze --profile standard --format json" ^
     "yes"
 
-REM ============================================================================
-REM Category 4: Argument Variations
-REM ============================================================================
-echo.
+REM ======================================================================REM Category 4: Argument Variations
+REM ======================================================================echo.
 echo === Category 4: Argument Variations ===
 echo.
 
@@ -163,10 +153,8 @@ call :run_test "Strict mode policy" ^
     ""%WRAPPER%" analyze "%TEST_DIR%\simple.py" --profile strict --format json" ^
     "no"
 
-REM ============================================================================
-REM Category 5: VSCode Extension Command Simulation
-REM ============================================================================
-echo.
+REM ======================================================================REM Category 5: VSCode Extension Command Simulation
+REM ======================================================================echo.
 echo === Category 5: VSCode Extension Command Simulation ===
 echo.
 
@@ -182,10 +170,8 @@ call :run_test "Quick scan with lenient policy" ^
     ""%WRAPPER%" analyze "%TEST_DIR%\simple.py" --profile lenient --format json" ^
     "no"
 
-REM ============================================================================
-REM Category 6: Performance Tests
-REM ============================================================================
-echo.
+REM ======================================================================REM Category 6: Performance Tests
+REM ======================================================================echo.
 echo === Category 6: Performance Benchmarks ===
 echo.
 
@@ -216,14 +202,10 @@ REM Clean up
 if exist "%TEST_DIR%\output.json" del "%TEST_DIR%\output.json"
 if exist "%LARGE_FILE%" del "%LARGE_FILE%"
 
-REM ============================================================================
-REM Results Summary
-REM ============================================================================
-echo.
-echo ============================================================================
-echo Test Results Summary
-echo ============================================================================
-echo.
+REM ======================================================================REM Results Summary
+REM ======================================================================echo.
+echo ======================================================================echo Test Results Summary
+echo ======================================================================echo.
 echo Total Tests:  !TOTAL_COUNT!
 echo Passed:       !PASS_COUNT!
 echo Failed:       !FAIL_COUNT!

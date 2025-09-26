@@ -1,0 +1,361 @@
+# Agent Forge Staging Kubernetes Deployment
+# Version: 1.0.0
+# Environment: staging
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: agent-forge-staging
+  labels:
+    environment: staging
+    project: agent-forge
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agent-forge-api
+  namespace: agent-forge-staging
+  labels:
+    app: agent-forge-api
+    environment: staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: agent-forge-api
+  template:
+    metadata:
+      labels:
+        app: agent-forge-api
+        environment: staging
+    spec:
+      containers:
+      - name: agent-forge-api
+        image: agent-forge:staging
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: ENV
+          value: "staging"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: agent-forge-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: agent-forge-secrets
+              key: redis-url
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: agent-forge-secrets
+              key: secret-key
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        volumeMounts:
+        - name: logs
+          mountPath: /app/logs
+        - name: config
+          mountPath: /app/config
+          readOnly: true
+      volumes:
+      - name: logs
+        emptyDir: {}
+      - name: config
+        configMap:
+          name: agent-forge-config
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: registry-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agent-forge-websocket
+  namespace: agent-forge-staging
+  labels:
+    app: agent-forge-websocket
+    environment: staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: agent-forge-websocket
+  template:
+    metadata:
+      labels:
+        app: agent-forge-websocket
+        environment: staging
+    spec:
+      containers:
+      - name: agent-forge-websocket
+        image: agent-forge:staging
+        command: ["python", "run_websocket_api.py"]
+        ports:
+        - containerPort: 8001
+          name: websocket
+        env:
+        - name: ENV
+          value: "staging"
+        - name: SERVICE_TYPE
+          value: "websocket"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: agent-forge-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: agent-forge-secrets
+              key: redis-url
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8001
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agent-forge-swarm
+  namespace: agent-forge-staging
+  labels:
+    app: agent-forge-swarm
+    environment: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agent-forge-swarm
+  template:
+    metadata:
+      labels:
+        app: agent-forge-swarm
+        environment: staging
+    spec:
+      containers:
+      - name: agent-forge-swarm
+        image: agent-forge:staging
+        command: ["python", "swarm_coordinator.py"]
+        ports:
+        - containerPort: 8002
+          name: swarm
+        env:
+        - name: ENV
+          value: "staging"
+        - name: SERVICE_TYPE
+          value: "swarm"
+        - name: SWARM_MAX_AGENTS
+          value: "10"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: agent-forge-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: agent-forge-secrets
+              key: redis-url
+        resources:
+          requests:
+            cpu: 200m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 60
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8002
+          initialDelaySeconds: 30
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agent-forge-api-service
+  namespace: agent-forge-staging
+  labels:
+    app: agent-forge-api
+spec:
+  selector:
+    app: agent-forge-api
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8000
+    protocol: TCP
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agent-forge-websocket-service
+  namespace: agent-forge-staging
+  labels:
+    app: agent-forge-websocket
+spec:
+  selector:
+    app: agent-forge-websocket
+  ports:
+  - name: websocket
+    port: 80
+    targetPort: 8001
+    protocol: TCP
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agent-forge-swarm-service
+  namespace: agent-forge-staging
+  labels:
+    app: agent-forge-swarm
+spec:
+  selector:
+    app: agent-forge-swarm
+  ports:
+  - name: swarm
+    port: 80
+    targetPort: 8002
+    protocol: TCP
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: agent-forge-ingress
+  namespace: agent-forge-staging
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+  - hosts:
+    - staging.agent-forge.local
+    secretName: agent-forge-tls
+  rules:
+  - host: staging.agent-forge.local
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: agent-forge-api-service
+            port:
+              number: 80
+      - path: /ws
+        pathType: Prefix
+        backend:
+          service:
+            name: agent-forge-websocket-service
+            port:
+              number: 80
+      - path: /swarm
+        pathType: Prefix
+        backend:
+          service:
+            name: agent-forge-swarm-service
+            port:
+              number: 80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-forge-config
+  namespace: agent-forge-staging
+data:
+  app.yaml: |
+    environment: staging
+    debug: false
+    log_level: INFO
+    api_rate_limit: 1000
+    swarm_max_agents: 10
+    metrics_enabled: true
+    health_check_enabled: true
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: agent-forge-secrets
+  namespace: agent-forge-staging
+type: Opaque
+data:
+  database-url: cG9zdGdyZXNxbDovL3Bvc3RncmVzOnBhc3N3b3JkQHBvc3RncmVzOjU0MzIvYWdlbnRfZm9yZ2Vfc3RhZ2luZw==
+  redis-url: cmVkaXM6Ly9yZWRpczoyMzc5LzA=
+  secret-key: c3RhZ2luZy1zZWNyZXQta2V5LWNoYW5nZS1tZQ==
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: agent-forge-api-hpa
+  namespace: agent-forge-staging
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: agent-forge-api
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

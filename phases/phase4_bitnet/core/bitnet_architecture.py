@@ -2,8 +2,7 @@
 BitNet Architecture Implementation for Agent Forge Phase 4
 
 BitNet: 1-bit Quantized Neural Networks with Extreme Compression
-================================================================
-
+==========================================================
 This module implements BitNet architecture for compressing 25M parameter models
 to 1-bit weights while maintaining performance within 10% accuracy degradation.
 
@@ -105,15 +104,13 @@ class BitNetLinear(nn.Module):
     BitNet Linear Layer with 1-bit weight quantization.
     
     Architecture:
-    =============
-    1. Weight quantization: W_q = sign(W)
+    =======    1. Weight quantization: W_q = sign(W)
     2. Activation scaling: alpha = ||W||_1 / (n * m)
     3. Forward: Y = alpha * (X @ W_q)
     4. Backward: Straight-through estimator for gradients
     
     Memory Benefits:
-    ================
-    - 32x reduction in weight memory (32-bit float -> 1-bit)
+    ==========    - 32x reduction in weight memory (32-bit float -> 1-bit)
     - Faster matrix operations with binary weights
     - Reduced memory bandwidth requirements
     """
@@ -141,8 +138,7 @@ class BitNetLinear(nn.Module):
         Forward pass with 1-bit weight quantization.
         
         Algorithm:
-        ==========
-        1. Quantize weights: W_q = sign(W)
+        ====        1. Quantize weights: W_q = sign(W)
         2. Compute scaling factor: alpha = ||W||_1 / (n * m)
         3. Scaled binary linear: Y = alpha * (X @ W_q)
         4. Add bias if present
@@ -372,8 +368,7 @@ class BitNetModel(nn.Module):
     - Phase 5 training pipeline
     
     Key Features:
-    =============
-    1. 1-bit weight quantization
+    =======    1. 1-bit weight quantization
     2. 8x memory reduction
     3. <10% accuracy degradation
     4. Real-time inference capability
@@ -530,8 +525,7 @@ class BitNetTrainer:
     Training utilities for BitNet models.
     
     Features:
-    =========
-    1. Specialized learning rate scheduling
+    ===    1. Specialized learning rate scheduling
     2. Gradient clipping for stability
     3. Mixed precision training
     4. Memory optimization

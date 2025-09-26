@@ -1,0 +1,131 @@
+{
+  "demo_info": {
+    "timestamp": "2025-09-26T15:39:30.361721",
+    "demo_version": "1.0.0"
+  },
+  "scenarios": {
+    "transient_failure_recovery": {
+      "success": true,
+      "first_attempt_failed": true,
+      "second_attempt_succeeded": true,
+      "first_attempt_time": 0.13887429237365723,
+      "retry_time": 0.11621832847595215,
+      "total_time": 0.2550926208496094,
+      "recovery_demonstrated": true,
+      "checkpoints_created": 1
+    },
+    "multiple_failure_recovery": {
+      "success": true,
+      "total_attempts": 4,
+      "attempts_before_success": 4,
+      "final_success": true,
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "success": false,
+          "time": 0.10920095443725586,
+          "error": "Pipeline execution failed: Phase IntermittentTestPhase failed: Intermittent failure in IntermittentTestPhase (attempt 1)"
+        },
+        {
+          "attempt": 2,
+          "success": false,
+          "time": 0.10885047912597656,
+          "error": "Pipeline execution failed: Phase IntermittentTestPhase failed: Intermittent failure in IntermittentTestPhase (attempt 1)"
+        },
+        {
+          "attempt": 3,
+          "success": false,
+          "time": 0.10625934600830078,
+          "error": "Pipeline execution failed: Phase IntermittentTestPhase failed: Intermittent failure in IntermittentTestPhase (attempt 1)"
+        },
+        {
+          "attempt": 4,
+          "success": true,
+          "time": 0.11231207847595215,
+          "error": null
+        }
+      ],
+      "recovery_pattern": "multiple_retry"
+    },
+    "checkpoint_recovery": {
+      "success": true,
+      "pipeline_completed": false,
+      "checkpoints_created": 2,
+      "successful_phases": 2,
+      "failed_phases": 1,
+      "recovery_points_available": 2,
+      "execution_time": 0.3265259265899658,
+      "checkpoint_recovery_possible": true,
+      "partial_progress_preserved": true
+    },
+    "resource_constraint_handling": {
+      "success": true,
+      "pipeline_result": false,
+      "resource_constraints_applied": true,
+      "execution_time": 1.0790820121765137,
+      "resource_warnings_generated": false,
+      "graceful_handling": true,
+      "error_type": "other",
+      "constraint_violation_detected": true
+    },
+    "graceful_degradation": {
+      "success": true,
+      "overall_pipeline_success": false,
+      "successful_phases": 2,
+      "failed_phases": 1,
+      "total_phases": 4,
+      "partial_success_achieved": true,
+      "graceful_degradation": true,
+      "execution_time": 0.317110538482666,
+      "failure_isolation": true,
+      "checkpoints_for_partial_recovery": 2
+    }
+  },
+  "recovery_evidence": {
+    "transient_failure_handling": {
+      "demonstrated": true,
+      "recovery_time": 0.11621832847595215,
+      "success_rate": 1.0
+    },
+    "multiple_failure_resilience": {
+      "demonstrated": true,
+      "max_attempts_tested": 4,
+      "persistence_shown": true
+    },
+    "checkpoint_system": {
+      "checkpoints_created": 2,
+      "partial_progress_preservation": true,
+      "recovery_points_available": 2
+    },
+    "resource_management": {
+      "constraint_detection": true,
+      "graceful_failure": true,
+      "resource_monitoring": true
+    },
+    "graceful_degradation": {
+      "partial_success_support": true,
+      "failure_isolation": true,
+      "degraded_operation": true
+    },
+    "overall_resilience_score": 1.0
+  },
+  "performance_impact": {
+    "recovery_overhead": {
+      "transient_failure_overhead": 0.11621832847595215,
+      "multiple_failure_overhead": 0.43662285804748535,
+      "checkpoint_creation_overhead": 0.1
+    },
+    "resource_efficiency": {
+      "memory_usage_monitoring": true,
+      "constraint_enforcement": true,
+      "graceful_resource_handling": true
+    },
+    "scalability_impact": {
+      "checkpoint_storage_scalable": true,
+      "recovery_time_linear": true,
+      "memory_overhead_acceptable": true
+    },
+    "total_recovery_overhead_seconds": 0.6528411865234375,
+    "overhead_acceptable": true
+  }
+}

@@ -25,10 +25,8 @@ if /i "%~1"=="--wrapper-version" (
 
 REM Check if extension format (starts with "analyze")
 if /i "%~1"=="analyze" (
-    REM ===================================================================
-    REM Extension Format Translation
-    REM ===================================================================
-
+    REM =============================================================    REM Extension Format Translation
+    REM =============================================================
     REM Extract filepath (2nd argument)
     set "filepath=%~2"
 
@@ -98,10 +96,8 @@ if /i "%~1"=="analyze" (
     exit /b !exit_code!
 
 ) else (
-    REM ===================================================================
-    REM Direct Format Passthrough
-    REM ===================================================================
-
+    REM =============================================================    REM Direct Format Passthrough
+    REM =============================================================
     if defined CONNASCENCE_DEBUG (
         echo [DEBUG] Direct passthrough mode
         echo [DEBUG] Arguments: %*

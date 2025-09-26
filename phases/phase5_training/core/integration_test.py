@@ -1,7 +1,6 @@
 """
 Agent Forge Phase 5: Integration Test Suite
-===========================================
-
+=====================================
 Comprehensive integration testing for Phase 4-5-6 workflow with
 validation of all components and NASA POT10 compliance.
 

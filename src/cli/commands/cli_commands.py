@@ -1,8 +1,7 @@
 # SPDX-License-Identifier: MIT
 """
 CLI Commands - Command Pattern Implementation
-============================================
-
+======================================
 Command pattern implementation for CLI operations, providing standardized
 command execution with validation, error handling, and undo capabilities.
 

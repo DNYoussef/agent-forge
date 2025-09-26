@@ -1,0 +1,37 @@
+AGENT FORGE PIPELINE INTEGRATION TEST SUMMARY
+============================================================
+
+OVERALL RESULT: SUCCESS
+Total Duration: 6.77s
+Progress Events: 0
+
+TEST_INFO:
+  Success: True
+
+TEST_1_ORCHESTRATOR_BASIC:
+  Success: True
+  Execution Time: 0.36s
+
+TEST_2_PIPELINE_CONTROLLER:
+  Success: False
+  Execution Time: 0.01s
+  Error: Pipeline execution failed: Insufficient disk space: 17.7GB < 100.0GB
+
+TEST_3_VALIDATION_SUITE:
+  Success: True
+
+TEST_4_ERROR_HANDLING:
+  Success: True
+  Execution Time: 0.00s
+
+TEST_5_PERFORMANCE_BENCHMARKING:
+  Success: False
+
+TEST_6_REAL_PHASES_SUBSET:
+  Success: False
+  Execution Time: 0.01s
+  Error: Pipeline execution failed: Insufficient disk space: 17.7GB < 100.0GB
+
+PERFORMANCE METRICS:
+  controller_test: {'execution_time': 0.011968135833740234, 'resource_usage_samples': 0, 'performance_metrics': {}}
+  benchmark_test: {'total_time': 0.00498509407043457, 'phase_breakdown': {}, 'resource_usage': {}}

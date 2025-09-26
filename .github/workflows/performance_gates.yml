@@ -1,0 +1,699 @@
+name: Performance Gates CI/CD
+# Automated performance testing with regression detection and performance budget enforcement
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run performance tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+env:
+  # Performance budgets and thresholds
+  MAX_LOAD_TIME_SECONDS: "3.0"
+  MIN_PERFORMANCE_SCORE: "80"
+  MAX_MEMORY_USAGE_MB: "2048"
+  MAX_BUILD_TIME_SECONDS: "300"
+  PERFORMANCE_REGRESSION_THRESHOLD: "10" # percent
+
+  # Test configuration
+  PYTHON_VERSION: "3.11"
+  NODE_VERSION: "18"
+  PERFORMANCE_ITERATIONS: "5"
+
+jobs:
+  # Phase 1: Build Performance Testing
+  build-performance:
+    name: Build Performance Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    outputs:
+      build-time: ${{ steps.build-metrics.outputs.build-time }}
+      bundle-size: ${{ steps.build-metrics.outputs.bundle-size }}
+      optimization-score: ${{ steps.build-metrics.outputs.optimization-score }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Need full history for performance comparisons
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        npm ci
+        pip install -r requirements.txt
+        pip install psutil memory-profiler py-spy
+
+    - name: Run build optimizer with metrics
+      id: build-metrics
+      run: |
+        echo "Starting build performance analysis..."
+
+        # Run build optimizer and capture metrics
+        python scripts/optimize_build.py \
+          --src-dir ./src \
+          --output-dir ./dist \
+          > build_output.log 2>&1
+
+        # Extract metrics from build output
+        BUILD_TIME=$(grep "Duration:" build_output.log | awk '{print $2}' | sed 's/s//')
+        BUNDLE_SIZE=$(grep "Bundle size:" build_output.log | awk '{print $3}' | sed 's/MB//')
+        COMPRESSED_SIZE=$(grep "Compressed size:" build_output.log | awk '{print $3}' | sed 's/MB//')
+
+        # Calculate optimization score (0-100)
+        COMPRESSION_RATIO=$(echo "scale=2; $COMPRESSED_SIZE / $BUNDLE_SIZE" | bc)
+        OPTIMIZATION_SCORE=$(echo "scale=0; (1 - $COMPRESSION_RATIO) * 100" | bc)
+
+        echo "build-time=$BUILD_TIME" >> $GITHUB_OUTPUT
+        echo "bundle-size=$BUNDLE_SIZE" >> $GITHUB_OUTPUT
+        echo "optimization-score=$OPTIMIZATION_SCORE" >> $GITHUB_OUTPUT
+
+        echo "Build Performance Results:"
+        echo "  Build Time: ${BUILD_TIME}s"
+        echo "  Bundle Size: ${BUNDLE_SIZE}MB"
+        echo "  Compressed Size: ${COMPRESSED_SIZE}MB"
+        echo "  Optimization Score: ${OPTIMIZATION_SCORE}/100"
+
+    - name: Check build performance gates
+      run: |
+        BUILD_TIME="${{ steps.build-metrics.outputs.build-time }}"
+        BUNDLE_SIZE="${{ steps.build-metrics.outputs.bundle-size }}"
+        OPT_SCORE="${{ steps.build-metrics.outputs.optimization-score }}"
+
+        # Check build time gate
+        if (( $(echo "$BUILD_TIME > $MAX_BUILD_TIME_SECONDS" | bc -l) )); then
+          echo "❌ BUILD PERFORMANCE GATE FAILED: Build time ${BUILD_TIME}s exceeds limit ${MAX_BUILD_TIME_SECONDS}s"
+          exit 1
+        fi
+
+        # Check bundle size gate (assuming 5MB budget)
+        if (( $(echo "$BUNDLE_SIZE > 5.0" | bc -l) )); then
+          echo "❌ BUNDLE SIZE GATE FAILED: Bundle size ${BUNDLE_SIZE}MB exceeds 5MB budget"
+          exit 1
+        fi
+
+        # Check optimization score
+        if (( $(echo "$OPT_SCORE < 50" | bc -l) )); then
+          echo "❌ OPTIMIZATION GATE FAILED: Optimization score ${OPT_SCORE} below 50"
+          exit 1
+        fi
+
+        echo "✅ All build performance gates passed"
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-performance-report
+        path: |
+          dist/build_report.json
+          dist/bundle_analysis.json
+          build_output.log
+        retention-days: 30
+
+  # Phase 2: Pipeline Performance Testing
+  pipeline-performance:
+    name: Pipeline Performance Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    outputs:
+      avg-load-time: ${{ steps.pipeline-metrics.outputs.avg-load-time }}
+      peak-memory: ${{ steps.pipeline-metrics.outputs.peak-memory }}
+      performance-score: ${{ steps.pipeline-metrics.outputs.performance-score }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python with performance tools
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+
+    - name: Install performance dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install psutil memory-profiler torch torchvision
+        pip install pytest pytest-benchmark pytest-xdist
+
+    - name: Run pipeline performance profiler
+      id: pipeline-metrics
+      run: |
+        echo "Starting pipeline performance analysis..."
+
+        # Create performance test script
+        cat > test_pipeline_performance.py << 'EOF'
+        import time
+        import sys
+        import json
+        from pathlib import Path
+
+        # Add src to path
+        sys.path.append(str(Path(__file__).parent / "src"))
+
+        from performance.profiler import PerformanceProfiler, ProfilerConfig
+
+        def simulate_phase_execution():
+            """Simulate phase execution for performance testing."""
+            # Simulate cognate phase
+            time.sleep(2.0)
+            data = [i**2 for i in range(100000)]
+
+            # Simulate evomerge phase
+            time.sleep(1.5)
+            more_data = [i*3 for i in range(50000)]
+
+            # Simulate training phase
+            time.sleep(3.0)
+            final_data = sum(data) + sum(more_data)
+
+            return final_data
+
+        def run_performance_test():
+            config = ProfilerConfig(
+                sampling_interval=0.05,
+                output_dir="./performance_test_output",
+                enable_gpu_monitoring=False  # CI environment
+            )
+
+            profiler = PerformanceProfiler(config)
+
+            results = []
+
+            # Run multiple iterations
+            for i in range(${{ env.PERFORMANCE_ITERATIONS }}):
+                with profiler.profile_phase(f"test_run_{i}"):
+                    simulate_phase_execution()
+
+            # Get comprehensive report
+            report = profiler.get_comprehensive_report()
+
+            # Calculate averages
+            phases = list(profiler.phase_metrics.values())
+            avg_duration = sum(p.duration_seconds for p in phases) / len(phases)
+            peak_memory = max(p.peak_memory_mb for p in phases)
+            avg_cpu = sum(p.avg_cpu_percent for p in phases) / len(phases)
+
+            # Calculate performance score (0-100)
+            # Lower duration and memory usage = higher score
+            duration_score = max(0, 100 - (avg_duration / 10) * 100)
+            memory_score = max(0, 100 - (peak_memory / 2048) * 100)
+            cpu_score = max(0, 100 - avg_cpu)
+
+            performance_score = (duration_score + memory_score + cpu_score) / 3
+
+            return {
+                'avg_duration': avg_duration,
+                'peak_memory': peak_memory,
+                'avg_cpu': avg_cpu,
+                'performance_score': performance_score,
+                'full_report': report
+            }
+
+        if __name__ == "__main__":
+            results = run_performance_test()
+
+            print(f"Average Duration: {results['avg_duration']:.2f}s")
+            print(f"Peak Memory: {results['peak_memory']:.1f}MB")
+            print(f"Average CPU: {results['avg_cpu']:.1f}%")
+            print(f"Performance Score: {results['performance_score']:.1f}/100")
+
+            # Save results for GitHub outputs
+            with open('performance_results.json', 'w') as f:
+                json.dump(results, f, indent=2, default=str)
+        EOF
+
+        # Run the performance test
+        python test_pipeline_performance.py
+
+        # Extract metrics for GitHub outputs
+        AVG_DURATION=$(cat performance_results.json | jq -r '.avg_duration')
+        PEAK_MEMORY=$(cat performance_results.json | jq -r '.peak_memory')
+        PERFORMANCE_SCORE=$(cat performance_results.json | jq -r '.performance_score')
+
+        echo "avg-load-time=$AVG_DURATION" >> $GITHUB_OUTPUT
+        echo "peak-memory=$PEAK_MEMORY" >> $GITHUB_OUTPUT
+        echo "performance-score=$PERFORMANCE_SCORE" >> $GITHUB_OUTPUT
+
+    - name: Check pipeline performance gates
+      run: |
+        AVG_LOAD_TIME="${{ steps.pipeline-metrics.outputs.avg-load-time }}"
+        PEAK_MEMORY="${{ steps.pipeline-metrics.outputs.peak-memory }}"
+        PERF_SCORE="${{ steps.pipeline-metrics.outputs.performance-score }}"
+
+        echo "Performance Gate Validation:"
+        echo "  Average Load Time: ${AVG_LOAD_TIME}s (limit: ${MAX_LOAD_TIME_SECONDS}s)"
+        echo "  Peak Memory: ${PEAK_MEMORY}MB (limit: ${MAX_MEMORY_USAGE_MB}MB)"
+        echo "  Performance Score: ${PERF_SCORE}/100 (minimum: ${MIN_PERFORMANCE_SCORE})"
+
+        # Check load time gate
+        if (( $(echo "$AVG_LOAD_TIME > $MAX_LOAD_TIME_SECONDS" | bc -l) )); then
+          echo "❌ LOAD TIME GATE FAILED: ${AVG_LOAD_TIME}s > ${MAX_LOAD_TIME_SECONDS}s"
+          exit 1
+        fi
+
+        # Check memory gate
+        if (( $(echo "$PEAK_MEMORY > $MAX_MEMORY_USAGE_MB" | bc -l) )); then
+          echo "❌ MEMORY GATE FAILED: ${PEAK_MEMORY}MB > ${MAX_MEMORY_USAGE_MB}MB"
+          exit 1
+        fi
+
+        # Check performance score gate
+        if (( $(echo "$PERF_SCORE < $MIN_PERFORMANCE_SCORE" | bc -l) )); then
+          echo "❌ PERFORMANCE SCORE GATE FAILED: ${PERF_SCORE} < ${MIN_PERFORMANCE_SCORE}"
+          exit 1
+        fi
+
+        echo "✅ All pipeline performance gates passed"
+
+    - name: Upload performance artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: pipeline-performance-report
+        path: |
+          performance_results.json
+          performance_test_output/
+        retention-days: 30
+
+  # Phase 3: Regression Detection
+  regression-detection:
+    name: Performance Regression Detection
+    runs-on: ubuntu-latest
+    needs: [build-performance, pipeline-performance]
+    if: github.event_name == 'pull_request'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Get baseline performance data
+      run: |
+        # Try to get performance data from main branch
+        git checkout origin/main
+
+        # Create baseline performance script
+        cat > get_baseline_performance.py << 'EOF'
+        import json
+        import subprocess
+        import sys
+
+        def get_baseline_metrics():
+            # This would typically query a performance database
+            # For now, we'll use estimated baselines
+            baseline = {
+                'build_time': 45.0,
+                'bundle_size': 4.2,
+                'avg_load_time': 2.8,
+                'peak_memory': 1800.0,
+                'performance_score': 85.0
+            }
+
+            with open('baseline_performance.json', 'w') as f:
+                json.dump(baseline, f, indent=2)
+
+        if __name__ == "__main__":
+            get_baseline_metrics()
+        EOF
+
+        python get_baseline_performance.py
+
+        git checkout -
+
+    - name: Analyze performance regression
+      run: |
+        # Current performance metrics
+        BUILD_TIME="${{ needs.build-performance.outputs.build-time }}"
+        BUNDLE_SIZE="${{ needs.build-performance.outputs.bundle-size }}"
+        AVG_LOAD_TIME="${{ needs.pipeline-performance.outputs.avg-load-time }}"
+        PEAK_MEMORY="${{ needs.pipeline-performance.outputs.peak-memory }}"
+        PERF_SCORE="${{ needs.pipeline-performance.outputs.performance-score }}"
+
+        # Baseline metrics
+        BASELINE_BUILD_TIME=$(cat baseline_performance.json | jq -r '.build_time')
+        BASELINE_BUNDLE_SIZE=$(cat baseline_performance.json | jq -r '.bundle_size')
+        BASELINE_LOAD_TIME=$(cat baseline_performance.json | jq -r '.avg_load_time')
+        BASELINE_MEMORY=$(cat baseline_performance.json | jq -r '.peak_memory')
+        BASELINE_SCORE=$(cat baseline_performance.json | jq -r '.performance_score')
+
+        # Calculate regression percentages
+        BUILD_REGRESSION=$(echo "scale=2; ($BUILD_TIME - $BASELINE_BUILD_TIME) / $BASELINE_BUILD_TIME * 100" | bc)
+        BUNDLE_REGRESSION=$(echo "scale=2; ($BUNDLE_SIZE - $BASELINE_BUNDLE_SIZE) / $BASELINE_BUNDLE_SIZE * 100" | bc)
+        LOAD_REGRESSION=$(echo "scale=2; ($AVG_LOAD_TIME - $BASELINE_LOAD_TIME) / $BASELINE_LOAD_TIME * 100" | bc)
+        MEMORY_REGRESSION=$(echo "scale=2; ($PEAK_MEMORY - $BASELINE_MEMORY) / $BASELINE_MEMORY * 100" | bc)
+        SCORE_REGRESSION=$(echo "scale=2; ($BASELINE_SCORE - $PERF_SCORE) / $BASELINE_SCORE * 100" | bc)
+
+        echo "## Performance Regression Analysis" >> regression_report.md
+        echo "" >> regression_report.md
+        echo "| Metric | Current | Baseline | Change | Status |" >> regression_report.md
+        echo "|--------|---------|----------|--------|--------|" >> regression_report.md
+        echo "| Build Time | ${BUILD_TIME}s | ${BASELINE_BUILD_TIME}s | ${BUILD_REGRESSION}% | $(if (( $(echo "$BUILD_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then echo "❌ Regression"; else echo "✅ OK"; fi) |" >> regression_report.md
+        echo "| Bundle Size | ${BUNDLE_SIZE}MB | ${BASELINE_BUNDLE_SIZE}MB | ${BUNDLE_REGRESSION}% | $(if (( $(echo "$BUNDLE_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then echo "❌ Regression"; else echo "✅ OK"; fi) |" >> regression_report.md
+        echo "| Load Time | ${AVG_LOAD_TIME}s | ${BASELINE_LOAD_TIME}s | ${LOAD_REGRESSION}% | $(if (( $(echo "$LOAD_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then echo "❌ Regression"; else echo "✅ OK"; fi) |" >> regression_report.md
+        echo "| Peak Memory | ${PEAK_MEMORY}MB | ${BASELINE_MEMORY}MB | ${MEMORY_REGRESSION}% | $(if (( $(echo "$MEMORY_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then echo "❌ Regression"; else echo "✅ OK"; fi) |" >> regression_report.md
+        echo "| Perf Score | ${PERF_SCORE} | ${BASELINE_SCORE} | ${SCORE_REGRESSION}% | $(if (( $(echo "$SCORE_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then echo "❌ Regression"; else echo "✅ OK"; fi) |" >> regression_report.md
+
+        # Check for significant regressions
+        REGRESSION_FOUND=false
+
+        if (( $(echo "$BUILD_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then
+          echo "❌ Build time regression detected: ${BUILD_REGRESSION}%"
+          REGRESSION_FOUND=true
+        fi
+
+        if (( $(echo "$BUNDLE_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then
+          echo "❌ Bundle size regression detected: ${BUNDLE_REGRESSION}%"
+          REGRESSION_FOUND=true
+        fi
+
+        if (( $(echo "$LOAD_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then
+          echo "❌ Load time regression detected: ${LOAD_REGRESSION}%"
+          REGRESSION_FOUND=true
+        fi
+
+        if (( $(echo "$MEMORY_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then
+          echo "❌ Memory usage regression detected: ${MEMORY_REGRESSION}%"
+          REGRESSION_FOUND=true
+        fi
+
+        if (( $(echo "$SCORE_REGRESSION > $PERFORMANCE_REGRESSION_THRESHOLD" | bc -l) )); then
+          echo "❌ Performance score regression detected: ${SCORE_REGRESSION}%"
+          REGRESSION_FOUND=true
+        fi
+
+        if [ "$REGRESSION_FOUND" = true ]; then
+          echo "❌ PERFORMANCE REGRESSION DETECTED - Review required"
+          echo "regression-detected=true" >> $GITHUB_ENV
+        else
+          echo "✅ No significant performance regressions detected"
+          echo "regression-detected=false" >> $GITHUB_ENV
+        fi
+
+    - name: Comment PR with regression analysis
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const regressionReport = fs.readFileSync('regression_report.md', 'utf8');
+
+          const comment = `## 🚀 Performance Analysis Results
+
+          ${regressionReport}
+
+          ### Performance Budget Status
+          - **Build Time**: ${{ needs.build-performance.outputs.build-time }}s / ${process.env.MAX_BUILD_TIME_SECONDS}s
+          - **Load Time**: ${{ needs.pipeline-performance.outputs.avg-load-time }}s / ${process.env.MAX_LOAD_TIME_SECONDS}s
+          - **Memory Usage**: ${{ needs.pipeline-performance.outputs.peak-memory }}MB / ${process.env.MAX_MEMORY_USAGE_MB}MB
+          - **Performance Score**: ${{ needs.pipeline-performance.outputs.performance-score }}/100 (min: ${process.env.MIN_PERFORMANCE_SCORE})
+
+          ${process.env.regression_detected === 'true' ? '⚠️ **Performance regression detected** - please review and optimize.' : '✅ All performance metrics within acceptable ranges.'}
+          `;
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+    - name: Fail if regression detected
+      if: env.regression-detected == 'true'
+      run: |
+        echo "❌ Performance regression exceeds threshold - failing build"
+        exit 1
+
+  # Phase 4: Performance Benchmarks
+  performance-benchmarks:
+    name: Comprehensive Performance Benchmarks
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || contains(github.event.pull_request.labels.*.name, 'benchmark')
+    timeout-minutes: 45
+
+    strategy:
+      matrix:
+        test-scenario: [
+          'light-load',
+          'medium-load',
+          'heavy-load',
+          'stress-test'
+        ]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python with performance tools
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install benchmark dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pytest-benchmark locust
+
+    - name: Run performance benchmarks
+      run: |
+        echo "Running ${{ matrix.test-scenario }} performance benchmark..."
+
+        # Configure test scenario
+        case "${{ matrix.test-scenario }}" in
+          "light-load")
+            ITERATIONS=3
+            MODEL_SIZE="small"
+            BATCH_SIZE=16
+            ;;
+          "medium-load")
+            ITERATIONS=5
+            MODEL_SIZE="medium"
+            BATCH_SIZE=32
+            ;;
+          "heavy-load")
+            ITERATIONS=8
+            MODEL_SIZE="large"
+            BATCH_SIZE=64
+            ;;
+          "stress-test")
+            ITERATIONS=10
+            MODEL_SIZE="xlarge"
+            BATCH_SIZE=128
+            ;;
+        esac
+
+        # Create benchmark script
+        cat > benchmark_${{ matrix.test-scenario }}.py << EOF
+        import time
+        import json
+        import sys
+        from pathlib import Path
+
+        sys.path.append(str(Path(__file__).parent / "src"))
+
+        from performance.profiler import PerformanceProfiler, ProfilerConfig
+        from performance.optimizer import PerformanceOptimizer, OptimizationConfig
+
+        def run_benchmark():
+            results = []
+
+            for i in range($ITERATIONS):
+                config = ProfilerConfig(
+                    output_dir=f"./benchmark_output_${{ matrix.test-scenario }}",
+                    sampling_interval=0.01
+                )
+
+                profiler = PerformanceProfiler(config)
+
+                with profiler.profile_phase(f"benchmark_${{ matrix.test-scenario }}_{i}"):
+                    # Simulate workload based on scenario
+                    if "${{ matrix.test-scenario }}" == "stress-test":
+                        # High CPU and memory usage
+                        data = [i**3 for i in range(1000000)]
+                        time.sleep(5.0)
+                    else:
+                        # Normal workload simulation
+                        data = [i**2 for i in range(100000)]
+                        time.sleep(2.0)
+
+                phase_metrics = list(profiler.phase_metrics.values())[0]
+                results.append({
+                    'iteration': i,
+                    'duration': phase_metrics.duration_seconds,
+                    'peak_memory': phase_metrics.peak_memory_mb,
+                    'avg_cpu': phase_metrics.avg_cpu_percent
+                })
+
+            return results
+
+        if __name__ == "__main__":
+            results = run_benchmark()
+
+            with open('benchmark_results_${{ matrix.test-scenario }}.json', 'w') as f:
+                json.dump(results, f, indent=2)
+
+            avg_duration = sum(r['duration'] for r in results) / len(results)
+            avg_memory = sum(r['peak_memory'] for r in results) / len(results)
+            avg_cpu = sum(r['avg_cpu'] for r in results) / len(results)
+
+            print(f"Benchmark Results for ${{ matrix.test-scenario }}:")
+            print(f"  Average Duration: {avg_duration:.2f}s")
+            print(f"  Average Memory: {avg_memory:.1f}MB")
+            print(f"  Average CPU: {avg_cpu:.1f}%")
+        EOF
+
+        python benchmark_${{ matrix.test-scenario }}.py
+
+    - name: Upload benchmark results
+      uses: actions/upload-artifact@v3
+      with:
+        name: benchmark-results-${{ matrix.test-scenario }}
+        path: |
+          benchmark_results_${{ matrix.test-scenario }}.json
+          benchmark_output_${{ matrix.test-scenario }}/
+        retention-days: 90
+
+  # Phase 5: Performance Report Generation
+  performance-report:
+    name: Generate Performance Report
+    runs-on: ubuntu-latest
+    needs: [build-performance, pipeline-performance]
+    if: always()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download all artifacts
+      uses: actions/download-artifact@v3
+
+    - name: Generate comprehensive performance report
+      run: |
+        # Create comprehensive performance report
+        cat > PERFORMANCE_REPORT.md << 'EOF'
+        # 🚀 Agent Forge Performance Report
+
+        ## Executive Summary
+
+        **Performance Status**: ${{ (needs.build-performance.result == 'success' && needs.pipeline-performance.result == 'success') && '✅ PASSED' || '❌ FAILED' }}
+
+        **Key Metrics**:
+        - Build Time: ${{ needs.build-performance.outputs.build-time }}s
+        - Bundle Size: ${{ needs.build-performance.outputs.bundle-size }}MB
+        - Load Time: ${{ needs.pipeline-performance.outputs.avg-load-time }}s
+        - Memory Usage: ${{ needs.pipeline-performance.outputs.peak-memory }}MB
+        - Performance Score: ${{ needs.pipeline-performance.outputs.performance-score }}/100
+
+        ## Detailed Analysis
+
+        ### Build Performance
+        - **Build Time**: ${{ needs.build-performance.outputs.build-time }}s (limit: ${MAX_BUILD_TIME_SECONDS}s)
+        - **Bundle Size**: ${{ needs.build-performance.outputs.bundle-size }}MB (budget: 5MB)
+        - **Optimization Score**: ${{ needs.build-performance.outputs.optimization-score }}/100
+
+        ### Pipeline Performance
+        - **Average Load Time**: ${{ needs.pipeline-performance.outputs.avg-load-time }}s (limit: ${MAX_LOAD_TIME_SECONDS}s)
+        - **Peak Memory Usage**: ${{ needs.pipeline-performance.outputs.peak-memory }}MB (limit: ${MAX_MEMORY_USAGE_MB}MB)
+        - **Overall Performance Score**: ${{ needs.pipeline-performance.outputs.performance-score }}/100 (minimum: ${MIN_PERFORMANCE_SCORE})
+
+        ## Recommendations
+
+        ${{ (needs.build-performance.outputs.build-time > 60) && '- **Build Optimization**: Build time exceeds 60s - consider parallel builds' || '' }}
+        ${{ (needs.build-performance.outputs.bundle-size > 4.0) && '- **Bundle Optimization**: Bundle size >4MB - implement code splitting' || '' }}
+        ${{ (needs.pipeline-performance.outputs.avg-load-time > 2.5) && '- **Load Time Optimization**: Load time >2.5s - optimize critical paths' || '' }}
+        ${{ (needs.pipeline-performance.outputs.peak-memory > 1500) && '- **Memory Optimization**: Memory usage >1.5GB - implement memory pooling' || '' }}
+        ${{ (needs.pipeline-performance.outputs.performance-score < 85) && '- **Performance Optimization**: Score <85 - comprehensive optimization needed' || '' }}
+
+        ## Gate Status
+
+        | Gate | Threshold | Current | Status |
+        |------|-----------|---------|--------|
+        | Build Time | ≤${MAX_BUILD_TIME_SECONDS}s | ${{ needs.build-performance.outputs.build-time }}s | ${{ (needs.build-performance.outputs.build-time <= env.MAX_BUILD_TIME_SECONDS) && '✅' || '❌' }} |
+        | Load Time | ≤${MAX_LOAD_TIME_SECONDS}s | ${{ needs.pipeline-performance.outputs.avg-load-time }}s | ${{ (needs.pipeline-performance.outputs.avg-load-time <= env.MAX_LOAD_TIME_SECONDS) && '✅' || '❌' }} |
+        | Memory | ≤${MAX_MEMORY_USAGE_MB}MB | ${{ needs.pipeline-performance.outputs.peak-memory }}MB | ${{ (needs.pipeline-performance.outputs.peak-memory <= env.MAX_MEMORY_USAGE_MB) && '✅' || '❌' }} |
+        | Performance | ≥${MIN_PERFORMANCE_SCORE} | ${{ needs.pipeline-performance.outputs.performance-score }} | ${{ (needs.pipeline-performance.outputs.performance-score >= env.MIN_PERFORMANCE_SCORE) && '✅' || '❌' }} |
+
+        ---
+
+        *Report generated on $(date) by Agent Forge Performance Gates CI/CD*
+        EOF
+
+    - name: Upload performance report
+      uses: actions/upload-artifact@v3
+      with:
+        name: performance-report
+        path: PERFORMANCE_REPORT.md
+        retention-days: 90
+
+    - name: Update performance dashboard
+      if: github.ref == 'refs/heads/main'
+      run: |
+        # This would update a performance dashboard/database
+        echo "Updating performance dashboard with latest metrics..."
+        echo "Build Time: ${{ needs.build-performance.outputs.build-time }}s"
+        echo "Load Time: ${{ needs.pipeline-performance.outputs.avg-load-time }}s"
+        echo "Memory: ${{ needs.pipeline-performance.outputs.peak-memory }}MB"
+        echo "Score: ${{ needs.pipeline-performance.outputs.performance-score }}/100"
+
+  # Phase 6: Alert on Performance Degradation
+  performance-alerts:
+    name: Performance Alerts
+    runs-on: ubuntu-latest
+    needs: [build-performance, pipeline-performance]
+    if: |
+      always() &&
+      (needs.build-performance.result == 'failure' ||
+       needs.pipeline-performance.result == 'failure' ||
+       needs.build-performance.outputs.build-time > '120' ||
+       needs.pipeline-performance.outputs.avg-load-time > '5.0' ||
+       needs.pipeline-performance.outputs.performance-score < '70')
+
+    steps:
+    - name: Send performance alert
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const alertMessage = `🚨 **Performance Alert** - Agent Forge Pipeline
+
+          **Critical Performance Issues Detected:**
+
+          - Build Time: ${{ needs.build-performance.outputs.build-time }}s
+          - Load Time: ${{ needs.pipeline-performance.outputs.avg-load-time }}s
+          - Memory Usage: ${{ needs.pipeline-performance.outputs.peak-memory }}MB
+          - Performance Score: ${{ needs.pipeline-performance.outputs.performance-score }}/100
+
+          **Action Required:** Performance optimization needed to maintain system reliability.
+
+          **Workflow:** ${context.workflow} | **Run:** ${context.runNumber}
+          **Commit:** ${context.sha.substring(0,7)} | **Branch:** ${context.ref}
+          `;
+
+          // Create an issue for critical performance degradation
+          await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: `🚨 Performance Alert: Critical degradation detected`,
+            body: alertMessage,
+            labels: ['performance', 'urgent', 'needs-optimization']
+          });

@@ -1,7 +1,6 @@
 """
 RedundancyValidator - Multi-Level Redundancy Verification
-=========================================================
-
+===================================================
 Validates and tests system redundancy to ensure resilience and fault tolerance.
 Provides comprehensive redundancy testing and validation reporting.
 """

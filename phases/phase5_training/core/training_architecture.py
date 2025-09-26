@@ -1,7 +1,6 @@
 """
 Agent Forge Phase 5: Training Architecture Core
-==================================================
-
+============================================
 Production-ready training architecture for BitNet models with distributed coordination,
 Grokfast optimization, and NASA POT10 compliance.
 

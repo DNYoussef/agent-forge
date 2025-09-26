@@ -31,10 +31,8 @@ from packages.agent_forge.core.phase_controller import PhaseController, PhaseRes
 
 logger = logging.getLogger(__name__)
 
-# ============================================================================
-# SeedLM Implementation
-# ============================================================================
-
+# ======================================================================# SeedLM Implementation
+# ======================================================================
 
 class LinearFeedbackShiftRegister:
     """Linear Feedback Shift Register for reproducible pseudo-random matrices."""
@@ -167,10 +165,8 @@ class SEEDLMCompressor:
         return torch.tensor(flat, dtype=torch.float32).reshape(compressed["original_shape"])
 
 
-# ============================================================================
-# VPTQ Implementation
-# ============================================================================
-
+# ======================================================================# VPTQ Implementation
+# ======================================================================
 
 class VPTQCompressor:
     """
@@ -294,10 +290,8 @@ class VPTQCompressor:
         return flat.view(compressed["original_shape"])
 
 
-# ============================================================================
-# Hypercompression Implementation
-# ============================================================================
-
+# ======================================================================# Hypercompression Implementation
+# ======================================================================
 
 class HyperCompressionEncoder:
     """
@@ -510,10 +504,8 @@ class HyperCompressionEncoder:
         return out.reshape(shape)
 
 
-# ============================================================================
-# Grokfast Integration for Compression Training
-# ============================================================================
-
+# ======================================================================# Grokfast Integration for Compression Training
+# ======================================================================
 
 class GrokfastCompressionOptimizer:
     """Grokfast-accelerated optimization for compression parameter learning."""
@@ -595,10 +587,8 @@ class GrokfastCompressionOptimizer:
         return {"optimized_clusters": best_clusters, "optimization_score": best_score}
 
 
-# ============================================================================
-# Final Compression Configuration
-# ============================================================================
-
+# ======================================================================# Final Compression Configuration
+# ======================================================================
 
 class FinalCompressionConfig(BaseModel):
     """Configuration for final compression phase."""
@@ -643,10 +633,8 @@ class FinalCompressionConfig(BaseModel):
     save_compression_metrics: bool = True
 
 
-# ============================================================================
-# Main Final Compression Phase Controller
-# ============================================================================
-
+# ======================================================================# Main Final Compression Phase Controller
+# ======================================================================
 
 class FinalCompressionPhase(PhaseController):
     """
@@ -1005,10 +993,8 @@ class FinalCompressionPhase(PhaseController):
         return validation_results
 
 
-# ============================================================================
-# CLI and Testing Interface
-# ============================================================================
-
+# ======================================================================# CLI and Testing Interface
+# ======================================================================
 
 async def run_final_compression_demo():
     """Demo function to test final compression phase."""

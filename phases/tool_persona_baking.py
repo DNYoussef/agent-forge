@@ -1009,6 +1009,40 @@ class ToolPersonaBakingPhase(PhaseController):
             logger.error(f"Tool & Persona Baking phase failed: {e}")
             return PhaseResult(success=False, phase_name="tool_persona_baking", error=str(e), outputs={})
 
+    async def execute(self, model_path: str, **kwargs) -> PhaseResult:
+        """
+        Execute tool and persona baking phase with model path input.
+
+        This method provides compatibility with orchestration systems that expect
+        an execute method taking a model path instead of execute_phase with inputs dict.
+
+        Args:
+            model_path: Path to the model to bake
+            **kwargs: Additional execution parameters
+
+        Returns:
+            PhaseResult: Result of tool and persona baking phase execution
+        """
+        try:
+            # Convert model_path to inputs dict expected by execute_phase
+            inputs = {"model_path": model_path}
+            inputs.update(kwargs)
+
+            # Execute using the existing execute_phase method
+            return await self.execute_phase(inputs)
+
+        except Exception as e:
+            error_msg = f"Tool & Persona Baking execute failed: {str(e)}"
+            logger.error(error_msg)
+
+            return PhaseResult(
+                success=False,
+                phase_name="tool_persona_baking",
+                error=error_msg,
+                outputs={},
+                metrics={"duration_seconds": 0.0}
+            )
+
     async def _load_model(self, model_path: str) -> tuple[nn.Module, AutoTokenizer]:
         """Load model and tokenizer."""
         tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer_path or model_path)

@@ -97,8 +97,7 @@ agent_forge/
 
 ```
 Agent Forge Simple Validation Test
-========================================
-[OK] Grokfast optimizer imported successfully
+==================================[OK] Grokfast optimizer imported successfully
 [OK] Cognate creator imported successfully
 [OK] Bridge server imported successfully
 [OK] Grokfast optimizer created successfully

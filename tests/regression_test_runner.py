@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Regression Test Runner for Naming Standardization
-=================================================
-
+===========================================
 Comprehensive regression testing suite to ensure naming standardization
 does not break functionality, imports, or public APIs.
 """

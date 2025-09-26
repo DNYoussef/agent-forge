@@ -39,8 +39,7 @@ class ThoughtGenerator:
     Implements thought generation mechanisms for Quiet-STaR.
     
     Algorithm: Token-wise Parallel Sampling
-    ========================================
-    1. For each token position t in sequence:
+    ==================================    1. For each token position t in sequence:
         a. Generate N parallel thought candidates
         b. Evaluate coherence of each thought
         c. Select thoughts above threshold
@@ -61,8 +60,7 @@ class ThoughtGenerator:
         Generate parallel thoughts at a specific token position.
         
         Mathematical Formulation:
-        ========================
-        For position t, generate thoughts T_i where i  [1, N]:
+        ==================        For position t, generate thoughts T_i where i  [1, N]:
         T_i = sample(P(x_{t+1:t+L} | x_{1:t}, ))
         
         Where:
@@ -137,8 +135,7 @@ class ThoughtGenerator:
         Sample thought tokens using nucleus sampling.
         
         Algorithm: Nucleus Sampling for Thoughts
-        ========================================
-        1. Forward pass to get logits: logits = model(prefix)
+        ==================================        1. Forward pass to get logits: logits = model(prefix)
         2. Apply temperature scaling: scaled_logits = logits / T
         3. Apply top-p filtering: filtered_logits = top_p_filter(scaled_logits, p)
         4. Sample next token: next_token ~ softmax(filtered_logits)
@@ -183,8 +180,7 @@ class CoherenceScorer:
     Implements coherence scoring algorithms for thought evaluation.
     
     Mathematical Formulation:
-    ========================
-    Coherence Score C(T, x) for thought T given context x:
+    ==================    Coherence Score C(T, x) for thought T given context x:
     
     C(T, x) = C_semantic(T, x) + C_syntactic(T) + C_predictive(T, x)
     
@@ -261,8 +257,7 @@ class CoherenceScorer:
         Compute syntactic coherence within thoughts.
         
         Algorithm: Perplexity-based Coherence
-        =====================================
-        Perplexity = exp(-1/N *  log P(token_i | context))
+        ===============================        Perplexity = exp(-1/N *  log P(token_i | context))
         Coherence = 1 / (1 + log(Perplexity))
         """
         batch_size, num_thoughts, thought_len, vocab_size = thought_logits.shape
@@ -313,14 +308,12 @@ class MixingHead(nn.Module):
     Implements mixing head for combining thought-informed predictions.
     
     Architecture: Shallow MLP
-    ========================
-    Input: [original_logits, thought_logits_1, ..., thought_logits_N, coherence_scores]
+    ==================    Input: [original_logits, thought_logits_1, ..., thought_logits_N, coherence_scores]
     Hidden: Linear -> ReLU -> Dropout -> Linear
     Output: mixing_weights [vocab_size]
     
     Mathematical Formulation:
-    ========================
-    final_logits = w_0 * original_logits + (w_i * thought_logits_i)
+    ==================    final_logits = w_0 * original_logits + (w_i * thought_logits_i)
     where w_i = MixingHead([original_logits, all_thought_logits, coherence_scores])
     """
     
@@ -386,8 +379,7 @@ class ThoughtInjector:
     Implements thought injection mechanism for sequence processing.
     
     Algorithm: Optimal Injection Point Selection
-    ===========================================
-    1. Identify potential injection points based on:
+    =====================================    1. Identify potential injection points based on:
         - Token difficulty (high perplexity)
         - Semantic boundaries (punctuation, conjunctions)
         - Syntactic complexity (nested structures)
@@ -407,8 +399,7 @@ class ThoughtInjector:
         Identify optimal points for thought injection.
         
         Algorithm: Multi-criteria Injection Point Scoring
-        ================================================
-        Score(position) = *difficulty(position) + *boundary(position) + *attention(position)
+        ==========================================        Score(position) = *difficulty(position) + *boundary(position) + *attention(position)
         
         Where:
         - difficulty: Token prediction difficulty (perplexity)
@@ -479,8 +470,7 @@ class OptimizationStrategies:
     Implements optimization strategies for Quiet-STaR training.
     
     Key Strategies:
-    ==============
-    1. Curriculum Learning: Start with simple thoughts, increase complexity
+    ========    1. Curriculum Learning: Start with simple thoughts, increase complexity
     2. Thought Regularization: Prevent degenerate thought patterns
     3. Adaptive Sampling: Adjust sampling parameters based on performance
     4. Memory-Efficient Training: Gradient checkpointing and mixed precision
@@ -496,8 +486,7 @@ class OptimizationStrategies:
         Implement curriculum learning schedule.
         
         Algorithm: Progressive Complexity Increase
-        ========================================
-        Stage 1: Short thoughts (2-4 tokens), high threshold (0.8)
+        ==================================        Stage 1: Short thoughts (2-4 tokens), high threshold (0.8)
         Stage 2: Medium thoughts (4-6 tokens), medium threshold (THEATER_DETECTION_WARNING_THRESHOLD)
         Stage MAXIMUM_RETRY_ATTEMPTS: Full thoughts (8 tokens), target threshold (0.7)
         """
@@ -527,8 +516,7 @@ class OptimizationStrategies:
         Compute regularization loss to prevent degenerate thoughts.
         
         Regularization Components:
-        =========================
-        1. Diversity Loss: Encourage different thoughts
+        ===================        1. Diversity Loss: Encourage different thoughts
         2. Complexity Loss: Prevent overly simple thoughts
         3. Coherence Loss: Maintain minimum coherence
         
@@ -597,8 +585,7 @@ class OptimizationStrategies:
         Adapt sampling parameters based on performance.
         
         Algorithm: Performance-based Parameter Adjustment
-        ================================================
-        If performance improving: Maintain current parameters
+        ==========================================        If performance improving: Maintain current parameters
         If performance stagnating: Increase exploration (higher temperature)
         If performance degrading: Increase exploitation (lower temperature)
         """

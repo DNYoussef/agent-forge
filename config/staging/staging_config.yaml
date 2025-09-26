@@ -1,0 +1,184 @@
+# Agent Forge Staging Environment Configuration
+# Environment: staging
+# Version: 1.0.0
+# Last Updated: 2025-09-26
+
+environment:
+  name: staging
+  region: us-east-1
+  availability_zones:
+    - us-east-1a
+    - us-east-1b
+  domain: staging.agent-forge.local
+  ssl_enabled: true
+
+infrastructure:
+  compute:
+    instance_type: t3.medium
+    min_instances: 2
+    max_instances: 5
+    auto_scaling: true
+    cpu_threshold: 70
+    memory_threshold: 80
+  
+  database:
+    engine: postgresql
+    version: "15"
+    instance_class: db.t3.micro
+    allocated_storage: 20
+    multi_az: false
+    backup_retention: 7
+    maintenance_window: "sun:02:00-sun:04:00"
+  
+  cache:
+    engine: redis
+    node_type: cache.t3.micro
+    parameter_group: default.redis7
+    num_cache_nodes: 1
+
+networking:
+  vpc:
+    cidr: "10.1.0.0/16"
+  subnets:
+    public:
+      - cidr: "10.1.1.0/24"
+        az: us-east-1a
+      - cidr: "10.1.2.0/24"
+        az: us-east-1b
+    private:
+      - cidr: "10.1.10.0/24"
+        az: us-east-1a
+      - cidr: "10.1.20.0/24"
+        az: us-east-1b
+  
+  load_balancer:
+    type: application
+    scheme: internet-facing
+    health_check:
+      path: "/health"
+      interval: 30
+      timeout: 5
+      healthy_threshold: 2
+      unhealthy_threshold: 3
+
+application:
+  services:
+    api:
+      port: 8000
+      replicas: 2
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "256Mi"
+        limits:
+          cpu: "500m"
+          memory: "512Mi"
+    
+    websocket:
+      port: 8001
+      replicas: 2
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "256Mi"
+        limits:
+          cpu: "500m"
+          memory: "512Mi"
+    
+    swarm_coordinator:
+      port: 8002
+      replicas: 1
+      resources:
+        requests:
+          cpu: "200m"
+          memory: "512Mi"
+        limits:
+          cpu: "1000m"
+          memory: "1Gi"
+
+security:
+  encryption:
+    at_rest: true
+    in_transit: true
+  
+  access_control:
+    enable_rbac: true
+    api_rate_limit: 1000
+    session_timeout: 3600
+  
+  secrets_management:
+    provider: aws_secrets_manager
+    rotation_enabled: true
+    rotation_interval: 90
+
+monitoring:
+  metrics:
+    provider: cloudwatch
+    retention_days: 30
+    custom_metrics:
+      - agent_forge_api_latency
+      - agent_forge_swarm_performance
+      - agent_forge_model_accuracy
+  
+  logging:
+    level: INFO
+    aggregation: cloudwatch_logs
+    retention_days: 14
+  
+  alerting:
+    notification_channels:
+      - email: staging-alerts@agent-forge.com
+      - slack: "#staging-alerts"
+    
+    alert_rules:
+      - name: high_cpu_usage
+        condition: "cpu > 80%"
+        duration: "5m"
+      - name: high_memory_usage
+        condition: "memory > 90%"
+        duration: "3m"
+      - name: api_error_rate
+        condition: "error_rate > 5%"
+        duration: "2m"
+      - name: low_disk_space
+        condition: "disk_free < 20%"
+        duration: "1m"
+
+backup:
+  database:
+    enabled: true
+    schedule: "0 2 * * *"  # Daily at 2 AM
+    retention_days: 30
+  
+  application_data:
+    enabled: true
+    schedule: "0 3 * * *"  # Daily at 3 AM
+    retention_days: 14
+
+deployment:
+  strategy: blue_green
+  rollback:
+    enabled: true
+    auto_rollback_on_failure: true
+    health_check_grace_period: 300
+  
+  canary:
+    enabled: false
+    traffic_split: 10
+    success_threshold: 95
+
+qualityy_gates:
+  performance:
+    api_response_time_p95: 500  # ms
+    throughput_min: 100  # requests/min
+    error_rate_max: 2  # percentage
+  
+  security:
+    vulnerability_scan: true
+    dependency_scan: true
+    secrets_scan: true
+  
+  integration:
+    test_coverage_min: 80  # percentage
+    test_pass_rate_min: 95  # percentage
+    integration_test_timeout: 600  # seconds

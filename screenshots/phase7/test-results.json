@@ -1,0 +1,655 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\17175\\Desktop\\agent-forge\\playwright.config.ts",
+    "rootDir": "C:/Users/17175/Desktop/agent-forge/tests/playwright",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "screenshots/phase7/reports"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "screenshots/phase7/test-results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "screenshots/phase7/junit-results.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/17175/Desktop/agent-forge/screenshots/phase7/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium-desktop",
+        "name": "chromium-desktop",
+        "testDir": "C:/Users/17175/Desktop/agent-forge/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/17175/Desktop/agent-forge/screenshots/phase7/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox-desktop",
+        "name": "firefox-desktop",
+        "testDir": "C:/Users/17175/Desktop/agent-forge/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/17175/Desktop/agent-forge/screenshots/phase7/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit-desktop",
+        "name": "webkit-desktop",
+        "testDir": "C:/Users/17175/Desktop/agent-forge/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/17175/Desktop/agent-forge/screenshots/phase7/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "4k-screenshots",
+        "name": "4k-screenshots",
+        "testDir": "C:/Users/17175/Desktop/agent-forge/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/17175/Desktop/agent-forge/screenshots/phase7/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "C:/Users/17175/Desktop/agent-forge/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/17175/Desktop/agent-forge/screenshots/phase7/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "mobile-safari",
+        "name": "mobile-safari",
+        "testDir": "C:/Users/17175/Desktop/agent-forge/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/17175/Desktop/agent-forge/screenshots/phase7/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "tablet-chrome",
+        "name": "tablet-chrome",
+        "testDir": "C:/Users/17175/Desktop/agent-forge/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.1",
+    "workers": 6,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "static-ui-audit.spec.js",
+      "file": "static-ui-audit.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Agent Forge Static UI Audit",
+          "file": "static-ui-audit.spec.js",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Analyze Existing Screenshots",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 880,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "\n[STATIC AUDIT] Analyzing existing screenshots and UI evidence...\n"
+                        },
+                        {
+                          "text": "Found 58 existing screenshots\n"
+                        },
+                        {
+                          "text": "Phase 1 (cognate): 90/100 - PASS\n"
+                        },
+                        {
+                          "text": "  Screenshots: 7\n"
+                        },
+                        {
+                          "text": "  Issues: 0\n"
+                        },
+                        {
+                          "text": "Phase 2 (evomerge): 80/100 - PASS\n"
+                        },
+                        {
+                          "text": "  Screenshots: 5\n"
+                        },
+                        {
+                          "text": "  Issues: 0\n"
+                        },
+                        {
+                          "text": "Phase 3 (quietstar): 40/100 - FAIL\n"
+                        },
+                        {
+                          "text": "  Screenshots: 5\n"
+                        },
+                        {
+                          "text": "  Issues: 1\n"
+                        },
+                        {
+                          "text": "Phase 4 (bitnet): 75/100 - PARTIAL\n"
+                        },
+                        {
+                          "text": "  Screenshots: 6\n"
+                        },
+                        {
+                          "text": "  Issues: 0\n"
+                        },
+                        {
+                          "text": "Phase 5 (forge): 60/100 - PARTIAL\n"
+                        },
+                        {
+                          "text": "  Screenshots: 14\n"
+                        },
+                        {
+                          "text": "  Issues: 0\n"
+                        },
+                        {
+                          "text": "Phase 6 (baking): 60/100 - PARTIAL\n"
+                        },
+                        {
+                          "text": "  Screenshots: 6\n"
+                        },
+                        {
+                          "text": "  Issues: 0\n"
+                        },
+                        {
+                          "text": "Phase 7 (adas): 45/100 - FAIL\n"
+                        },
+                        {
+                          "text": "  Screenshots: 2\n"
+                        },
+                        {
+                          "text": "  Issues: 0\n"
+                        },
+                        {
+                          "text": "Phase 8 (final): 45/100 - FAIL\n"
+                        },
+                        {
+                          "text": "  Screenshots: 2\n"
+                        },
+                        {
+                          "text": "  Issues: 0\n"
+                        },
+                        {
+                          "text": "Copied bitnet-enhanced-2025-09-25T17-57-38-930Z.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied bitnet-enhanced-2025-09-25T18-02-10-232Z.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied bitnet-enhanced-2025-09-25T18-08-13-536Z.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied cognate-screenshot.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied current-bitnet-ui.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied current-cognate.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied current-homepage.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied dashboard-cognate.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied dashboard-fullpage.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied dashboard-home.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied dashboard-overview.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied dashboard-screenshot.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied error-screenshot.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied evomerge-current.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied homepage.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-1-cognate-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-2-evomerge-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-3-quietstar-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-4-bitnet-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-5-forge-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-6-baking-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-7-adas-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-8-final-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-assessment-tab.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-homepage-10levels.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-self-modeling-tab.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-sleep-dream-tab.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-training-interface.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-training-loop-tab.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase6-audit-2025-09-25T21-00-42-207Z-baking-main.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase6-audit-2025-09-25T21-00-42-207Z-homepage.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied quietstar-audit-after.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied quietstar-full-view.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied quietstar-new-implementation.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied test-phase-1-cognate.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied test-phase-2-evomerge.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied tournament-page-test.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied tournament-page.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied tournament-ui-button-hover.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied tournament-ui-complete.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-1-cognate-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-2-evomerge-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-3-quietstar-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-4-bitnet-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-5-forge-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-6-baking-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-7-adas-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase-8-final-audit.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-assessment-tab.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-homepage-10levels.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-self-modeling-tab.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-sleep-dream-tab.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-training-interface.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase5-training-loop-tab.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase6-audit-2025-09-25T21-00-42-207Z-baking-main.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied phase6-audit-2025-09-25T21-00-42-207Z-homepage.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied test-phase-1-cognate.png to audit directory\n"
+                        },
+                        {
+                          "text": "Copied test-phase-2-evomerge.png to audit directory\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-26T17:17:16.324Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "74c7fb6617f37dd64855-0381893847032492c77c",
+              "file": "static-ui-audit.spec.js",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Generate Theater Detection Report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 899,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "\n[THEATER DETECTION] Analyzing quality indicators...\n"
+                        },
+                        {
+                          "text": "\nTheater Detection Summary:\n"
+                        },
+                        {
+                          "text": "Phase quietstar: 73% theater score\n"
+                        },
+                        {
+                          "text": "  - Phase has 73% theater detection score from previous analysis\n"
+                        },
+                        {
+                          "text": "  - Multiple iterations suggest incomplete implementation\n"
+                        },
+                        {
+                          "text": "  - Complex UI without clear functional backing\n"
+                        },
+                        {
+                          "text": "  - Potential placeholder content in reasoning components\n"
+                        },
+                        {
+                          "text": "Phase cognate: 15% theater score\n"
+                        },
+                        {
+                          "text": "  - Multiple iterations detected (5 screenshots)\n"
+                        },
+                        {
+                          "text": "Theater detection report saved to screenshots/audit/theater-detection-report.json\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-26T17:17:16.337Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "74c7fb6617f37dd64855-0962fa90c3adbe5a5176",
+              "file": "static-ui-audit.spec.js",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "Performance Analysis from Evidence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 912,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "\n[PERFORMANCE] Analyzing performance indicators from existing evidence...\n"
+                        },
+                        {
+                          "text": "Phase 1 (cognate): Grade C\n"
+                        },
+                        {
+                          "text": "Phase 2 (evomerge): Grade D\n"
+                        },
+                        {
+                          "text": "Phase 3 (quietstar): Grade F\n"
+                        },
+                        {
+                          "text": "Phase 4 (bitnet): Grade C\n"
+                        },
+                        {
+                          "text": "Phase 5 (forge): Grade C\n"
+                        },
+                        {
+                          "text": "Phase 6 (baking): Grade F\n"
+                        },
+                        {
+                          "text": "Phase 7 (adas): Grade F\n"
+                        },
+                        {
+                          "text": "Phase 8 (final): Grade F\n"
+                        },
+                        {
+                          "text": "Performance analysis saved to screenshots/audit/performance-analysis.json\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-26T17:17:16.330Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "74c7fb6617f37dd64855-936c2bc63c0a563b2aab",
+              "file": "static-ui-audit.spec.js",
+              "line": 156,
+              "column": 3
+            },
+            {
+              "title": "Generate Comprehensive Audit Report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 897,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "\n[COMPREHENSIVE AUDIT] Generating final audit report...\n"
+                        },
+                        {
+                          "text": "Comprehensive audit report saved to screenshots/audit/comprehensive-audit-report.json\n"
+                        },
+                        {
+                          "text": "Overall status: NEEDS_WORK\n"
+                        },
+                        {
+                          "text": "Average score: NaN/100\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-26T17:17:16.317Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "74c7fb6617f37dd64855-460f6eeaaf9fd14b17f4",
+              "file": "static-ui-audit.spec.js",
+              "line": 199,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-09-26T17:17:15.414Z",
+    "duration": 2294.668,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

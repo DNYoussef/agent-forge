@@ -1,0 +1,351 @@
+# NASA POT10 Compliance Configuration
+# ===================================
+# Configuration file for NASA Power of Ten Rules compliance system
+# This file controls rule weightings, exemptions, severity levels, and reporting
+
+# Global Configuration
+enabled: true
+target_compliance_threshold: 0.92  # 92% target compliance
+minimum_compliance_threshold: 0.85  # 85% minimum compliance
+certificate_validity_days: 30
+auto_fix_enabled: true
+
+# Rule Weights (must sum to 1.0)
+# Higher weights indicate more critical rules for mission-critical software
+rule_weights:
+  1: 0.15  # Control flow - Critical for reliability
+  2: 0.20  # Loop bounds - Critical for determinism
+  3: 0.10  # Dynamic allocation - Important for predictability
+  4: 0.10  # Function length - Important for maintainability
+  5: 0.15  # Assertions - Critical for verification
+  6: 0.05  # Scope - Important for clarity
+  7: 0.15  # Return checking - Critical for error handling
+  8: 0.05  # Preprocessor - Important for simplicity
+  9: 0.05  # Pointer deref - Important for safety
+  10: 0.05 # Warnings - Important for quality
+
+# Severity Level Configuration
+severity_levels:
+  10: "CATASTROPHIC"   # Immediate blocking
+  9: "CRITICAL"        # Always blocks in strict mode
+  8: "MAJOR"           # Blocks in strict mode
+  7: "SIGNIFICANT"     # Blocks in strict mode
+  6: "MODERATE"        # Warning in lenient mode
+  5: "MINOR"           # Info only
+  4: "TRIVIAL"         # Info only
+  3: "INFORMATIONAL"   # Info only
+  2: "ADVISORY"        # Info only
+  1: "NOTICE"          # Info only
+
+# Severity Multipliers for Scoring
+severity_multipliers:
+  1: 0.1
+  2: 0.2
+  3: 0.3
+  4: 0.4
+  5: 0.5
+  6: 0.6
+  7: 0.7
+  8: 0.8
+  9: 0.9
+  10: 1.0
+
+# Rule-Specific Configuration
+rule_config:
+  # Rule 1: Control Flow
+  rule_1:
+    max_nesting_depth: 3
+    max_exception_handlers: 3
+    block_goto_patterns: true
+
+  # Rule 2: Loop Bounds
+  rule_2:
+    require_explicit_bounds: true
+    flag_while_true: true
+    flag_unbounded_iterators: true
+
+  # Rule 3: Dynamic Allocation
+  rule_3:
+    allow_init_allocation: true
+    flag_comprehensions: true
+    flag_dynamic_calls: ["list", "dict", "set", "bytearray"]
+
+  # Rule 4: Function Length
+  rule_4:
+    max_lines: 60
+    exclude_comments: true
+    exclude_docstrings: true
+
+  # Rule 5: Assertion Density
+  rule_5:
+    minimum_density_percent: 2.0
+    minimum_function_size: 10
+    count_implicit_assertions: false
+
+  # Rule 6: Variable Scope
+  rule_6:
+    flag_module_variables: true
+    allow_constants: true
+    constant_naming_pattern: "^[A-Z][A-Z0-9_]*$"
+
+  # Rule 7: Return Value Checking
+  rule_7:
+    exempt_functions:
+      - "print"
+      - "logging.info"
+      - "logging.error"
+      - "logging.warning"
+      - "logging.debug"
+    require_explicit_checking: true
+
+  # Rule 8: Preprocessor/Import Usage
+  rule_8:
+    max_relative_import_depth: 1
+    flag_dynamic_imports: true
+    forbidden_calls: ["__import__", "exec", "eval"]
+
+  # Rule 9: Pointer/Attribute Dereferencing
+  rule_9:
+    max_attribute_depth: 2
+    flag_nested_subscripts: true
+
+  # Rule 10: Compilation Warnings
+  rule_10:
+    flag_bare_except: true
+    flag_old_string_formatting: true
+    flag_unused_imports: false  # Too noisy for now
+
+# Gate Configuration
+gate_config:
+  # Rules that always block (even at low severity)
+  blocking_rules: [1, 2, 5, 7]
+
+  # Rules that only generate warnings
+  warning_rules: [6, 8, 9, 10]
+
+  # Maximum violations per file before auto-block
+  max_violations_per_file: 10
+
+  # Certificate requirements
+  certificate_required: true
+  certificate_validity_days: 30
+
+# File and Directory Exclusions
+exclusions:
+  files:
+    - "*/test_*.py"
+    - "*/tests/*"
+    - "*/*_test.py"
+    - "*/conftest.py"
+    - "*/__pycache__/*"
+    - "*/build/*"
+    - "*/dist/*"
+    - "*/.venv/*"
+    - "*/venv/*"
+    - "*/node_modules/*"
+    - "*.egg-info/*"
+    - "*/.tox/*"
+    - "*/.pytest_cache/*"
+    - "*/migrations/*"
+    - "*/setup.py"
+    - "*/manage.py"
+
+  directories:
+    - "__pycache__"
+    - ".git"
+    - ".pytest_cache"
+    - "node_modules"
+    - ".venv"
+    - "venv"
+    - "build"
+    - "dist"
+    - ".tox"
+    - ".mypy_cache"
+    - ".ruff_cache"
+    - "htmlcov"
+    - "migrations"
+
+# Exemption Patterns
+# Files matching these patterns get relaxed rules
+exemptions:
+  test_files:
+    pattern: ["*/test_*.py", "*/*_test.py", "*/tests/*"]
+    relaxed_rules: [4, 5, 6]  # Function length, assertions, scope
+    multiplier: 0.5  # 50% weight reduction
+
+  configuration_files:
+    pattern: ["*/settings*.py", "*/config*.py", "*/conf.py"]
+    relaxed_rules: [6]  # Variable scope
+    multiplier: 0.7
+
+  migration_files:
+    pattern: ["*/migrations/*"]
+    relaxed_rules: [1, 2, 3, 4, 5, 6, 7]  # Most rules relaxed
+    multiplier: 0.3
+
+  generated_files:
+    pattern: ["*/_pb2.py", "*/protobuf/*", "**/pb2/*"]
+    relaxed_rules: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  # All rules relaxed
+    multiplier: 0.1
+
+# Reporting Configuration
+reporting:
+  # Default report format
+  format: "detailed"  # "summary", "detailed", "json"
+
+  # Include in reports
+  include_trends: true
+  include_recommendations: true
+  include_file_details: true
+  include_code_snippets: true
+
+  # Report limits
+  max_violations_in_report: 50
+  max_files_in_summary: 20
+
+  # Export settings
+  export_json: true
+  export_csv: false
+  export_html: false
+
+# CI/CD Integration
+cicd:
+  # Modes for different environments
+  development_mode: "warning"    # warn but don't block
+  staging_mode: "strict"         # enforce all rules
+  production_mode: "strict"      # enforce all rules
+
+  # Artifact generation
+  generate_artifacts: true
+  artifact_retention_days: 90
+
+  # Notification settings
+  notify_on_failure: true
+  notify_on_improvement: true
+  slack_webhook: null  # Set webhook URL for notifications
+  email_notifications: []  # List of email addresses
+
+# Auto-fix Configuration
+auto_fix:
+  enabled: true
+
+  # Rules that can be auto-fixed
+  fixable_rules: [10]  # Only Rule 10 (warnings) for now
+
+  # Auto-fix patterns
+  fixes:
+    bare_except:
+      pattern: "except:"
+      replacement: "except Exception:"
+
+    old_string_format:
+      pattern: '"%s" % '
+      replacement: 'f"'  # Simplified - real implementation more complex
+
+  # Safety settings
+  create_backup: true
+  max_fixes_per_run: 100
+  require_confirmation: false
+
+# Database Configuration
+database:
+  path: ".security/compliance_history.db"
+  retention_days: 365
+  backup_frequency: "weekly"
+  vacuum_frequency: "monthly"
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: ".security/compliance_gate.log"
+  max_size_mb: 10
+  backup_count: 5
+  include_timestamps: true
+  include_function_names: true
+
+# Performance Configuration
+performance:
+  max_analysis_time_seconds: 300
+  max_file_size_kb: 1000
+  parallel_analysis: true
+  max_workers: 4
+  cache_analysis_results: true
+  cache_expiry_hours: 24
+
+# Integration Settings
+integrations:
+  # Git hooks
+  git_hooks:
+    pre_commit: true
+    pre_push: false
+    post_commit: false
+
+  # IDE integrations
+  vscode:
+    enabled: false
+    extension_id: "nasa-pot10-compliance"
+
+  # External tools
+  sonarqube:
+    enabled: false
+    export_format: "sonar"
+
+  # Metrics collection
+  prometheus:
+    enabled: false
+    metrics_port: 9090
+
+# Custom Rules (Advanced)
+custom_rules:
+  enabled: false
+  rules: []
+  # Example custom rule:
+  # - name: "no_print_statements"
+  #   pattern: "\\bprint\\("
+  #   severity: 3
+  #   message: "Use logging instead of print statements"
+  #   suggested_fix: "Replace with logging.info()"
+
+# Quality Gates Integration
+quality_gates:
+  # Integration with external quality gate systems
+  sonarqube_gate: false
+  checkmarx_gate: false
+  veracode_gate: false
+
+  # Gate combination logic
+  require_all_gates: false  # true = all gates must pass
+  minimum_gates_passed: 1   # minimum number of gates to pass
+
+# Compliance Certification
+certification:
+  # Certificate templates
+  template: "nasa_pot10_standard"
+
+  # Certificate metadata
+  organization: "Agent Forge Development"
+  contact_email: null
+  compliance_officer: null
+
+  # Digital signature settings
+  sign_certificates: false
+  signature_algorithm: "SHA256"
+  certificate_authority: null
+
+# Feature Flags
+features:
+  # Enable/disable specific features
+  trend_analysis: true
+  auto_remediation: true
+  machine_learning_predictions: false
+  risk_assessment: true
+  security_integration: true
+  performance_profiling: false
+
+# Version and Metadata
+metadata:
+  config_version: "1.0"
+  last_updated: "2024-09-26"
+  created_by: "Security Princess Agent"
+  schema_version: "2.0"
+  compatibility_version: "1.0.0"

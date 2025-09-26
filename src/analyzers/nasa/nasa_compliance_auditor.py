@@ -432,8 +432,7 @@ def generate_detailed_compliance_report(self, assessment: ProjectComplianceAsses
         """
         report = f"""
 NASA Power of Ten Compliance Assessment Report
-=============================================
-
+=======================================
 Project: {assessment.project_path}
 Assessment Date: {time.strftime('%Y-%m-%d %H:%M:%S')}
 Overall Compliance: {assessment.overall_compliance:.1%}

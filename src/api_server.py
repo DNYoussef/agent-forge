@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Defense Industry API Implementation
-==================================
-
+============================
 This module provides API endpoint implementations for defense industry compliance.
 """
 

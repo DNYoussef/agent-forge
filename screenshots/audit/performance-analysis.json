@@ -1,0 +1,106 @@
+{
+  "timestamp": "2025-09-26T17:17:17.355Z",
+  "summary": {
+    "averageGrade": "D",
+    "slowPhases": 5,
+    "fastPhases": 0
+  },
+  "phases": [
+    {
+      "phase": "cognate",
+      "phaseId": 1,
+      "grade": "C",
+      "score": 75,
+      "metrics": {
+        "estimatedLoadTime": 2504.624014186339,
+        "estimatedDOMElements": 756.5515500335808,
+        "estimatedJSErrors": 0,
+        "complexityScore": 18.87821894621562
+      }
+    },
+    {
+      "phase": "evomerge",
+      "phaseId": 2,
+      "grade": "D",
+      "score": 60,
+      "metrics": {
+        "estimatedLoadTime": 4090.625566338264,
+        "estimatedDOMElements": 600.5884178013457,
+        "estimatedJSErrors": 0,
+        "complexityScore": 57.74161961681443
+      }
+    },
+    {
+      "phase": "quietstar",
+      "phaseId": 3,
+      "grade": "F",
+      "score": 50,
+      "metrics": {
+        "estimatedLoadTime": 4963.232060460521,
+        "estimatedDOMElements": 911.4783810935384,
+        "estimatedJSErrors": 0,
+        "complexityScore": 61.49442937895478
+      }
+    },
+    {
+      "phase": "bitnet",
+      "phaseId": 4,
+      "grade": "C",
+      "score": 75,
+      "metrics": {
+        "estimatedLoadTime": 3322.5975091174623,
+        "estimatedDOMElements": 684.9086249649661,
+        "estimatedJSErrors": 0,
+        "complexityScore": 47.20812646660355
+      }
+    },
+    {
+      "phase": "forge",
+      "phaseId": 5,
+      "grade": "C",
+      "score": 70,
+      "metrics": {
+        "estimatedLoadTime": 2317.218127251549,
+        "estimatedDOMElements": 288.99121273127605,
+        "estimatedJSErrors": 1,
+        "complexityScore": 40.8793822475465
+      }
+    },
+    {
+      "phase": "baking",
+      "phaseId": 6,
+      "grade": "F",
+      "score": 55,
+      "metrics": {
+        "estimatedLoadTime": 3331.8116547853574,
+        "estimatedDOMElements": 290.4328368417184,
+        "estimatedJSErrors": 2,
+        "complexityScore": 96.59768369371895
+      }
+    },
+    {
+      "phase": "adas",
+      "phaseId": 7,
+      "grade": "F",
+      "score": 55,
+      "metrics": {
+        "estimatedLoadTime": 4929.85196879264,
+        "estimatedDOMElements": 300.70592665583166,
+        "estimatedJSErrors": 1,
+        "complexityScore": 46.660364340951155
+      }
+    },
+    {
+      "phase": "final",
+      "phaseId": 8,
+      "grade": "F",
+      "score": 45,
+      "metrics": {
+        "estimatedLoadTime": 2202.7883219727955,
+        "estimatedDOMElements": 620.4557302249937,
+        "estimatedJSErrors": 2,
+        "complexityScore": 31.40655801534935
+      }
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "phase_name": "TestPhase2",
+  "timestamp": "2025-09-26T15:33:31.134066",
+  "validation_results": {
+    "model_integrity": {
+      "valid": true,
+      "score": 0.8,
+      "errors": [],
+      "warnings": [
+        "Model has very few parameters: 110",
+        "Model has no config attribute"
+      ],
+      "details": {
+        "total_parameters": 110,
+        "trainable_parameters": 110,
+        "parameter_ratio": 1.0,
+        "state_dict_keys": 2,
+        "nan_parameters": 0,
+        "inf_parameters": 0,
+        "has_config": false
+      }
+    },
+    "data_format": {
+      "valid": false,
+      "score": 0.0,
+      "errors": [
+        "Model path does not exist: /tmp/TestPhase2_model.pt"
+      ],
+      "warnings": [
+        "Missing recommended output: fitness_score",
+        "Missing recommended output: generation_info"
+      ],
+      "details": {
+        "output_data_keys": []
+      }
+    },
+    "performance": {
+      "valid": true,
+      "score": 1.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "duration_seconds": 1.0,
+        "memory_usage_mb": 100.0,
+        "gpu_memory_mb": 0.0,
+        "error_count": 0
+      }
+    },
+    "resource": {
+      "valid": true,
+      "score": 1.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "model_size_mb": 0.00041961669921875,
+        "artifacts_size_mb": 0,
+        "resource_efficiency": 10000.0
+      }
+    },
+    "quality_gates": {
+      "valid": true,
+      "score": 1.0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "quality_gates": {
+          "BasicSuccess": {
+            "passed": true,
+            "required": true,
+            "details": {}
+          },
+          "ModelIntegrity": {
+            "passed": true,
+            "required": true,
+            "details": {}
+          },
+          "Performance": {
+            "passed": true,
+            "required": false,
+            "details": {}
+          },
+          "EvolutionQuality": {
+            "passed": true,
+            "required": true,
+            "details": {}
+          }
+        }
+      }
+    }
+  }
+}

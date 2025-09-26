@@ -35,9 +35,14 @@ class MergeTechniques:
         if weights is None:
             weights = [1.0 / len(models)] * len(models)
 
-        # Normalize weights
+        # Normalize weights with safety check for division by zero
         weights = torch.tensor(weights, device=self.device)
-        weights = weights / weights.sum()
+        weights_sum = weights.sum()
+        if weights_sum == 0:
+            # If all weights are zero, use equal weights
+            weights = torch.ones_like(weights) / max(len(weights), 1)
+        else:
+            weights = weights / weights_sum
 
         # Create merged model
         merged = models[0].__class__()
@@ -86,8 +91,9 @@ class MergeTechniques:
                 norm1 = torch.norm(p1)
                 norm2 = torch.norm(p2)
 
-                # Avoid division by zero
-                if norm1 == 0 or norm2 == 0:
+                # Avoid division by zero with epsilon threshold
+                eps = 1e-8
+                if norm1 < eps or norm2 < eps or (norm1 * norm2) < eps:
                     # Fall back to linear interpolation
                     merged_param = (1 - t) * p1 + t * p2
                 else:
@@ -101,9 +107,13 @@ class MergeTechniques:
                     else:
                         # Spherical interpolation
                         sin_theta = torch.sin(theta)
-                        w1 = torch.sin((1 - t) * theta) / sin_theta
-                        w2 = torch.sin(t * theta) / sin_theta
-                        merged_param = w1 * p1 + w2 * p2
+                        if sin_theta < eps:
+                            # sin_theta too small, fall back to linear interpolation
+                            merged_param = (1 - t) * p1 + t * p2
+                        else:
+                            w1 = torch.sin((1 - t) * theta) / sin_theta
+                            w2 = torch.sin(t * theta) / sin_theta
+                            merged_param = w1 * p1 + w2 * p2
 
                 param.data = merged_param.reshape(param.shape)
 
@@ -141,7 +151,7 @@ class MergeTechniques:
                 if num_experts > 0:
                     for i, (is_expert, model_param) in enumerate(zip(expert_mask, params)):
                         if is_expert:
-                            merged_param += model_param / num_experts
+                            merged_param += model_param / max(num_experts, 1)
                 else:
                     # If no experts selected, use average
                     for model_param in params:
@@ -169,7 +179,8 @@ class MergeTechniques:
                 for model in models:
                     model_param = model.state_dict()[name].to(self.device)
                     # Apply mask and rescale
-                    masked_param = model_param * mask / (1 - drop_rate)
+                    divisor = max(1 - drop_rate, 1e-8)  # Prevent division by zero
+                    masked_param = model_param * mask / divisor
                     merged_param += masked_param / len(models)
 
                 param.data = merged_param

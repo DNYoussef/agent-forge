@@ -1,0 +1,138 @@
+{
+  "test_suite": "Phase Performance Testing",
+  "start_time": "2025-09-26T16:29:21.863256",
+  "baseline_metrics": {
+    "baseline_memory_mb": 367.77734375,
+    "baseline_cpu_percent": 0.0,
+    "available_memory_gb": 2.5102806091308594,
+    "cpu_cores": 12,
+    "gpu_available": true,
+    "gpu_memory_gb": 7.99957275390625
+  },
+  "phase_results": {
+    "cognate": {
+      "phase": "cognate",
+      "start_time": "2025-09-26T16:29:21.863256",
+      "benchmarks": {
+        "model_loading_time": 0.4999556541442871,
+        "memory_usage_mb": 0.00390625,
+        "gpu_utilization_percent": 34.04092788696289
+      },
+      "success": true,
+      "performance_score": 0.7954555363972982,
+      "meets_thresholds": {
+        "loading_time": true,
+        "memory_efficiency": true,
+        "gpu_efficiency": false
+      },
+      "end_time": "2025-09-26T16:29:22.484335"
+    },
+    "evomerge": {
+      "phase": "evomerge",
+      "start_time": "2025-09-26T16:29:22.484335",
+      "benchmarks": {
+        "population_processing_times": {
+          "10": 0.09014272689819336,
+          "20": 0.07751321792602539,
+          "50": 0.07679986953735352
+        },
+        "scaling_efficiency": 1.0,
+        "memory_scaling": {
+          "10": -0.40234375,
+          "20": 0.109375,
+          "50": 0.29296875
+        },
+        "parallel_efficiency": 4.0
+      },
+      "success": true,
+      "performance_score": 1.0,
+      "end_time": "2025-09-26T16:29:23.354144"
+    },
+    "training": {
+      "phase": "training",
+      "start_time": "2025-09-26T16:29:23.354144",
+      "benchmarks": {
+        "training_throughput": {
+          "16": 949.7352697259859,
+          "32": 2055.338703255643,
+          "64": 4048.1896546523903
+        }
+      },
+      "success": false,
+      "error": "element 0 of tensors does not require grad and does not have a grad_fn",
+      "end_time": "2025-09-26T16:29:23.956128"
+    },
+    "compression": {
+      "phase": "compression",
+      "start_time": "2025-09-26T16:29:23.956128",
+      "benchmarks": {
+        "compression_methods": {
+          "pruning": {
+            "compression_ratio": 0.7,
+            "size_reduction_mb": 300.00000000000006,
+            "accuracy_preservation": 0.98,
+            "compression_speed_factor": 0.8
+          },
+          "quantization": {
+            "compression_ratio": 0.5,
+            "size_reduction_mb": 500.0,
+            "accuracy_preservation": 0.99,
+            "compression_speed_factor": 0.9
+          },
+          "distillation": {
+            "compression_ratio": 0.6,
+            "size_reduction_mb": 400.0,
+            "accuracy_preservation": 0.985,
+            "compression_speed_factor": 0.7
+          }
+        },
+        "compression_speeds": {
+          "pruning": 0.06297779083251953,
+          "quantization": 0.055808305740356445,
+          "distillation": 0.06242966651916504
+        },
+        "quality_preservation": {
+          "pruning": 0.93,
+          "quantization": 0.96,
+          "distillation": 0.94
+        },
+        "memory_reduction": {
+          "pruning": {
+            "before_mb": 2000,
+            "after_mb": 800.0,
+            "reduction_mb": 1200.0,
+            "reduction_percent": 60.0
+          },
+          "quantization": {
+            "before_mb": 2000,
+            "after_mb": 500.0,
+            "reduction_mb": 1500.0,
+            "reduction_percent": 75.0
+          },
+          "distillation": {
+            "before_mb": 2000,
+            "after_mb": 1000.0,
+            "reduction_mb": 1000.0,
+            "reduction_percent": 50.0
+          }
+        }
+      },
+      "success": true,
+      "performance_score": 0.8173333333333332,
+      "end_time": "2025-09-26T16:29:24.314470"
+    }
+  },
+  "overall_performance": {
+    "overall_score": 0.8709296232435438,
+    "performance_grade": "B",
+    "successful_phases": 3,
+    "total_phases": 4,
+    "success_rate": 0.75,
+    "individual_scores": {
+      "cognate": 0.7954555363972982,
+      "evomerge": 1.0,
+      "training": 0.0,
+      "compression": 0.8173333333333332
+    }
+  }
+}

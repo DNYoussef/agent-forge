@@ -1,0 +1,2302 @@
+{
+  "summary": {
+    "files_scanned": 431,
+    "files_with_conflicts": 326,
+    "total_conflicts_resolved": 3006,
+    "backup_files_removed": 7
+  },
+  "file_details": {
+    "node_modules\\playwright\\lib\\transform\\babelBundleImpl.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\argparse\\argparse.js": {
+      "conflicts_resolved": 42,
+      "details": [
+        "Removed 42 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\didyoumean\\didYouMean-1.2.1.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\exit\\test\\exit_test.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\iconv-lite\\encodings\\dbcs-codec.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\iconv-lite\\encodings\\dbcs-data.js": {
+      "conflicts_resolved": 4,
+      "details": [
+        "Removed 4 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\iconv-lite\\encodings\\utf16.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\iconv-lite\\lib\\extend-node.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\iconv-lite\\lib\\streams.js": {
+      "conflicts_resolved": 3,
+      "details": [
+        "Removed 3 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\sucrase\\dist\\esm\\parser\\plugins\\flow.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\sucrase\\dist\\esm\\parser\\plugins\\typescript.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\sucrase\\dist\\esm\\parser\\plugins\\jsx\\index.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\sucrase\\dist\\parser\\plugins\\flow.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\sucrase\\dist\\parser\\plugins\\typescript.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\sucrase\\dist\\parser\\plugins\\jsx\\index.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\buffer\\index.js": {
+      "conflicts_resolved": 3,
+      "details": [
+        "Removed 3 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\@monogrid\\gainmap-js\\dist\\libultrahdr.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\@monogrid\\gainmap-js\\libultrahdr-wasm\\build\\libultrahdr-debug.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\@monogrid\\gainmap-js\\libultrahdr-wasm\\build\\libultrahdr-esm.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\@monogrid\\gainmap-js\\libultrahdr-wasm\\build\\libultrahdr.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\framer-motion\\dist\\framer-motion.dev.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\framer-motion\\dist\\cjs\\feature-bundle-DzuUB-G1.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\next\\dist\\build\\webpack\\plugins\\next-types-plugin\\index.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\next\\dist\\esm\\build\\webpack\\plugins\\next-types-plugin\\index.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\playwright\\lib\\transform\\babelBundleImpl.js": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\stats-gl\\node_modules\\three\\examples\\jsm\\libs\\opentype.module.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\three\\examples\\jsm\\libs\\opentype.module.js": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\three-stdlib\\shaders\\FXAAShader.js": {
+      "conflicts_resolved": 8,
+      "details": [
+        "Removed 8 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "IMPLEMENTATION_COMPLETE.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "QUICKSTART_API.md": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "docs\\AGENT_FORGE_INTEGRATION_SUMMARY.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "docs\\IMPLEMENTATION_COMPLETE.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "docs\\QUICKSTART_API.md": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\PHASE7_COMPREHENSIVE_AUDIT_REPORT.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\validation\\working_report.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "models\\cognate\\README.md": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\validation\\working_report.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\accepts\\HISTORY.md": {
+      "conflicts_resolved": 36,
+      "details": [
+        "Removed 36 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\anymatch\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\argparse\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\body-parser\\HISTORY.md": {
+      "conflicts_resolved": 70,
+      "details": [
+        "Removed 70 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\bytes\\History.md": {
+      "conflicts_resolved": 17,
+      "details": [
+        "Removed 17 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\co\\History.md": {
+      "conflicts_resolved": 30,
+      "details": [
+        "Removed 30 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\content-disposition\\HISTORY.md": {
+      "conflicts_resolved": 12,
+      "details": [
+        "Removed 12 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\content-type\\HISTORY.md": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\cookie-signature\\History.md": {
+      "conflicts_resolved": 7,
+      "details": [
+        "Removed 7 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\depd\\History.md": {
+      "conflicts_resolved": 17,
+      "details": [
+        "Removed 17 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\didyoumean\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\etag\\HISTORY.md": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\express\\History.md": {
+      "conflicts_resolved": 285,
+      "details": [
+        "Removed 285 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\finalhandler\\HISTORY.md": {
+      "conflicts_resolved": 31,
+      "details": [
+        "Removed 31 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\forwarded\\HISTORY.md": {
+      "conflicts_resolved": 4,
+      "details": [
+        "Removed 4 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\fresh\\HISTORY.md": {
+      "conflicts_resolved": 12,
+      "details": [
+        "Removed 12 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\http-errors\\HISTORY.md": {
+      "conflicts_resolved": 28,
+      "details": [
+        "Removed 28 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\imurmurhash\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\js-tokens\\README.md": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\js-yaml\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\makeerror\\readme.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\media-typer\\HISTORY.md": {
+      "conflicts_resolved": 4,
+      "details": [
+        "Removed 4 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\merge-descriptors\\HISTORY.md": {
+      "conflicts_resolved": 4,
+      "details": [
+        "Removed 4 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\methods\\HISTORY.md": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\mime-db\\HISTORY.md": {
+      "conflicts_resolved": 61,
+      "details": [
+        "Removed 61 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\mime-types\\HISTORY.md": {
+      "conflicts_resolved": 55,
+      "details": [
+        "Removed 55 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\mz\\HISTORY.md": {
+      "conflicts_resolved": 13,
+      "details": [
+        "Removed 13 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\natural-compare\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\negotiator\\HISTORY.md": {
+      "conflicts_resolved": 18,
+      "details": [
+        "Removed 18 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\on-finished\\HISTORY.md": {
+      "conflicts_resolved": 18,
+      "details": [
+        "Removed 18 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\parseurl\\HISTORY.md": {
+      "conflicts_resolved": 11,
+      "details": [
+        "Removed 11 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\proxy-addr\\HISTORY.md": {
+      "conflicts_resolved": 27,
+      "details": [
+        "Removed 27 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\range-parser\\HISTORY.md": {
+      "conflicts_resolved": 11,
+      "details": [
+        "Removed 11 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\raw-body\\HISTORY.md": {
+      "conflicts_resolved": 48,
+      "details": [
+        "Removed 48 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\semver\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\send\\HISTORY.md": {
+      "conflicts_resolved": 60,
+      "details": [
+        "Removed 60 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\serve-static\\HISTORY.md": {
+      "conflicts_resolved": 62,
+      "details": [
+        "Removed 62 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\statuses\\HISTORY.md": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\thenify\\History.md": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\thenify-all\\History.md": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\toidentifier\\HISTORY.md": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\type-is\\HISTORY.md": {
+      "conflicts_resolved": 36,
+      "details": [
+        "Removed 36 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\unpipe\\HISTORY.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\util-deprecate\\History.md": {
+      "conflicts_resolved": 3,
+      "details": [
+        "Removed 3 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\util-deprecate\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\vary\\HISTORY.md": {
+      "conflicts_resolved": 7,
+      "details": [
+        "Removed 7 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\walker\\readme.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\@babel\\core\\node_modules\\semver\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\@babel\\helper-compilation-targets\\node_modules\\semver\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\@istanbuljs\\load-nyc-config\\node_modules\\argparse\\README.md": {
+      "conflicts_resolved": 8,
+      "details": [
+        "Removed 8 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\@istanbuljs\\load-nyc-config\\node_modules\\js-yaml\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\babel-plugin-istanbul\\node_modules\\semver\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\body-parser\\node_modules\\debug\\CHANGELOG.md": {
+      "conflicts_resolved": 47,
+      "details": [
+        "Removed 47 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\express\\node_modules\\debug\\CHANGELOG.md": {
+      "conflicts_resolved": 47,
+      "details": [
+        "Removed 47 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\finalhandler\\node_modules\\debug\\CHANGELOG.md": {
+      "conflicts_resolved": 47,
+      "details": [
+        "Removed 47 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\send\\node_modules\\debug\\CHANGELOG.md": {
+      "conflicts_resolved": 47,
+      "details": [
+        "Removed 47 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\send\\node_modules\\encodeurl\\HISTORY.md": {
+      "conflicts_resolved": 3,
+      "details": [
+        "Removed 3 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\base64-js\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\draco3d\\README.md": {
+      "conflicts_resolved": 4,
+      "details": [
+        "Removed 4 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\semver\\README.md": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\debug\\execute-queen-security-fix.ts": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\@types\\express\\index.d.ts": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\risk-dashboard\\node_modules\\@types\\json-schema\\index.d.ts": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\swarm\\reasoning\\ConsultationClaritySystem.ts": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "node_modules\\playwright\\ThirdPartyNotices.txt": {
+      "conflicts_resolved": 449,
+      "details": [
+        "Removed 449 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "node_modules\\playwright-core\\ThirdPartyNotices.txt": {
+      "conflicts_resolved": 93,
+      "details": [
+        "Removed 93 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\security\\dfars_policy.txt": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\playwright\\ThirdPartyNotices.txt": {
+      "conflicts_resolved": 449,
+      "details": [
+        "Removed 449 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\web\\dashboard\\node_modules\\playwright-core\\ThirdPartyNotices.txt": {
+      "conflicts_resolved": 93,
+      "details": [
+        "Removed 93 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\self-dogfooding\\test_output.txt": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "final_compression.py": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "websocket_progress.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\final_compression.py": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\adas.py": {
+      "conflicts_resolved": 16,
+      "details": [
+        "Removed 16 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\bitnet_compression.py": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\final_compression.py": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\forge_training.py": {
+      "conflicts_resolved": 22,
+      "details": [
+        "Removed 22 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\quietstar.py": {
+      "conflicts_resolved": 18,
+      "details": [
+        "Removed 18 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "scripts\\agent_forge_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "scripts\\final_compression.py": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\agent_forge_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\api_server.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\websocket_progress.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\audit_phase7_god_object_decomposition.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\isolated_phase7_audit.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\naming_convention_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\regression_test_runner.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\standalone_facade_test.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\adas.py": {
+      "conflicts_resolved": 16,
+      "details": [
+        "Removed 16 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\bitnet_compression.py": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\final_compression.py": {
+      "conflicts_resolved": 14,
+      "details": [
+        "Removed 14 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\forge_training.py": {
+      "conflicts_resolved": 22,
+      "details": [
+        "Removed 22 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\quietstar.py": {
+      "conflicts_resolved": 18,
+      "details": [
+        "Removed 18 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase3_quietstar\\architecture.py": {
+      "conflicts_resolved": 23,
+      "details": [
+        "Removed 23 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase3_quietstar\\test_quietstar.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\bitnet_architecture.py": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\bitnet_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\performance_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\validate_performance_targets.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\bitnet_training.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\checkpoint_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\distributed_trainer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\grokfast_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\integration_test.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\performance_monitor.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\training_architecture.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\training_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\training_pipeline.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\benchmarks\\baseline_comparison.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\benchmarks\\performance_suite.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\config\\bitnet_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\config\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\core\\bitnet_architecture.py": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\core\\bitnet_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\core\\bitnet_layers.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\core\\performance_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\core\\quantization.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\core\\validate_performance_targets.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\optimization\\hardware_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\optimization\\inference_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\optimization\\memory_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\optimization\\training_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\pipeline\\compression.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\pipeline\\integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\pipeline\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\profiling\\memory_profiler.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\profiling\\speed_profiler.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\tests\\test_bitnet_core.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\tests\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\utils\\optimization.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase4_bitnet\\utils\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\bitnet_training.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\checkpoint_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\distributed_trainer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\grokfast_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\integration_test.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\performance_monitor.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\training_architecture.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\training_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\core\\training_pipeline.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase5_training\\integration\\phase5_pipeline.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\baking_architecture.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\baking_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\graph_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\hardware_adapter.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\inference_accelerator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\model_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\performance_profiler.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\quality_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\core\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\emergency\\agent_adapters.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\emergency\\compliance_remediation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\emergency\\core_infrastructure.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\emergency\\emergency_remediation_report.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\emergency\\integration_fixes.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\emergency\\performance_fixes.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\emergency\\quality_gates.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\emergency\\system_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\integration\\integration_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\baking_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\comprehensive_phase6_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\phase6_performance_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\test_phase6_baking_architecture.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\test_phase6_inference.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\test_phase6_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\test_phase6_performance.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\test_phase6_quality.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\tests\\test_runner.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\validation\\compliance_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\validation\\integration_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\validation\\performance_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\validation\\production_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\validation\\quality_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase6_baking\\validation\\system_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase7_adas\\performance\\benchmark_suite.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase7_adas\\performance\\edge_profiler.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase7_adas\\performance\\integration.py": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase7_adas\\performance\\latency_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase7_adas\\performance\\resource_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "agent_forge\\phases\\phase7_adas\\performance\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase3_quietstar\\architecture.py": {
+      "conflicts_resolved": 23,
+      "details": [
+        "Removed 23 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase3_quietstar\\test_quietstar.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\bitnet_architecture.py": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\bitnet_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\performance_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\validate_performance_targets.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\bitnet_training.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\checkpoint_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\distributed_trainer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\grokfast_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\integration_test.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\performance_monitor.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\training_architecture.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\training_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\training_pipeline.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\benchmarks\\baseline_comparison.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\benchmarks\\performance_suite.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\config\\bitnet_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\config\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\core\\bitnet_architecture.py": {
+      "conflicts_resolved": 6,
+      "details": [
+        "Removed 6 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\core\\bitnet_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\core\\bitnet_layers.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\core\\performance_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\core\\quantization.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\core\\validate_performance_targets.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\optimization\\hardware_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\optimization\\inference_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\optimization\\memory_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\optimization\\training_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\pipeline\\compression.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\pipeline\\integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\pipeline\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\profiling\\memory_profiler.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\profiling\\speed_profiler.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\tests\\test_bitnet_core.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\tests\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\utils\\optimization.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase4_bitnet\\utils\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\bitnet_training.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\checkpoint_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\distributed_trainer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\grokfast_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\integration_test.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\performance_monitor.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\training_architecture.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\training_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\core\\training_pipeline.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase5_training\\integration\\phase5_pipeline.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\baking_architecture.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\baking_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\graph_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\hardware_adapter.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\inference_accelerator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\model_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\performance_profiler.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\quality_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\core\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\emergency\\agent_adapters.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\emergency\\compliance_remediation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\emergency\\core_infrastructure.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\emergency\\emergency_remediation_report.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\emergency\\integration_fixes.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\emergency\\performance_fixes.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\emergency\\quality_gates.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\emergency\\system_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\integration\\integration_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\baking_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\comprehensive_phase6_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\phase6_performance_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\test_phase6_baking_architecture.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\test_phase6_inference.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\test_phase6_integration.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\test_phase6_performance.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\test_phase6_quality.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\tests\\test_runner.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\validation\\compliance_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\validation\\integration_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\validation\\performance_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\validation\\production_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\validation\\quality_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase6_baking\\validation\\system_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase7_adas\\performance\\benchmark_suite.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase7_adas\\performance\\edge_profiler.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase7_adas\\performance\\integration.py": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase7_adas\\performance\\latency_optimizer.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase7_adas\\performance\\resource_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "phases\\phase7_adas\\performance\\__init__.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "scripts\\api\\websocket_progress.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\byzantium\\comprehensive_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\constants\\base.py": {
+      "conflicts_resolved": 23,
+      "details": [
+        "Removed 23 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\patterns\\command_base.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\patterns\\factory_base.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\quiet_star\\algorithms.py": {
+      "conflicts_resolved": 13,
+      "details": [
+        "Removed 13 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\security\\dfars_config.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\validation\\realistic_quality_assessor.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\analyzers\\nasa\\nasa_compliance_auditor.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\cli\\commands\\cli_commands.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\safety\\core\\safety_manager.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\safety\\monitoring\\availability_monitor.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\safety\\monitoring\\redundancy_validator.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "src\\safety\\recovery\\recovery_system.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\batch3_validation\\run_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\safety\\test_import_validation.py": {
+      "conflicts_resolved": 1,
+      "details": [
+        "Removed 1 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "start_cognate_system.bat": {
+      "conflicts_resolved": 2,
+      "details": [
+        "Removed 2 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\wrapper-integration\\connascence-wrapper-enhanced.bat": {
+      "conflicts_resolved": 4,
+      "details": [
+        "Removed 4 conflict separators",
+        "File updated successfully"
+      ]
+    },
+    "tests\\wrapper-integration\\wrapper-test-suite.bat": {
+      "conflicts_resolved": 18,
+      "details": [
+        "Removed 18 conflict separators",
+        "File updated successfully"
+      ]
+    }
+  },
+  "backup_files_removed": [
+    "agent_forge\\phases\\cognate_pretrain\\pretrain_three_models.py.backup",
+    "src\\coordination\\loop_orchestrator.py.backup",
+    "src\\coordination\\queen_coordinator.py.backup",
+    "src\\flow\\config\\agent-model-registry.js.backup",
+    "src\\intelligence\\neural_networks\\rl\\strategy_optimizer.py.backup",
+    "src\\services\\desktop-agent\\computer-use\\computer-use.service.ts.backup",
+    "src\\web\\dashboard\\app\\phases\\bitnet\\page.tsx.backup"
+  ],
+  "errors": []
+}

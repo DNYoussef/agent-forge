@@ -1,7 +1,6 @@
 """
 Base Constants Module - Single Source of Truth
-==============================================
-
+========================================
 This module contains ALL core constants with NO external imports.
 This eliminates circular dependencies by providing a single, import-free
 source of constants that all other modules can safely import from.
@@ -15,10 +14,8 @@ Organization:
 - Financial Constants
 """
 
-# ============================================================================
-# SYSTEM LIMITS
-# ============================================================================
-
+# ======================================================================# SYSTEM LIMITS
+# ======================================================================
 # Core Limits (Most imported - 158+ references)
 MAXIMUM_NESTED_DEPTH = 5
 MAXIMUM_RETRY_ATTEMPTS = 5
@@ -41,10 +38,8 @@ DEFAULT_MAX_ITEMS = 10000
 MAX_FILES_PER_BATCH = 100
 MAX_CONCURRENT_REQUESTS = 1000
 
-# ============================================================================
-# NASA & COMPLIANCE CONSTANTS
-# ============================================================================
-
+# ======================================================================# NASA & COMPLIANCE CONSTANTS
+# ======================================================================
 # NASA Power of Ten Rules
 NASA_POT10_TARGET_COMPLIANCE_THRESHOLD = 0.92
 NASA_POT10_MINIMUM_COMPLIANCE_THRESHOLD = 0.85
@@ -64,10 +59,8 @@ REGULATORY_FACTUALITY_REQUIREMENT = 0.90
 AUDIT_TRAIL_COMPLETENESS_THRESHOLD = 0.95
 SECURITY_SCAN_PASS_THRESHOLD = 0.95
 
-# ============================================================================
-# QUALITY THRESHOLDS
-# ============================================================================
-
+# ======================================================================# QUALITY THRESHOLDS
+# ======================================================================
 # Test Coverage
 MINIMUM_TEST_COVERAGE_PERCENTAGE = 80.0
 MIN_TEST_COVERAGE = 80.0
@@ -97,10 +90,8 @@ MECE_CLUSTER_MIN_SIZE = 3
 THEATER_DETECTION_WARNING_THRESHOLD = 0.30
 THEATER_DETECTION_FAILURE_THRESHOLD = 0.60
 
-# ============================================================================
-# GOD OBJECT DETECTION
-# ============================================================================
-
+# ======================================================================# GOD OBJECT DETECTION
+# ======================================================================
 GOD_OBJECT_METHOD_THRESHOLD = 20
 GOD_OBJECT_LOC_THRESHOLD = 500
 GOD_OBJECT_PARAMETER_THRESHOLD = 10
@@ -111,10 +102,8 @@ CONNASCENCE_ANALYSIS_THRESHOLD = 0.85
 MAGIC_LITERAL_THRESHOLD = 3
 POSITION_COUPLING_THRESHOLD = 4
 
-# ============================================================================
-# PERFORMANCE CONSTANTS
-# ============================================================================
-
+# ======================================================================# PERFORMANCE CONSTANTS
+# ======================================================================
 # Caching
 CACHE_SIZE_MB = 100
 CACHE_EXPIRY_HOURS = 24
@@ -132,10 +121,8 @@ BATCH_PROCESSING_SIZE = 100
 CONCURRENT_TASK_LIMIT = 10
 MAXIMUM_QUEUE_SIZE = 1000
 
-# ============================================================================
-# FINANCIAL CONSTANTS
-# ============================================================================
-
+# ======================================================================# FINANCIAL CONSTANTS
+# ======================================================================
 # Trading Parameters
 MINIMUM_TRADE_THRESHOLD = 100
 KELLY_CRITERION_FRACTION = 0.25
@@ -157,10 +144,8 @@ MOVING_AVERAGE_PERIODS = 20
 VOLATILITY_LOOKBACK_DAYS = 252
 CORRELATION_THRESHOLD = 0.7
 
-# ============================================================================
-# BUSINESS RULES
-# ============================================================================
-
+# ======================================================================# BUSINESS RULES
+# ======================================================================
 # Retry Logic
 MAX_RETRIES = 5
 RETRY_BACKOFF_MULTIPLIER = 2.0
@@ -175,18 +160,14 @@ MAXIMUM_INPUT_SIZE_MB = 10
 SUCCESS = 0
 FAILURE = 1
 
-# ============================================================================
-# CI/CD ADJUSTED THRESHOLDS (TECHNICAL DEBT)
-# ============================================================================
-
+# ======================================================================# CI/CD ADJUSTED THRESHOLDS (TECHNICAL DEBT)
+# ======================================================================
 # Temporary adjustments for CI/CD pipeline
 GOD_OBJECT_METHOD_THRESHOLD_CI = 19
 OVERALL_QUALITY_THRESHOLD_CI = 0.55
 
-# ============================================================================
-# VIOLATION WEIGHTS
-# ============================================================================
-
+# ======================================================================# VIOLATION WEIGHTS
+# ======================================================================
 VIOLATION_WEIGHTS = {
     "critical": 10,
     "high": 5,
@@ -194,10 +175,8 @@ VIOLATION_WEIGHTS = {
     "low": 1
 }
 
-# ============================================================================
-# SEVERITY LEVELS
-# ============================================================================
-
+# ======================================================================# SEVERITY LEVELS
+# ======================================================================
 SEVERITY_LEVELS = {
     10: "CATASTROPHIC",  # God Objects >1000 LOC
     9: "CRITICAL",      # God Objects, Globals >5
@@ -211,10 +190,8 @@ SEVERITY_LEVELS = {
     1: "NOTICE",        # Documentation
 }
 
-# ============================================================================
-# FILE PATTERNS
-# ============================================================================
-
+# ======================================================================# FILE PATTERNS
+# ======================================================================
 SUPPORTED_EXTENSIONS = {
     "python": [".py", ".pyx", ".pyi"],
     "javascript": [".js", ".mjs", ".jsx", ".ts", ".tsx"],
