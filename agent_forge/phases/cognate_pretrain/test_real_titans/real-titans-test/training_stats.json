@@ -1,0 +1,6 @@
+{
+  "total_steps": 100,
+  "total_loss": 100.0,
+  "best_eval_loss": Infinity,
+  "training_time": 3.0388638973236084
+}

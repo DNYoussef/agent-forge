@@ -1,0 +1,142 @@
+[
+  {
+    "phase": "cognate",
+    "phaseId": 1,
+    "title": "Cognate (Model Creation)",
+    "hasPhaseController": true,
+    "hasConfigControls": true,
+    "has3DAnimation": false,
+    "hasStartButton": true,
+    "hasMetricsDisplay": false,
+    "missingControls": [
+      "modelType",
+      "vocabSize",
+      "learningRate"
+    ],
+    "foundControls": [
+      "grokfast"
+    ],
+    "apiEndpointExists": true
+  },
+  {
+    "phase": "evomerge",
+    "phaseId": 2,
+    "title": "EvoMerge (Evolution)",
+    "hasPhaseController": false,
+    "hasConfigControls": false,
+    "has3DAnimation": true,
+    "hasStartButton": false,
+    "hasMetricsDisplay": false,
+    "missingControls": [
+      "generations",
+      "populationSize",
+      "mutationRate",
+      "techniques"
+    ],
+    "foundControls": [],
+    "apiEndpointExists": true
+  },
+  {
+    "phase": "quietstar",
+    "phaseId": 3,
+    "title": "Quiet-STaR (Reasoning)",
+    "hasPhaseController": false,
+    "hasConfigControls": false,
+    "has3DAnimation": true,
+    "hasStartButton": false,
+    "hasMetricsDisplay": false,
+    "missingControls": [
+      "thinkingTokens",
+      "mixingHead",
+      "rewardFunction"
+    ],
+    "foundControls": [],
+    "apiEndpointExists": true
+  },
+  {
+    "phase": "bitnet",
+    "phaseId": 4,
+    "title": "BitNet (Compression)",
+    "hasPhaseController": false,
+    "hasConfigControls": false,
+    "has3DAnimation": true,
+    "hasStartButton": false,
+    "hasMetricsDisplay": false,
+    "missingControls": [
+      "quantizationBits",
+      "optimizationProfile",
+      "compressionRatio"
+    ],
+    "foundControls": [],
+    "apiEndpointExists": true
+  },
+  {
+    "phase": "forge",
+    "phaseId": 5,
+    "title": "Forge Training",
+    "hasPhaseController": false,
+    "hasConfigControls": false,
+    "has3DAnimation": true,
+    "hasStartButton": false,
+    "hasMetricsDisplay": false,
+    "missingControls": [
+      "epochs",
+      "batchSize",
+      "optimizer",
+      "scheduler"
+    ],
+    "foundControls": [],
+    "apiEndpointExists": true
+  },
+  {
+    "phase": "baking",
+    "phaseId": 6,
+    "title": "Tool & Persona Baking",
+    "hasPhaseController": false,
+    "hasConfigControls": false,
+    "has3DAnimation": false,
+    "hasStartButton": false,
+    "hasMetricsDisplay": false,
+    "missingControls": [
+      "toolSelection",
+      "personaConfig",
+      "integrationMode"
+    ],
+    "foundControls": [],
+    "apiEndpointExists": true
+  },
+  {
+    "phase": "adas",
+    "phaseId": 7,
+    "title": "ADAS (Architecture Search)",
+    "hasPhaseController": false,
+    "hasConfigControls": false,
+    "has3DAnimation": true,
+    "hasStartButton": false,
+    "hasMetricsDisplay": false,
+    "missingControls": [
+      "searchSpace",
+      "searchStrategy",
+      "hardwareTarget"
+    ],
+    "foundControls": [],
+    "apiEndpointExists": true
+  },
+  {
+    "phase": "final",
+    "phaseId": 8,
+    "title": "Final Compression",
+    "hasPhaseController": false,
+    "hasConfigControls": false,
+    "has3DAnimation": true,
+    "hasStartButton": false,
+    "hasMetricsDisplay": false,
+    "missingControls": [
+      "seedLMConfig",
+      "vptqSettings",
+      "deploymentTarget"
+    ],
+    "foundControls": [],
+    "apiEndpointExists": true
+  }
+]

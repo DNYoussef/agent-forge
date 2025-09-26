@@ -1,0 +1,15 @@
+isort>=5.0.0               # Import sorting
+
+# WebSocket Integration Dependencies (Agent Forge)
+fastapi>=0.104.1            # Modern async web framework for WebSocket server
+uvicorn[standard]>=0.24.0   # ASGI server for FastAPI
+websockets>=12.0            # WebSocket protocol implementation
+python-socketio>=5.10.0     # Socket.IO server and client
+python-multipart>=0.0.6     # Multipart form data support
+aiohttp>=3.9.0              # Alternative async HTTP client/server
+pydantic>=2.5.0             # Data validation and serialization
+aiofiles>=23.2.1            # Async file operations
+
+# Flask compatibility (existing HTTP server)
+Flask>=2.3.0                # Web framework for HTTP fallback
+Flask-CORS>=4.0.0           # CORS support for Flask

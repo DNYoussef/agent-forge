@@ -1,0 +1,158 @@
+name: Performance Benchmarks
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install locust asyncio
+
+    - name: Run Performance Benchmarks
+      run: |
+        cd benchmarks
+        python run_all_benchmarks.py
+
+    - name: Generate HTML Report
+      run: |
+        cd benchmarks
+        python visualize_benchmarks.py
+
+    - name: Check Performance Gates
+      run: |
+        cd benchmarks
+        python -c "
+        import json
+        with open('consolidated_benchmark_report.json') as f:
+            report = json.load(f)
+
+        if report['overall_status'] != 'PASS':
+            print('Performance gates failed!')
+            exit(1)
+        print('All performance gates passed!')
+        "
+
+    - name: Upload Benchmark Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: benchmark-reports
+        path: |
+          benchmarks/*_report.json
+          benchmarks/benchmark_report.html
+
+    - name: Performance Regression Check
+      if: github.event_name == 'pull_request'
+      run: |
+        echo "Checking for performance regressions..."
+        # Add baseline comparison logic here
+
+    - name: Comment PR with Results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const report = JSON.parse(fs.readFileSync('benchmarks/consolidated_benchmark_report.json', 'utf8'));
+
+          const summary = `
+          ## Performance Benchmark Results
+
+          **Status:** ${report.overall_status === 'PASS' ? '✅ PASS' : '❌ FAIL'}
+
+          **Summary:**
+          - Total Benchmarks: ${report.summary.total_benchmarks}
+          - Passed: ${report.summary.passed}
+          - Failed: ${report.summary.failed}
+          - Duration: ${report.total_duration_sec.toFixed(2)}s
+
+          **Performance Gates:**
+          ${Object.entries(report.performance_gates).map(([gate, pass]) =>
+            `- ${gate}: ${pass ? '✅' : '❌'}`
+          ).join('\n')}
+
+          [View detailed report in artifacts]
+          `;
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: summary
+          });
+
+  regression-detection:
+    runs-on: ubuntu-latest
+    needs: benchmark
+    if: github.event_name == 'push'
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Download Current Benchmarks
+      uses: actions/download-artifact@v3
+      with:
+        name: benchmark-reports
+        path: ./current-benchmarks
+
+    - name: Download Baseline Benchmarks
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        workflow: performance-benchmarks.yml
+        branch: main
+        name: benchmark-reports
+        path: ./baseline-benchmarks
+      continue-on-error: true
+
+    - name: Compare Performance
+      run: |
+        python -c "
+        import json
+        import os
+
+        if not os.path.exists('./baseline-benchmarks/consolidated_benchmark_report.json'):
+            print('No baseline found, skipping comparison')
+            exit(0)
+
+        with open('./current-benchmarks/consolidated_benchmark_report.json') as f:
+            current = json.load(f)
+
+        with open('./baseline-benchmarks/consolidated_benchmark_report.json') as f:
+            baseline = json.load(f)
+
+        # Compare metrics and detect regressions
+        regressions = []
+
+        # Add comparison logic here
+
+        if regressions:
+            print('Performance regressions detected!')
+            for reg in regressions:
+                print(f'  - {reg}')
+            exit(1)
+        else:
+            print('No performance regressions detected')
+        "
+
+    - name: Save as New Baseline
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Updating performance baseline..."

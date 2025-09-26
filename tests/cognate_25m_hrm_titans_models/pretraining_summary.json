@@ -1,0 +1,55 @@
+{
+  "total_models": 3,
+  "successful_models": 3,
+  "total_parameters_per_model": 24788199,
+  "training_config": {
+    "model_size": "25M",
+    "vocab_size": 32000,
+    "hidden_dim": 216,
+    "num_layers": 11,
+    "num_heads": 4,
+    "t_max_train": 16,
+    "t_min_train": 8,
+    "t_max_infer": 6,
+    "t_min_infer": 2,
+    "short_ratio": 0.45,
+    "long_ratio": 0.55,
+    "batch_size": 8,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.1,
+    "warmup_steps": 2000,
+    "max_steps": 2000,
+    "beta1": 0.9,
+    "beta2": 0.95,
+    "grokfast_alpha": 0.98,
+    "grokfast_lamb": 2.0,
+    "grokfast_warmup": 2000,
+    "mixed_precision": true,
+    "gradient_accumulation_steps": 4,
+    "max_grad_norm": 1.0,
+    "memory_bank_size": 100000,
+    "memory_dim": 216,
+    "checkpoint_dir": "./checkpoints"
+  },
+  "model_stats": {
+    "cognate-25m-titans-1": {
+      "total_steps": 501,
+      "total_loss": 501.0,
+      "best_eval_loss": Infinity,
+      "training_time": 5.698592185974121
+    },
+    "cognate-25m-titans-2": {
+      "total_steps": 501,
+      "total_loss": 501.0,
+      "best_eval_loss": Infinity,
+      "training_time": 4.249964237213135
+    },
+    "cognate-25m-titans-3": {
+      "total_steps": 501,
+      "total_loss": 501.0,
+      "best_eval_loss": Infinity,
+      "training_time": 4.4480602741241455
+    }
+  },
+  "evomerge_ready": true
+}

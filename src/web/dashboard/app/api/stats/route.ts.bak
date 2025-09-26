@@ -1,0 +1,12 @@
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  const stats = {
+    totalAgents: Math.floor(Math.random() * 1000) + 500,
+    successRate: Math.floor(Math.random() * 15) + 85,
+    activePipelines: Math.floor(Math.random() * 20) + 5,
+    avgPipelineTime: Math.floor(Math.random() * 30) + 15
+  };
+
+  return NextResponse.json(stats);
+}

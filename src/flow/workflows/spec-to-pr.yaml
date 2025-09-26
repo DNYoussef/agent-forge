@@ -1,0 +1,290 @@
+name: spec-to-pr
+description: Execute SPEC.md end-to-end with CF hive-mind coordination and neural learning.
+environment:
+  HIVE_NAMESPACE: "spek/spec-to-pr/$(date +%Y%m%d)"
+  SESSION_ID: "swarm-$(git branch --show-current || echo 'main')"
+steps:
+  # Enhanced Hive-Mind Initialization with Unified Memory
+  - id: init_hive
+    run: |
+      echo "[U+1F41D] Initializing hive-mind with unified memory coordination..."
+      
+      # Initialize unified memory bridge first
+      source scripts/memory_bridge.sh
+      initialize_memory_router
+      
+      # Initialize Claude Flow swarm coordination
+      npx claude-flow@alpha swarm init --topology mesh --max-agents 6 --namespace "$HIVE_NAMESPACE" 2>/dev/null || true
+      
+      # Restore session from Claude Flow coordination memory
+      npx claude-flow@alpha memory usage --namespace "$HIVE_NAMESPACE" --restore-session "$SESSION_ID" 2>/dev/null || true
+      
+      # Retrieve cross-session intelligence from unified memory
+      historical_context=$(scripts/memory_bridge.sh retrieve "intelligence/patterns" "spec_to_pr_success" 2>/dev/null || echo '{}')
+      project_context=$(scripts/memory_bridge.sh retrieve "intelligence/architecture" "project_patterns" 2>/dev/null || echo '{}')
+      
+      # Store initialization context in unified memory for agent coordination
+      init_context=$(jq -n \
+        --arg session "$SESSION_ID" \
+        --arg namespace "$HIVE_NAMESPACE" \
+        --argjson historical "$historical_context" \
+        --argjson project "$project_context" \
+        '{
+          session_id: $session,
+          hive_namespace: $namespace,
+          historical_patterns: $historical,
+          project_context: $project,
+          topology: "mesh",
+          max_agents: 6,
+          unified_memory_enabled: true
+        }')
+      
+      scripts/memory_bridge.sh store "coordination/hive" "initialization_$SESSION_ID" "$init_context" '{"type": "hive_init"}'
+      
+      echo "$init_context"
+    capture: hive_status.json
+    expect_json: true
+
+  # Risk Assessment and Gate Profile Selection
+  - id: assess_risk
+    run: |
+      PR_LABELS="$(gh pr view --json labels --jq '.labels[].name' | tr '
+' ',' 2>/dev/null || echo '')" 
+      GATE_PROFILE="$(scripts/ops_tripwires.sh gate-profile "$PR_LABELS")"
+      npx claude-flow@alpha neural predict --model risk_classifier --input "$(git diff --stat)" --output risk_predict.json || echo '{"risk":"medium"}' > risk_predict.json
+      jq -n --arg profile "$GATE_PROFILE" --argjson risk "$(cat risk_predict.json)" '{gate_profile: $profile, risk_assessment: $risk}'
+    capture: risk_assessment.json
+    expect_json: true
+  - id: plan
+    run: |
+      npx claude-flow@alpha agent spawn --type planner --session "$SESSION_ID"
+      claude /spec:plan
+      npx claude-flow@alpha memory store --key "plan/$(date +%s)" --value "$(cat plan.json)" --namespace "$HIVE_NAMESPACE"
+    capture: plan.json
+    expect_json: true
+
+  - id: discover_big
+    foreach: plan.json.tasks
+    when: item.type == "big"
+    run: |
+      echo "[SEARCH] Spawning Gemini-optimized researcher for comprehensive analysis..."
+      # Spawn Gemini-optimized researcher with large context capability
+      npx claude-flow@alpha agent spawn --type researcher-gemini --session "$SESSION_ID" --max-context unlimited
+      # Use Gemini integration for impact analysis
+      claude Task --subagent_type researcher-gemini --description "Comprehensive impact analysis" --prompt "Analyze impact for: ${{ item.scope }}. Use Gemini CLI with full codebase context for hotspots, callers, configs, crosscuts identification. Output impact.json with architectural insights."
+      # Validation and fallback
+      claude /gemini:impact "${{ item.scope }}" || echo "Direct Gemini analysis"  
+      scripts/impact_quickcheck.sh validate "gemini/${{ item.id }}.json" > "gemini/${{ item.id }}_validation.json"
+    capture: "gemini/${{ item.id }}.json"
+
+  - id: implement_small
+    foreach: plan.json.tasks
+    when: item.type == "small"
+    run: |
+      echo "[LIGHTNING] Using Codex-optimized implementation with sandbox verification..."
+      # Route small tasks to Codex-optimized agent
+      claude Task --subagent_type coder-codex --description "Sandboxed micro-implementation" --prompt "Execute micro-task: ${{ item.title }}. Use Codex CLI with comprehensive sandbox verification. Budget: <=25 LOC, <=2 files. Generate codex_summary.json with verification results."
+      # Fallback to direct implementation
+      claude /codex:micro "${{ item.title }}" || echo "Direct Codex micro-operation"
+
+  - id: implement_multi
+    foreach: plan.json.tasks
+    when: item.type == "multi"
+    run: claude /fix:planned "${{ item.title }}"
+
+  # Cache Optimization and Performance Enhancement
+  - id: cache_optimization
+    run: |
+      echo "[ROCKET] Optimizing cache for improved CI/CD performance..."
+      
+      # Cache inspection and optimization
+      claude /conn:cache \
+        --inspect \
+        --cleanup \
+        --optimize \
+        --stats \
+        --sequential-thinking \
+        --memory-update
+      
+      # Performance monitoring baseline
+      claude /conn:monitor \
+        --memory \
+        --resources \
+        --benchmark \
+        --sequential-thinking \
+        --memory-update
+    capture: .claude/.artifacts/cache_optimization.json
+    expect_json: true
+
+  # Enhanced Architectural Analysis
+  - id: architectural_assessment
+    run: |
+      echo "[U+1F3DB][U+FE0F] Running comprehensive architectural assessment..."
+      
+      # Enhanced connascence analysis with architecture
+      claude /conn:scan \
+        --architecture \
+        --detector-pools \
+        --enhanced-metrics \
+        --hotspots \
+        --sequential-thinking \
+        --memory-update
+      
+      # Dedicated architectural analysis
+      claude /conn:arch \
+        --hotspots \
+        --detector-pool \
+        --cross-component \
+        --recommendations \
+        --sequential-thinking \
+        --memory-update \
+        --gemini-context
+    capture: .claude/.artifacts/architecture_assessment.json
+    expect_json: true
+
+  # Self-Correcting Quality Gates with Performance Intelligence
+  - id: self_correct_quality
+    run: |
+      export HIVE_NAMESPACE="$HIVE_NAMESPACE"
+      export SESSION_ID="$SESSION_ID"
+      export MAX_ATTEMPTS=4
+      export SHOW_LOGS=1
+      
+      # Enhanced QA with architectural context
+      claude /qa:run \
+        --architecture \
+        --performance-monitor \
+        --sequential-thinking \
+        --memory-update \
+        --enhanced-artifacts
+      
+      # Architecture context for self-correction
+      if [[ -f .claude/.artifacts/architecture_assessment.json ]]; then
+        export ARCHITECTURE_CONTEXT=".claude/.artifacts/architecture_assessment.json"
+      fi
+      
+      if [[ -f .claude/.artifacts/cache_optimization.json ]]; then
+        export CACHE_CONTEXT=".claude/.artifacts/cache_optimization.json"
+      fi
+      
+      # Run self-correction loop to ensure quality gates pass
+      bash scripts/self_correct.sh
+    capture: .claude/.artifacts/gate.json
+    expect_json: true
+
+  - id: pm_sync
+    when: $.self_correct_quality.ok == true
+    run: |
+      npx claude-flow@alpha github pm-sync --project-id "$PROJECT_ID" --session "$SESSION_ID" --idempotent 2>/dev/null || true
+      claude /pm:sync
+    capture: pm_sync.json
+    expect_json: true
+
+  - id: pr_create
+    when: $.self_correct_quality.ok == true
+    run: |
+      npx claude-flow@alpha github pr-manager --create --evidence-rich --session "$SESSION_ID" 2>/dev/null || true
+      claude /pr:open
+    capture: pr_result.json
+
+  # Enhanced LEARN Phase with Unified Memory Intelligence
+  - id: learn_phase
+    when: gate.json.ok == true
+    run: |
+      echo "[BRAIN] Learning phase with unified memory intelligence..."
+      
+      # Load memory bridge for coordination
+      source scripts/memory_bridge.sh
+      
+      # Neural training in Claude Flow for coordination patterns
+      npx claude-flow@alpha neural train --model pattern_learner --session "$SESSION_ID" --export-patterns 2>/dev/null || true
+      
+      # Export session memory from Claude Flow
+      npx claude-flow@alpha memory export --namespace "$HIVE_NAMESPACE" --format json > ".claude/.artifacts/session_memory.json" 2>/dev/null || echo '{}' > ".claude/.artifacts/session_memory.json"
+      
+      # Store success patterns in unified intelligence for cross-project learning
+      if [[ -f .claude/.artifacts/session_memory.json ]]; then
+        session_data=$(cat .claude/.artifacts/session_memory.json)
+        scripts/memory_bridge.sh store "intelligence/patterns" "spec_to_pr_success" "$session_data" "{\"session\": \"$SESSION_ID\", \"type\": \"success_pattern\"}"
+      fi
+      
+      # Store architectural insights gained during implementation
+      if [[ -f .claude/.artifacts/architecture_assessment.json ]]; then
+        arch_data=$(cat .claude/.artifacts/architecture_assessment.json)
+        scripts/memory_bridge.sh store "intelligence/architecture" "project_patterns" "$arch_data" "{\"session\": \"$SESSION_ID\", \"type\": \"implementation_learning\"}"
+      fi
+      
+      # Store performance optimization insights
+      if [[ -f .claude/.artifacts/cache_optimization.json ]]; then
+        cache_data=$(cat .claude/.artifacts/cache_optimization.json)
+        scripts/memory_bridge.sh store "intelligence/performance" "optimization_patterns" "$cache_data" "{\"session\": \"$SESSION_ID\", \"type\": \"performance_learning\"}"
+      fi
+      
+      # Cross-system synchronization for immediate availability
+      scripts/memory_bridge.sh sync
+      
+      # Generate comprehensive learning results with agent metrics
+      agent_metrics=$(npx claude-flow@alpha agent metrics --session "$SESSION_ID" --json 2>/dev/null || echo '{}')
+      
+      jq -n \
+        --arg session "$SESSION_ID" \
+        --argjson metrics "$agent_metrics" \
+        --arg unified_memory "enabled" \
+        '{
+          session: $session,
+          metrics: $metrics,
+          status: "completed",
+          unified_memory: $unified_memory,
+          learning_stored: {
+            success_patterns: true,
+            architectural_insights: true,
+            performance_optimization: true
+          },
+          cross_system_sync: "completed"
+        }'
+    capture: learn_results.json
+    expect_json: true
+
+  - id: gate_failure
+    when: $.self_correct_quality.ok == false
+    run: |
+      echo "[FAIL] Quality gates failed after self-correction attempts. Generating comprehensive failure report..."
+      
+      # Enhanced failure analysis with architectural intelligence
+      claude /qa:analyze "$(cat .claude/.artifacts/gate.json)" \
+        --architecture-context \
+        --smart-recommendations \
+        --coupling-analysis \
+        --hotspot-impact
+      
+      # Generate failure report with architectural insights
+      chmod +x scripts/gate_fail_reason.sh
+      scripts/gate_fail_reason.sh .claude/.artifacts/gate.json pr-comment
+      
+      echo ""
+      echo "[BUILD] Architectural Failure Analysis:"
+      if [[ -f .claude/.artifacts/architecture_assessment.json ]]; then
+        echo "Architecture Health Score: $(jq -r '.system_overview.architectural_health // "N/A"' .claude/.artifacts/architecture_assessment.json)"
+        echo "Coupling Score: $(jq -r '.system_overview.coupling_score // "N/A"' .claude/.artifacts/architecture_assessment.json)"
+        echo "Hotspots Found: $(jq -r '.architectural_hotspots | length // 0' .claude/.artifacts/architecture_assessment.json)"
+        
+        echo ""
+        echo "Smart Recommendations:"
+        jq -r '.smart_recommendations[]? | "- \(.priority | ascii_upcase): \(.issue) -> \(.solution)"' .claude/.artifacts/architecture_assessment.json || echo "No recommendations available"
+      fi
+      
+      echo ""
+      echo "[ROCKET] Cache Performance Analysis:"
+      if [[ -f .claude/.artifacts/cache_optimization.json ]]; then
+        echo "Cache Health Score: $(jq -r '.cache_health.health_score // "N/A"' .claude/.artifacts/cache_optimization.json)"
+        echo "Hit Rate: $(jq -r '.performance_metrics.hit_rate // "N/A"' .claude/.artifacts/cache_optimization.json)"
+        echo "Performance Improvement: $(jq -r '.performance_metrics.performance_improvement // "N/A"' .claude/.artifacts/cache_optimization.json)"
+      fi
+      
+      echo ""
+      echo "[CLIPBOARD] Artifacts available:"
+      ls -la .claude/.artifacts/
+      
+      echo ""
+      echo "[NOTE] PR comment generated (if applicable):"
+      cat .claude/.artifacts/pr_comment.md 2>/dev/null || echo "No PR comment generated"

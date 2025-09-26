@@ -1,0 +1,14 @@
+{
+  "core_breakdown": {
+    "embed_tokens": 6912000,
+    "layers": 10943878,
+    "norm": 216,
+    "halting_head": 20105,
+    "edit_head": 6912000,
+    "memory_bank": 95907,
+    "read_controller": 93744
+  },
+  "total": 24977850,
+  "target": 25000000,
+  "accuracy": "99.9%"
+}

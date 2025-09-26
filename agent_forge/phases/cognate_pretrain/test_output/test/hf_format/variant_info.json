@@ -1,0 +1,17 @@
+{
+  "variant_name": "titans-1",
+  "variant_description": "ACT Titans 25M model #titans-1",
+  "architecture_type": "act-titans-25m",
+  "model_version": "1.0.0",
+  "parameter_count": 24977850,
+  "specialization": {
+    "act_threshold": 0.95,
+    "memory_capacity": 4096,
+    "surprise_weight": 0.5,
+    "novelty_weight": 0.5
+  },
+  "training_paradigm": {
+    "train_max_steps": 16,
+    "infer_max_steps": 6
+  }
+}

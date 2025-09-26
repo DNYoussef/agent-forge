@@ -1,0 +1,206 @@
+name: after-edit
+description: QA loop with CF swarm coordination, attempt capping, and neural pattern recognition.
+environment:
+  HIVE_NAMESPACE: "spek/after-edit/$(date +%Y%m%d)"
+  SESSION_ID: "swarm-$(git branch --show-current || echo 'main')"
+  MAX_ATTEMPTS: "${AUTO_REPAIR_MAX_ATTEMPTS:-2}"
+steps:
+  # Swarm Burst Control Initialization
+  - id: init_swarm
+    run: |
+      npx claude-flow@alpha swarm init --topology hierarchical --burst-control --max-attempts "$MAX_ATTEMPTS"
+      npx claude-flow@alpha swarm status --session "$SESSION_ID" > swarm_status.json || echo '{"attempts": 0}' > swarm_status.json
+      CURRENT_ATTEMPTS="$(jq -r '.attempts // 0' swarm_status.json)"
+      if [[ $CURRENT_ATTEMPTS -ge $MAX_ATTEMPTS ]]; then
+        echo "[U+1F6A8] Max attempts ($MAX_ATTEMPTS) exceeded - escalating to planner"
+        npx claude-flow@alpha task orchestrate --escalate planner --reason "auto-repair-limit"
+        exit 1
+      fi
+    capture: swarm_init.json
+  - id: plan
+    run: claude /spec:plan
+    capture: plan.json
+    expect_json: true
+
+  - id: implement_small
+    foreach: plan.json.tasks
+    when: item.type == "small"
+    run: |
+      echo "[LIGHTNING] Using Codex-optimized agent for sandboxed micro-operations..."
+      # Route to Codex-optimized agent for bounded implementations
+      claude Task --subagent_type coder-codex --description "Sandboxed micro-implementation" --prompt "Implement micro-operation: ${{ item.title }}. Use Codex CLI with sandbox verification (tests, typecheck, lint, security, coverage). Ensure <=25 LOC, <=2 files. Output codex_summary.json format."
+      # Fallback to direct Codex if agent unavailable  
+      claude /codex:micro "${{ item.title }}" || echo "Fallback to direct Codex execution"
+
+  - id: discover_big
+    foreach: plan.json.tasks
+    when: item.type == "big"
+    run: |
+      echo "[SEARCH] Using Gemini-optimized researcher for large-context analysis..."
+      # Route to Gemini-optimized researcher for comprehensive analysis
+      claude Task --subagent_type researcher-gemini --description "Large context impact analysis" --prompt "Conduct comprehensive impact analysis for: ${{ item.scope }}. Use Gemini CLI with full codebase context to identify hotspots, callers, configs, crosscuts, testFocus, and citations. Output impact.json format."
+      # Fallback to direct Gemini if researcher unavailable
+      claude /gemini:impact "${{ item.scope }}" || echo "Fallback to direct Gemini analysis"
+    capture: "gemini/${{ item.id }}.json"
+
+  - id: implement_multi
+    foreach: plan.json.tasks
+    when: item.type == "multi"
+    run: claude /fix:planned "${{ item.title }}"
+
+  # Enhanced Quality Loop with Architectural Context
+  - id: enhanced_qa_analysis
+    run: |
+      echo "[BUILD] Running enhanced QA with unified memory coordination..."
+      
+      # Initialize unified memory bridge
+      source scripts/memory_bridge.sh
+      initialize_memory_router
+      
+      # Cache optimization with unified memory integration
+      claude /conn:cache --optimize --memory-update
+      
+      # Retrieve historical QA patterns from unified memory
+      historical_qa=$(scripts/memory_bridge.sh retrieve "intelligence/patterns" "qa_success" 2>/dev/null || echo '{}')
+      
+      # Comprehensive QA with architectural context and historical intelligence
+      claude /qa:run \
+        --architecture \
+        --performance-monitor \
+        --sequential-thinking \
+        --memory-update \
+        --enhanced-artifacts \
+        --historical-context "$historical_qa"
+      
+      # Store QA results in unified memory for cross-agent sharing
+      if [[ -f .claude/.artifacts/qa_enhanced.json ]]; then
+        scripts/memory_bridge.sh store "analysis/qa" "after_edit_$(date +%s)" "$(cat .claude/.artifacts/qa_enhanced.json)" "{\"session\": \"$SESSION_ID\", \"type\": \"after_edit\"}"
+      fi
+    capture: .claude/.artifacts/qa_enhanced.json
+    expect_json: true
+
+  # Architectural Impact Analysis
+  - id: architectural_analysis
+    run: |
+      echo "[U+1F3DB][U+FE0F] Running architectural impact analysis..."
+      
+      # Architecture-aware analysis
+      claude /conn:arch \
+        --hotspots \
+        --detector-pool \
+        --cross-component \
+        --recommendations \
+        --sequential-thinking \
+        --memory-update
+      
+      # Performance monitoring
+      claude /conn:monitor \
+        --memory \
+        --resources \
+        --benchmark \
+        --trends \
+        --sequential-thinking \
+        --memory-update
+    capture: .claude/.artifacts/architecture_impact.json
+    expect_json: true
+
+  # Self-Correcting Quality Loop with Architectural Guidance
+  - id: self_correct_loop
+    run: |
+      export HIVE_NAMESPACE="$HIVE_NAMESPACE"
+      export SESSION_ID="$SESSION_ID"
+      export MAX_ATTEMPTS="$MAX_ATTEMPTS"
+      export SHOW_LOGS=1
+      
+      # Enhanced self-correction with architectural context
+      if [[ -f .claude/.artifacts/architecture_impact.json ]]; then
+        export ARCHITECTURE_CONTEXT=".claude/.artifacts/architecture_impact.json"
+      fi
+      
+      # Run bounded self-correction with architectural awareness
+      bash scripts/self_correct.sh
+    capture: .claude/.artifacts/gate.json
+    expect_json: true
+
+  - id: pass_gate
+    when: $.self_correct_loop.ok == true
+    run: |
+      npx claude-flow@alpha neural train --model success_patterns --session "$SESSION_ID" --input "$(git diff --stat)" 2>/dev/null || true
+      npx claude-flow@alpha swarm status --update-success --session "$SESSION_ID" 2>/dev/null || true
+      claude /pr:open
+    exit: 0
+
+  - id: failure_analysis
+    when: $.self_correct_loop.ok == false
+    run: |
+      echo "[FAIL] Self-correction loop failed after $MAX_ATTEMPTS attempts"
+      
+      # Enhanced failure analysis with architectural context
+      if [[ -f .claude/.artifacts/qa_enhanced.json ]]; then
+        claude /qa:analyze "$(cat .claude/.artifacts/qa_enhanced.json)" \
+          --architecture-context \
+          --smart-recommendations \
+          --coupling-analysis \
+          --hotspot-impact
+      else
+        claude /qa:analyze "$(cat .claude/.artifacts/gate.json)" \
+          --architecture-context \
+          --smart-recommendations
+      fi
+      
+      # Generate detailed failure report with architectural insights
+      chmod +x scripts/gate_fail_reason.sh
+      scripts/gate_fail_reason.sh .claude/.artifacts/gate.json plain
+      
+      # Show architectural analysis results
+      echo ""
+      echo "[BUILD] Architectural Analysis Results:"
+      if [[ -f .claude/.artifacts/architecture_impact.json ]]; then
+        jq -r '.smart_recommendations[] | "- \(.priority | ascii_upcase): \(.issue) -> \(.solution)"' .claude/.artifacts/architecture_impact.json
+      fi
+      
+      # Show what was attempted
+      echo ""
+      echo "[CYCLE] Self-correction attempts made:"
+      if [[ -f .claude/.artifacts/current_attempt.json ]]; then
+        jq . .claude/.artifacts/current_attempt.json
+      fi
+
+  # Unified Memory Learning and Session Management
+  - id: learn_from_failure
+    when: gate.json.ok == false
+    run: |
+      echo "[BRAIN] Learning from failure with unified memory coordination..."
+      
+      # Load memory bridge
+      source scripts/memory_bridge.sh
+      
+      # Train neural patterns using Claude Flow (coordination system)
+      npx claude-flow@alpha neural train --model failure_patterns --session "$SESSION_ID" --input "$(cat triage.json)" 2>/dev/null || true
+      
+      # Store failure patterns in unified memory for cross-agent learning
+      if [[ -f triage.json ]]; then
+        scripts/memory_bridge.sh store "intelligence/patterns" "failures_$(date +%s)" "$(cat triage.json)" "{\"session\": \"$SESSION_ID\", \"hive_namespace\": \"$HIVE_NAMESPACE\", \"type\": \"failure_learning\"}"
+      fi
+      
+      # Store session-specific failure in Claude Flow coordination namespace
+      npx claude-flow@alpha memory store --key "failures/$(date +%s)" --value "$(cat triage.json 2>/dev/null || echo '{}')" --namespace "$HIVE_NAMESPACE" 2>/dev/null || true
+      
+      # Cross-system synchronization for immediate agent availability
+      scripts/memory_bridge.sh sync
+      
+      # Enhanced escalation with unified memory context
+      CURRENT_ATTEMPTS="$(npx claude-flow@alpha swarm status --session '$SESSION_ID' --json 2>/dev/null | jq -r '.attempts // 0')"
+      if [[ $CURRENT_ATTEMPTS -ge $MAX_ATTEMPTS ]]; then
+        echo "[U+1F6A8] Escalating to architecture phase after $CURRENT_ATTEMPTS attempts"
+        
+        # Retrieve architectural intelligence for escalation context
+        arch_context=$(scripts/memory_bridge.sh retrieve "intelligence/architecture" "failure_patterns" 2>/dev/null || echo '{}')
+        
+        npx claude-flow@alpha task orchestrate \
+          --escalate architecture \
+          --reason "repeated-failure" \
+          --context "$(cat triage.json 2>/dev/null || echo '{}')" \
+          --architectural-context "$arch_context" 2>/dev/null || true
+      fi
+    capture: learn_results.json

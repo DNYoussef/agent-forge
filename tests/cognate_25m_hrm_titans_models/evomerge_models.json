@@ -1,0 +1,52 @@
+{
+  "seed_models": [
+    {
+      "model_path": "cognate_25m_hrm_titans_models\\cognate-25m-titans-1\\pytorch_model.bin",
+      "config_path": "cognate_25m_hrm_titans_models\\cognate-25m-titans-1\\config.json",
+      "model_name": "cognate-25m-titans-1",
+      "architecture": "cognate-25m",
+      "parameters": 24788199,
+      "training_stats": {
+        "total_steps": 501,
+        "total_loss": 501.0,
+        "best_eval_loss": Infinity,
+        "training_time": 5.698592185974121
+      }
+    },
+    {
+      "model_path": "cognate_25m_hrm_titans_models\\cognate-25m-titans-2\\pytorch_model.bin",
+      "config_path": "cognate_25m_hrm_titans_models\\cognate-25m-titans-2\\config.json",
+      "model_name": "cognate-25m-titans-2",
+      "architecture": "cognate-25m",
+      "parameters": 24788199,
+      "training_stats": {
+        "total_steps": 501,
+        "total_loss": 501.0,
+        "best_eval_loss": Infinity,
+        "training_time": 4.249964237213135
+      }
+    },
+    {
+      "model_path": "cognate_25m_hrm_titans_models\\cognate-25m-titans-3\\pytorch_model.bin",
+      "config_path": "cognate_25m_hrm_titans_models\\cognate-25m-titans-3\\config.json",
+      "model_name": "cognate-25m-titans-3",
+      "architecture": "cognate-25m",
+      "parameters": 24788199,
+      "training_stats": {
+        "total_steps": 501,
+        "total_loss": 501.0,
+        "best_eval_loss": Infinity,
+        "training_time": 4.4480602741241455
+      }
+    }
+  ],
+  "model_type": "cognate-25m",
+  "total_models": 3,
+  "architecture_details": {
+    "d_model": 216,
+    "n_layers": 11,
+    "n_heads": 4,
+    "parameter_count": 24788199
+  },
+  "ready_for_evomerge": true
+}
