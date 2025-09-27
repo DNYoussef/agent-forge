@@ -426,10 +426,18 @@ class ThoughtMixingHead(nn.Module):
 
         stripped_logits = logits.clone()
 
+        # Handle both 2D and 3D tensor shapes for compatibility
         if sot_id >= 0 and sot_id < logits.size(-1):
-            stripped_logits[:, :, sot_id] = -float("inf")
+            if logits.dim() == 3:
+                stripped_logits[:, :, sot_id] = -float("inf")
+            elif logits.dim() == 2:
+                stripped_logits[:, sot_id] = -float("inf")
+
         if eot_id >= 0 and eot_id < logits.size(-1):
-            stripped_logits[:, :, eot_id] = -float("inf")
+            if logits.dim() == 3:
+                stripped_logits[:, :, eot_id] = -float("inf")
+            elif logits.dim() == 2:
+                stripped_logits[:, eot_id] = -float("inf")
 
         return stripped_logits
 
