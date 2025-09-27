@@ -21,6 +21,9 @@ from abc import ABC, abstractmethod
 from collections import defaultdict
 from dataclasses import dataclass
 
+# Import consolidated utilities
+from ..utils.model_operations import clone_model
+
 logger = logging.getLogger(__name__)
 
 @dataclass
@@ -533,9 +536,8 @@ class TIESOperator:
         return quality_score
     
     def _clone_model(self, model: nn.Module) -> nn.Module:
-        """Create a deep copy of a model."""
-        import copy
-        return copy.deepcopy(model)
+        """Create a deep copy of a model using consolidated ModelOperations."""
+        return clone_model(model)
     
     def analyze_conflicts(self, models: List[nn.Module]) -> Dict[str, Any]:
         """

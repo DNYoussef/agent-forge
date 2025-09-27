@@ -100,9 +100,9 @@ sys.path.insert(0, str(packages_path))
 
 # Import REAL components - NO MOCKS
 from full_cognate_25m import (
-    ACTTitans25M,
-    create_three_act_titans_models,
-    create_act_titans_config
+    Enhanced25MCognate,
+    create_three_25m_models,
+    create_standard_25m_config
 )
 from refiner_core import CognateConfig
 
@@ -341,7 +341,7 @@ def create_training_config() -> TrainingConfig:
 
 
 def pretrain_single_model_with_hrm_titans(
-    model: ACTTitans25M,
+    model: Enhanced25MCognate,
     train_config: TrainingConfig,
     output_dir: str,
     model_name: str,
@@ -721,7 +721,7 @@ def main():
 
     # Create 3 identical ACT Titans models with different seeds
     if IMPORTS_SUCCESS:
-        models = create_three_act_titans_models()
+        models = create_three_25m_models()
         logger.info(f"Created {len(models)} ACT Titans models (25M params each)")
     else:
         logger.warning("Using mock models due to import failures")
@@ -779,7 +779,8 @@ def main():
                 logger.info(f"Model {i+1} complete. Starting model {i+2} in 2 seconds...")
                 time.sleep(2)
 
-            )
+        except Exception as e:
+            logger.error(f"Training failed for {model_name}: {e}")
             # Create mock stats for failed training
             all_stats[model_name] = {
                 "total_steps": 0,

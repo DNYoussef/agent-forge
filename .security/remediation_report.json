@@ -1,0 +1,80 @@
+{
+  "timestamp": "2025-09-26T19:17:20.604875",
+  "total_fixes": 11,
+  "fixes_applied": [
+    {
+      "type": "MD5_USAGE",
+      "file": "phases/phase6_baking/integration/integration_manager.py",
+      "description": "Replaced MD5 with SHA-256 in phases/phase6_baking/integration/integration_manager.py",
+      "backup": ".security\\remediation_backups\\integration_manager.py_20250926_191720.backup"
+    },
+    {
+      "type": "MD5_USAGE",
+      "file": "phases/phase6_baking/optimization/baking_optimizer.py",
+      "description": "Replaced MD5 with SHA-256 in phases/phase6_baking/optimization/baking_optimizer.py",
+      "backup": ".security\\remediation_backups\\baking_optimizer.py_20250926_191720.backup"
+    },
+    {
+      "type": "MD5_USAGE",
+      "file": "phases/phase6_baking/security/vulnerability_scanner.py",
+      "description": "Replaced MD5 with SHA-256 in phases/phase6_baking/security/vulnerability_scanner.py",
+      "backup": ".security\\remediation_backups\\vulnerability_scanner.py_20250926_191720.backup"
+    },
+    {
+      "type": "MD5_USAGE",
+      "file": "phases/phase7_adas/agents/v2x_communicator.py",
+      "description": "Replaced MD5 with SHA-256 in phases/phase7_adas/agents/v2x_communicator.py",
+      "backup": ".security\\remediation_backups\\v2x_communicator.py_20250926_191720.backup"
+    },
+    {
+      "type": "MD5_USAGE",
+      "file": "scripts/optimize_build.py",
+      "description": "Replaced MD5 with SHA-256 in scripts/optimize_build.py",
+      "backup": ".security\\remediation_backups\\optimize_build.py_20250926_191720.backup"
+    },
+    {
+      "type": "MD5_USAGE",
+      "file": "src/performance/optimizer.py",
+      "description": "Replaced MD5 with SHA-256 in src/performance/optimizer.py",
+      "backup": ".security\\remediation_backups\\optimizer.py_20250926_191720.backup"
+    },
+    {
+      "type": "UNSAFE_EXTRACTION",
+      "file": "phases/phase8_compression/agents/deployment_packager.py",
+      "description": "Added safe extraction to phases/phase8_compression/agents/deployment_packager.py",
+      "backup": ".security\\remediation_backups\\deployment_packager.py_20250926_191720.backup"
+    },
+    {
+      "type": "FLASK_DEBUG",
+      "file": "src/agent_forge/api/websocket_progress.py",
+      "description": "Disabled Flask debug mode in src/agent_forge/api/websocket_progress.py",
+      "backup": ".security\\remediation_backups\\websocket_progress.py_20250926_191720.backup"
+    },
+    {
+      "type": "SHELL_INJECTION",
+      "file": "start_cognate_system.py",
+      "description": "Fixed shell injection in start_cognate_system.py",
+      "backup": ".security\\remediation_backups\\start_cognate_system.py_20250926_191720.backup"
+    },
+    {
+      "type": "NASA_ANALYZER",
+      "file": "src/security/nasa_pot10_analyzer.py",
+      "description": "Fixed NASA analyzer imports and constants",
+      "backup": ".security\\remediation_backups\\nasa_pot10_analyzer.py_20250926_191720.backup"
+    },
+    {
+      "type": "PRE_COMMIT_HOOKS",
+      "file": ".pre-commit-config.yaml",
+      "description": "Created security pre-commit hooks",
+      "backup": null
+    }
+  ],
+  "status": "COMPLETED",
+  "next_steps": [
+    "Run comprehensive security scan to verify fixes",
+    "Test all modified functionality",
+    "Run NASA POT10 compliance check",
+    "Update security documentation",
+    "Deploy to staging for validation"
+  ]
+}

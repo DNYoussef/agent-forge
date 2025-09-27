@@ -37,7 +37,7 @@ class SecurityRemediator:
 
     def fix_md5_usage(self):
         """Fix HIGH: Replace weak MD5 usage with secure alternatives"""
-        print("🔧 Fixing MD5 usage vulnerabilities...")
+        print("[FIX] Fixing MD5 usage vulnerabilities...")
 
         # Files with MD5 issues from Bandit scan
         md5_files = [
@@ -86,11 +86,11 @@ class SecurityRemediator:
                 'backup': str(backup_path)
             })
 
-        print(f"✅ Fixed MD5 usage in {len(md5_files)} files")
+        print(f"[OK] Fixed MD5 usage in {len(md5_files)} files")
 
     def fix_unsafe_extraction(self):
         """Fix HIGH: Unsafe archive extraction vulnerabilities"""
-        print("🔧 Fixing unsafe archive extraction...")
+        print("[FIX] Fixing unsafe archive extraction...")
 
         extraction_files = [
             "phases/phase8_compression/agents/deployment_packager.py"
@@ -147,11 +147,11 @@ def safe_extract(tar, path=".", members=None):
                 'backup': str(backup_path)
             })
 
-        print("✅ Fixed unsafe archive extraction")
+        print("[OK] Fixed unsafe archive extraction")
 
     def fix_flask_debug(self):
         """Fix HIGH: Flask debug mode enabled"""
-        print("🔧 Fixing Flask debug mode...")
+        print("[FIX] Fixing Flask debug mode...")
 
         flask_files = [
             "src/agent_forge/api/websocket_progress.py"
@@ -184,11 +184,11 @@ def safe_extract(tar, path=".", members=None):
                 'backup': str(backup_path)
             })
 
-        print("✅ Fixed Flask debug mode")
+        print("[OK] Fixed Flask debug mode")
 
     def fix_shell_injection(self):
         """Fix HIGH: Shell injection vulnerabilities"""
-        print("🔧 Fixing shell injection vulnerabilities...")
+        print("[FIX] Fixing shell injection vulnerabilities...")
 
         shell_files = [
             "start_cognate_system.py"
@@ -218,17 +218,17 @@ def safe_extract(tar, path=".", members=None):
                 'backup': str(backup_path)
             })
 
-        print("✅ Fixed shell injection vulnerabilities")
+        print("[OK] Fixed shell injection vulnerabilities")
 
     def fix_nasa_analyzer_imports(self):
         """Fix NASA POT10 analyzer import issues"""
-        print("🔧 Fixing NASA POT10 analyzer...")
+        print("[FIX] Fixing NASA POT10 analyzer...")
 
         nasa_file = "src/security/nasa_pot10_analyzer.py"
         file_path = self.root_path / nasa_file
 
         if not file_path.exists():
-            print("⚠️ NASA analyzer not found")
+            print("[WARNING] NASA analyzer not found")
             return
 
         backup_path = self.backup_file(file_path)
@@ -263,11 +263,11 @@ NASA_PARAMETER_THRESHOLD = 6
             'backup': str(backup_path)
         })
 
-        print("✅ Fixed NASA POT10 analyzer")
+        print("[OK] Fixed NASA POT10 analyzer")
 
     def create_security_pre_commit_hooks(self):
         """Create pre-commit security hooks"""
-        print("🔧 Creating security pre-commit hooks...")
+        print("[FIX] Creating security pre-commit hooks...")
 
         pre_commit_config = '''
 repos:
@@ -305,7 +305,7 @@ repos:
             'backup': None
         })
 
-        print("✅ Created security pre-commit hooks")
+        print("[OK] Created security pre-commit hooks")
 
     def generate_remediation_report(self):
         """Generate detailed remediation report"""
@@ -329,12 +329,12 @@ repos:
         with open(report_path, 'w') as f:
             json.dump(report, f, indent=2)
 
-        print(f"📄 Remediation report saved to: {report_path}")
+        print(f"[REPORT] Remediation report saved to: {report_path}")
         return report
 
     def run_full_remediation(self):
         """Execute complete security remediation"""
-        print("🚨 STARTING CRITICAL SECURITY REMEDIATION")
+        print("[ALERT] STARTING CRITICAL SECURITY REMEDIATION")
         print("=" * 60)
 
         try:
@@ -347,16 +347,16 @@ repos:
 
             report = self.generate_remediation_report()
 
-            print("\n🎉 SECURITY REMEDIATION COMPLETED")
+            print("\n[SUCCESS] SECURITY REMEDIATION COMPLETED")
             print(f"Total fixes applied: {len(self.fixes_applied)}")
-            print("\n⚠️ IMPORTANT: Run tests to verify all fixes work correctly")
-            print("⚠️ IMPORTANT: Re-run security scan to verify vulnerabilities are fixed")
+            print("\n[IMPORTANT] Run tests to verify all fixes work correctly")
+            print("[IMPORTANT] Re-run security scan to verify vulnerabilities are fixed")
 
             return report
 
         except Exception as e:
-            print(f"❌ Remediation failed: {e}")
-            print("🔄 Check backup files in .security/remediation_backups/")
+            print(f"[ERROR] Remediation failed: {e}")
+            print("[INFO] Check backup files in .security/remediation_backups/")
             raise
 
 

@@ -14,20 +14,6 @@ from pathlib import Path
 from dataclasses import dataclass, field
 import time
 import platform
-def safe_extract(tar, path=".", members=None):
-    """Safely extract tar archive preventing directory traversal"""
-    for member in tar.getmembers():
-        # Prevent path traversal
-        if member.name.startswith('/') or '..' in member.name:
-            print(f"Skipping dangerous path: {member.name}")
-            continue
-        # Prevent absolute paths
-        if os.path.isabs(member.name):
-            print(f"Skipping absolute path: {member.name}")
-            continue
-        tar.extract(member, path)
-
-
 
 @dataclass
 class DeploymentConfig:

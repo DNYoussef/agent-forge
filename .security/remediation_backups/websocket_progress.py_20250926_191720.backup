@@ -439,4 +439,4 @@ if __name__ == '__main__':
     simulate_training_progress(emitter, 'test-session-123')
 
     # Run server
-    emitter.run(debug=False)
+    emitter.run(debug=True)

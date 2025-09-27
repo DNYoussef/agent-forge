@@ -18,8 +18,8 @@ def start_server(name, command, cwd=None):
         if sys.platform == "win32":
             # Windows: Use CREATE_NEW_CONSOLE flag
             subprocess.Popen(
-                command if isinstance(command, list) else command.split(),
-                shell=False,
+                command,
+                shell=True,
                 cwd=cwd,
                 creationflags=subprocess.CREATE_NEW_CONSOLE
             )
@@ -36,8 +36,8 @@ def start_server(name, command, cwd=None):
             else:
                 # Linux
                 subprocess.Popen(
-                    ["gnome-terminal", "--", "bash", "-c", f"cd {cwd or os.getcwd()} && {command}; exec bash"],
-                    shell=False
+                    f"gnome-terminal -- bash -c 'cd {cwd or os.getcwd()} && {command}; exec bash'",
+                    shell=True
                 )
         print(f"✓ {name} started")
     except Exception as e:

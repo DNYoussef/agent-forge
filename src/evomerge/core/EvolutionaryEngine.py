@@ -23,6 +23,9 @@ from enum import Enum
 import math
 from abc import ABC, abstractmethod
 
+# Import consolidated utilities
+from ..utils.model_operations import get_model_operations, clone_model, calculate_model_distance
+
 logger = logging.getLogger(__name__)
 
 class SelectionStrategy(Enum):
@@ -567,20 +570,8 @@ class EvolutionaryEngine:
         return total_distance / num_pairs if num_pairs > 0 else 0.0
     
     def _calculate_model_distance(self, model1: nn.Module, model2: nn.Module) -> float:
-        """Calculate distance between two models."""
-        distance = 0.0
-        num_params = 0
-        
-        params1 = dict(model1.named_parameters())
-        params2 = dict(model2.named_parameters())
-        
-        for name in params1:
-            if name in params2:
-                param_distance = torch.norm(params1[name] - params2[name]).item()
-                distance += param_distance
-                num_params += 1
-                
-        return distance / num_params if num_params > 0 else 0.0
+        """Calculate distance between two models using consolidated ModelOperations."""
+        return calculate_model_distance(model1, model2, distance_type="euclidean")
     
     def _update_convergence(self):
         """Update convergence tracking."""
@@ -608,9 +599,8 @@ class EvolutionaryEngine:
         return self._calculate_diversity()
     
     def _clone_model(self, model: nn.Module) -> nn.Module:
-        """Create a deep copy of a model."""
-        import copy
-        return copy.deepcopy(model)
+        """Create a deep copy of a model using consolidated ModelOperations."""
+        return clone_model(model)
     
     def _assign_flat_params(self, model: nn.Module, flat_params: torch.Tensor):
         """Assign flattened parameters back to model."""

@@ -18,6 +18,9 @@ import logging
 import math
 from abc import ABC, abstractmethod
 
+# Import consolidated utilities
+from ..utils.model_operations import clone_model, calculate_model_distance
+
 logger = logging.getLogger(__name__)
 
 class SLERPOperator:
@@ -266,46 +269,19 @@ class SLERPOperator:
     
     def calculate_geodesic_distance(self, model1: nn.Module, model2: nn.Module) -> float:
         """
-        Calculate geodesic distance between two models on the parameter manifold.
-        
+        Calculate geodesic distance between two models using consolidated ModelOperations.
+
         This provides a measure of how "far apart" two models are in the
         spherical parameter space.
-        
+
         Args:
             model1: First model
             model2: Second model
-            
+
         Returns:
             Geodesic distance
         """
-        total_distance = 0.0
-        total_params = 0
-        
-        params1 = dict(model1.named_parameters())
-        params2 = dict(model2.named_parameters())
-        
-        for name in params1:
-            if name in params2:
-                # Calculate angle between parameter vectors
-                flat1 = params1[name].data.flatten()
-                flat2 = params2[name].data.flatten()
-                
-                # Normalize
-                norm1 = torch.norm(flat1)
-                norm2 = torch.norm(flat2)
-                
-                if norm1 > self.epsilon and norm2 > self.epsilon:
-                    flat1_norm = flat1 / norm1
-                    flat2_norm = flat2 / norm2
-                    
-                    # Calculate angle
-                    dot_product = torch.dot(flat1_norm, flat2_norm).clamp(-1 + self.epsilon, 1 - self.epsilon)
-                    angle = torch.acos(torch.abs(dot_product))
-                    
-                    total_distance += angle.item()
-                    total_params += 1
-                    
-        return total_distance / total_params if total_params > 0 else 0.0
+        return calculate_model_distance(model1, model2, distance_type="geodesic")
     
     def find_optimal_interpolation_path(self, 
                                       start_model: nn.Module, 
@@ -383,9 +359,8 @@ class SLERPOperator:
         return self.interpolate(model1, model2, best_t)
     
     def _clone_model(self, model: nn.Module) -> nn.Module:
-        """Create a deep copy of a model."""
-        import copy
-        return copy.deepcopy(model)
+        """Create a deep copy of a model using consolidated ModelOperations."""
+        return clone_model(model)
     
     def get_interpolation_statistics(self, 
                                    models: List[nn.Module]) -> Dict[str, Any]:

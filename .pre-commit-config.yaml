@@ -1,0 +1,24 @@
+
+repos:
+  - repo: local
+    hooks:
+      - id: bandit
+        name: bandit
+        entry: bandit
+        language: system
+        args: ['-r', '.', '-f', 'json', '-o', '.security/bandit_scan_report.json']
+        pass_filenames: false
+
+      - id: safety
+        name: safety
+        entry: safety
+        language: system
+        args: ['check', '--json']
+        pass_filenames: false
+
+      - id: semgrep
+        name: semgrep
+        entry: semgrep
+        language: system
+        args: ['--config=auto', '--json', '--output=.security/semgrep_report.json']
+        pass_filenames: false

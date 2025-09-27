@@ -26,6 +26,7 @@ from .slerp_operator import SLERPOperator, create_slerp_operator
 from .ties_operator import TIESOperator, create_ties_operator, TaskConfig
 from .dare_operator import DAREOperator, create_dare_operator
 from ..core.EvolutionaryEngine import EvolutionaryEngine, FitnessFunction, Individual, SelectionStrategy, CrossoverType, MutationType
+from ..utils.model_operations import calculate_model_distance
 
 logger = logging.getLogger(__name__)
 
@@ -645,20 +646,8 @@ class MergeController:
         return metrics
     
     def _calculate_model_distance(self, model1: nn.Module, model2: nn.Module) -> float:
-        """Calculate Euclidean distance between two models."""
-        distance = 0.0
-        param_count = 0
-        
-        params1 = dict(model1.named_parameters())
-        params2 = dict(model2.named_parameters())
-        
-        for name in params1:
-            if name in params2:
-                param_distance = torch.norm(params1[name].data - params2[name].data).item()
-                distance += param_distance
-                param_count += 1
-                
-        return distance / param_count if param_count > 0 else 0.0
+        """Calculate Euclidean distance between two models using consolidated ModelOperations."""
+        return calculate_model_distance(model1, model2, distance_type="euclidean")
     
     def get_merge_history(self) -> List[Dict[str, Any]]:
         """Get history of all merge operations."""
