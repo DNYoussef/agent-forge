@@ -91,3 +91,82 @@ export interface PhaseMetricsResponse<T> {
 export interface PhaseConfigRequest<T> {
   config: T;
 }
+
+// Phase 3: Quiet Star Reasoning Types
+export interface ReasoningToken {
+  id: string;
+  content: string;
+  type: 'thought_start' | 'thought_content' | 'thought_end' | 'regular';
+  position: number;
+  timestamp: number;
+  confidence: number;
+  streamId: number;
+}
+
+export interface ThoughtStream {
+  id: number;
+  tokens: ReasoningToken[];
+  isActive: boolean;
+  temperature: number;
+  length: number;
+  convergenceScore: number;
+}
+
+export interface CurriculumStage {
+  id: number;
+  name: string;
+  description: string;
+  progress: number;
+  isActive: boolean;
+  thoughtLength: {
+    min: number;
+    max: number;
+    current: number;
+  };
+  metrics: {
+    accuracy: number;
+    efficiency: number;
+    internalization: number;
+  };
+}
+
+export interface ConvergenceMetrics {
+  internalizationRate: number;
+  thoughtQuality: number;
+  parallelismEfficiency: number;
+  curriculumProgress: number;
+  tokenGeneration: {
+    rate: number;
+    accuracy: number;
+    diversity: number;
+  };
+  learning: {
+    convergenceSpeed: number;
+    stabilityScore: number;
+    adaptationRate: number;
+  };
+}
+
+export interface QuietStarConfig {
+  parallelStreams: number;
+  maxThoughtLength: number;
+  temperature: number;
+  curriculumEnabled: boolean;
+  visualizationMode: '2d' | '3d';
+  realTimeUpdates: boolean;
+}
+
+export interface QuietStarMetrics {
+  streams: ThoughtStream[];
+  curriculum: CurriculumStage[];
+  convergence: ConvergenceMetrics;
+  totalTokensGenerated: number;
+  averageThoughtLength: number;
+  activeStreams: number;
+}
+
+export interface WebSocketMessage {
+  type: 'reasoning_token' | 'stream_update' | 'convergence_update' | 'curriculum_progress';
+  data: any;
+  timestamp: number;
+}
